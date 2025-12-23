@@ -1,72 +1,48 @@
 # Fluxo AE — CS/CX Sankhya ABC Paulista
 
-Fluxograma interativo (HTML + SVG + CSS + JS puro) do processo de **Acompanhamento Evolutivo (AE)** do time de **CS/CX Sankhya ABC Paulista**.
+Fluxograma interativo do **Acompanhamento Evolutivo (AE)** no padrão do HUB (HTML + SVG + CSS + JS puro), com **pop-ups (modais)** e **links** para apoiar a execução do time.
 
-O projeto é **autocontido** (um único `index.html`) e pode ser publicado via **GitHub Pages**, servindo como guia operacional do time com **pop-ups (modais)** e **links diretos** (ex.: SenseData).
-
----
-
-## 🔎 Visão geral
-
-- **Objetivo**
-  Padronizar a execução do AE, do diagnóstico até o plano de evolução e governança (Sintonia do Projeto), garantindo rastreabilidade no **SenseData** e uso das telas de análise no **Sankhya**.
-
-- **Tecnologia**
-  - HTML5 + SVG (desenho do fluxo)
-  - CSS (tema, animações, “pulse”)
-  - JavaScript (modais, teclado, acessibilidade)
-
-- **Acessibilidade**
-  - Etapas focáveis via teclado (`tabindex="0"`)
-  - **Enter/Espaço** abre modal; **Esc** fecha
-  - Ao fechar, o foco retorna para o elemento acionador
+Este repositório foi atualizado para refletir o **novo processo do SenseData**, onde as etapas **“Diagnóstico” e “Montagem do Plano de Evolução”** foram unificadas em **uma única atividade**.
 
 ---
 
-## 🧭 Como usar (fluxo operacional)
+## ✅ Fluxo operacional (novo SenseData)
 
-O fluxo está dividido em 8 etapas:
+### 1) Sankhya — CS - Acompanhamento Visita
+- Objetivo: identificar clientes em atraso e definir qual cliente fará AE.
+- Caminho: `Dashboards » Customer Success » CS - Acompanhamento Visita`
+- ID: `br.com.sankhya.menu.adicional.nuDsb.1003.1`
 
-1. **Sankhya — CS - Acompanhamento Visita**
-   - Identifica clientes em atraso e define qual cliente fará AE.
-   - Caminho: Dashboards » Customer Success » CS - Acompanhamento Visita  
-   - ID: `br.com.sankhya.menu.adicional.nuDsb.1003.1`
+### 2) SenseData — Agendamento
+- Objetivo: adicionar playbook do AE e registrar o agendamento da atividade.
 
-2. **SenseData — Agendamento do AE**
-   - Adiciona playbook AE e registra o agendamento.
+### 3) Sankhya OM — CS - Acompanhamento Evolutivo (Novo)
+- Objetivo: análise completa e geração do plano (insumos do Sense).
+- Caminho: `Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)`
+- ID: `br.com.sankhya.analytics2.new.sc.t_4312.5.2265`
 
-3. **SenseData — Apresentação do Plano de Trabalho**
-   - Define agenda e alinhamento do dia.
+**Entregáveis obrigatórios gerados aqui (para anexar no Sense):**
+- Excel do Plano
+- E-mail enviado ao cliente com o Excel (este e-mail vira o **PDF** de evidência)
 
-4. **SenseData — Diagnóstico do AE**
-   - Aplica diagnóstico com usuários/áreas envolvidas.
+### 4) SenseData — Diagnóstico e Montagem do Plano de Evolução (unificado)
+- Objetivo: registrar a atividade unificada e **anexar**:
+  - Excel do Plano
+  - PDF do e-mail enviado (evidência)
 
-5. **Sankhya — CS - Acompanhamento Evolutivo (Novo)**
-   - Consolida informações do cliente e visão de uso.
-   - Avalia processos, define foco e gera **Plano de Ação** (Excel/PDF).
-   - Caminho: Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)
-   - ID: `br.com.sankhya.analytics2.new.sc.t_4312.5.2265`
+**Texto padrão de anotação (modelo):**
+> A etapa de Diagnóstico e Montagem do Plano de Ação será realizada no Sankhya OM, por meio da tela CS - Acompanhamento Evolutivo (Novo). Leia atentamente a documentação no Link.
 
-   **Extra obrigatório:**
-   - Enviar o **Excel por e-mail** ao cliente
-   - Salvar/gerar o **PDF do e-mail**
-   - Anexar no SenseData: **Excel + PDF**
-
-6. **SenseData — Montagem do Plano de Evolução**
-   - Registra a montagem e anexa os arquivos.
-
-7. **SenseData — Apresentação do Plano de Evolução**
-   - Registra a apresentação ao cliente (principais melhorias, status, horas, atribuição).
-
-8. **SenseData — Sintonia do Projeto**
-   - Rotina de governança, status e próximos passos.
+### 5) SenseData — Apresentação do Plano de Evolução
+- Objetivo: apresentar ao cliente as principais melhorias, priorização, responsáveis e horas.
 
 ---
 
 ## 🔗 Links úteis
 
-- **SenseData (Portfolio):**
-  https://sankhya.sensedata.io/portfolio
+- SenseData (Portfolio): https://sankhya.sensedata.io/portfolio
+
+> Observação: o “link da documentação” citado nos modais/anotações deve apontar para o HUB/documentação oficial do AE.
 
 ---
 
@@ -74,5 +50,5 @@ O fluxo está dividido em 8 etapas:
 
 ```text
 / (raiz)
-└── index.html
+├── index.html
 └── README.md
