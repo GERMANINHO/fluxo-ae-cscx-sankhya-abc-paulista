@@ -12,7 +12,6 @@
       --bg:#f5f3e7;
       --text:#443c3d;
       --green:#66cc00;
-      --purple:#72508d;
 
       --modal-bg:#ffffff;
       --overlay:rgba(0,0,0,.45);
@@ -32,7 +31,7 @@
 
     .wrapper{ padding:50px 100px; }
 
-    .svg-container{ position:relative; width:100%; padding-bottom:70%; overflow:hidden; background:var(--bg); }
+    .svg-container{ position:relative; width:100%; padding-bottom:55%; overflow:hidden; background:var(--bg); }
     .svg-content{ position:absolute; inset:0; }
 
     .node{ cursor:pointer; outline:none; }
@@ -143,143 +142,109 @@
     }
     .btn:hover,.btn:focus{ background:var(--btn-hover); box-shadow:0 0 0 2px #00000010 inset; }
     .btn:active{ transform:translateY(1px); }
-    .btn--green{ border-color:#86efac; }
-    .btn--purple{ border-color:#d8b4fe; }
-    .modal__hint{ margin:6px 2px 0; font-size:12px; opacity:.75; }
+
+    .callout{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:#0f172a0a;
+      border:1px dashed #94a3b8;
+      font-size:14px;
+    }
 
     code{ background:#00000010; padding:2px 6px; border-radius:8px; }
   </style>
 </head>
+
 <body>
   <div class="wrapper">
     <div class="svg-container">
-      <svg viewBox="0 0 1000 700" preserveAspectRatio="xMinYMin meet"
+      <svg viewBox="0 0 1000 520" preserveAspectRatio="xMinYMin meet"
            class="svg-content" role="img" aria-labelledby="title desc"
            xmlns="http://www.w3.org/2000/svg">
         <title id="title">Fluxo AE — Acompanhamento Evolutivo</title>
-        <desc id="desc">Fluxo operacional do AE, com etapas Sankhya e SenseData.</desc>
+        <desc id="desc">Fluxo operacional do AE (Sankhya + SenseData) com etapas e pop-ups.</desc>
 
         <!-- INÍCIO -->
-        <g transform="translate(40,40)">
+        <g transform="translate(40,60)">
           <circle fill="#000" cx="55" cy="55" r="48"/>
           <text x="55" y="55" text-anchor="middle" dominant-baseline="middle"
                 font-family="Open Sans Condensed" font-size="22" fill="#f5f3e7"
                 style="text-transform:uppercase; letter-spacing:1px">Início</text>
         </g>
 
-        <!-- Linha pontilhada início -> passo 1 -->
-        <line x1="143" y1="95" x2="220" y2="95" class="edge--dotted"/>
+        <line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
 
         <!-- PASSO 1 -->
         <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1"
-           transform="translate(220,60)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="105" y="28" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 1</tspan>
-            <tspan x="105" dy="18">Sankhya — Acomp. Visita</tspan>
+           transform="translate(210,80)" style="--pulse-color:#66cc00;">
+          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="200" height="70"/>
+          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="200" height="70" fill="#66cc00"/>
+          <text class="node-label xs" x="100" y="28" text-anchor="middle">
+            <tspan x="100" dy="0">Passo 1</tspan>
+            <tspan x="100" dy="18">Sankhya — Acomp. Visita</tspan>
           </text>
         </g>
 
-        <line x1="430" y1="95" x2="510" y2="95" class="edge--dotted"/>
+        <line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
 
         <!-- PASSO 2 -->
         <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2"
-           transform="translate(510,60)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="105" y="28" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 2</tspan>
-            <tspan x="105" dy="18">SenseData — Agendamento AE</tspan>
+           transform="translate(480,80)" style="--pulse-color:#66cc00;">
+          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="200" height="70"/>
+          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="200" height="70" fill="#66cc00"/>
+          <text class="node-label xs" x="100" y="28" text-anchor="middle">
+            <tspan x="100" dy="0">Passo 2</tspan>
+            <tspan x="100" dy="18">Sense — Agendamento AE</tspan>
           </text>
         </g>
 
-        <line x1="720" y1="95" x2="800" y2="95" class="edge--dotted"/>
+        <line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
 
         <!-- PASSO 3 -->
         <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3"
-           transform="translate(800,60)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="180" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="180" height="70" fill="#66cc00"/>
-          <text class="node-label xxs" x="90" y="28" text-anchor="middle">
-            <tspan x="90" dy="0">Passo 3</tspan>
-            <tspan x="90" dy="18">Sense — Plano de Trabalho</tspan>
+           transform="translate(750,80)" style="--pulse-color:#66cc00;">
+          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="220" height="70"/>
+          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="220" height="70" fill="#66cc00"/>
+          <text class="node-label xxs" x="110" y="24" text-anchor="middle">
+            <tspan x="110" dy="0">Passo 3</tspan>
+            <tspan x="110" dy="16">Sankhya OM — AE (Novo)</tspan>
+            <tspan x="110" dy="16">Gerar Excel + Email → PDF</tspan>
           </text>
         </g>
 
-        <!-- Linha 2 -->
-        <line x1="890" y1="130" x2="890" y2="200" class="edge--dotted"/>
-        <line x1="890" y1="200" x2="220" y2="200" class="edge--dotted"/>
+        <!-- linha descendo -->
+        <line x1="860" y1="150" x2="860" y2="245" class="edge--dotted"/>
+        <line x1="860" y1="245" x2="210" y2="245" class="edge--dotted"/>
 
         <!-- PASSO 4 -->
         <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4"
-           transform="translate(220,165)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="105" y="28" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 4</tspan>
-            <tspan x="105" dy="18">Sense — Diagnóstico AE</tspan>
+           transform="translate(210,210)" style="--pulse-color:#66cc00;">
+          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="280" height="70"/>
+          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="280" height="70" fill="#66cc00"/>
+          <text class="node-label xxs" x="140" y="24" text-anchor="middle">
+            <tspan x="140" dy="0">Passo 4</tspan>
+            <tspan x="140" dy="16">Sense — Diagnóstico + Montagem</tspan>
+            <tspan x="140" dy="16">Anexar Excel + PDF do email</tspan>
           </text>
         </g>
 
-        <line x1="430" y1="200" x2="510" y2="200" class="edge--dotted"/>
+        <line x1="490" y1="245" x2="560" y2="245" class="edge--dotted"/>
 
         <!-- PASSO 5 -->
         <g class="node" id="node-5" tabindex="0" role="button" aria-label="Abrir Passo 5"
-           transform="translate(510,165)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xxs" x="105" y="24" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 5</tspan>
-            <tspan x="105" dy="16">Sankhya — AE (Novo)</tspan>
-            <tspan x="105" dy="16">Gerar Excel/PDF + Email</tspan>
-          </text>
-        </g>
-
-        <line x1="720" y1="200" x2="800" y2="200" class="edge--dotted"/>
-
-        <!-- PASSO 6 -->
-        <g class="node" id="node-6" tabindex="0" role="button" aria-label="Abrir Passo 6"
-           transform="translate(800,165)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="180" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="180" height="70" fill="#66cc00"/>
-          <text class="node-label xxs" x="90" y="28" text-anchor="middle">
-            <tspan x="90" dy="0">Passo 6</tspan>
-            <tspan x="90" dy="18">Sense — Montagem Plano</tspan>
-          </text>
-        </g>
-
-        <!-- Linha 3 -->
-        <line x1="890" y1="235" x2="890" y2="305" class="edge--dotted"/>
-        <line x1="890" y1="305" x2="220" y2="305" class="edge--dotted"/>
-
-        <!-- PASSO 7 -->
-        <g class="node" id="node-7" tabindex="0" role="button" aria-label="Abrir Passo 7"
-           transform="translate(220,270)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="105" y="28" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 7</tspan>
-            <tspan x="105" dy="18">Sense — Apresentação Plano</tspan>
-          </text>
-        </g>
-
-        <line x1="430" y1="305" x2="510" y2="305" class="edge--dotted"/>
-
-        <!-- PASSO 8 -->
-        <g class="node" id="node-8" tabindex="0" role="button" aria-label="Abrir Passo 8"
-           transform="translate(510,270)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="210" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="210" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="105" y="28" text-anchor="middle">
-            <tspan x="105" dy="0">Passo 8</tspan>
-            <tspan x="105" dy="18">Sense — Sintonia do Projeto</tspan>
+           transform="translate(560,210)" style="--pulse-color:#66cc00;">
+          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="260" height="70"/>
+          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="260" height="70" fill="#66cc00"/>
+          <text class="node-label xs" x="130" y="28" text-anchor="middle">
+            <tspan x="130" dy="0">Passo 5</tspan>
+            <tspan x="130" dy="18">Sense — Apresentação Plano</tspan>
           </text>
         </g>
 
         <!-- FIM -->
-        <line x1="720" y1="305" x2="820" y2="305" class="edge--dotted"/>
-        <g transform="translate(820,250)">
+        <line x1="820" y1="245" x2="890" y2="245" class="edge--dotted"/>
+        <g transform="translate(890,190)">
           <circle fill="#000" cx="55" cy="55" r="48"/>
           <text x="55" y="55" text-anchor="middle" dominant-baseline="middle"
                 font-family="Open Sans Condensed" font-size="22" fill="#f5f3e7"
@@ -290,8 +255,7 @@
     </div>
   </div>
 
-  <!-- ===== Modais ===== -->
-
+  <!-- Modal -->
   <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal__panel" role="document">
       <div class="modal__header">
@@ -302,149 +266,114 @@
     </div>
   </div>
 
+  <!-- Templates -->
   <template id="tpl-1">
     <p><strong>Onde:</strong> Sankhya Matriz — <em>CS - Acompanhamento Visita</em></p>
     <p><strong>Caminho:</strong> Dashboards » Customer Success » CS - Acompanhamento Visita</p>
     <p><strong>ID:</strong> <code>br.com.sankhya.menu.adicional.nuDsb.1003.1</code></p>
 
     <h3>Objetivo</h3>
-    <p>Identificar quais empresas estão em atraso no Acompanhamento Evolutivo e decidir qual será feita.</p>
+    <p>Identificar quais empresas estão em atraso de AE e decidir qual cliente será atendido.</p>
 
     <h3>Checklist</h3>
     <ul>
       <li>Filtrar/avaliar clientes “Em Atraso”.</li>
-      <li>Escolher o cliente do AE da rodada.</li>
-      <li>Anotar data da última visita/AE para referência.</li>
+      <li>Escolher o cliente para o AE atual.</li>
+      <li>Anotar dados relevantes (última visita/AE).</li>
     </ul>
   </template>
 
   <template id="tpl-2">
     <p><strong>Onde:</strong> SenseData — dentro do cliente escolhido</p>
+
     <h3>Ação</h3>
     <ul>
       <li>Adicionar o <strong>Playbook do AE</strong>.</li>
-      <li>Responder a primeira atividade: <strong>Agendamento do Acompanhamento Evolutivo</strong>.</li>
+      <li>Criar/Preencher a atividade: <strong>Agendamento</strong>.</li>
     </ul>
 
-    <h3>Preenchimentos (base)</h3>
+    <h3>Padrão de preenchimento</h3>
     <ul>
       <li><strong>Tipo de atividade:</strong> Ligação</li>
       <li><strong>Descrição:</strong> Agendamento</li>
-      <li><strong>Anotações:</strong> Contexto do cliente (transição, evento relevante, objetivo do AE).</li>
+      <li><strong>Anotações:</strong> Contexto do cliente e objetivo do AE.</li>
     </ul>
 
     <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
+      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
+        Abrir SenseData (Portfolio)
+      </a>
     </div>
-    <div class="modal__hint">No Sense, busque o cliente e acesse o Playbook AE.</div>
   </template>
 
   <template id="tpl-3">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Apresentação do Plano de Trabalho</strong></p>
-
-    <h3>Objetivo</h3>
-    <p>Apresentar a agenda do AE (o que será visto, quais áreas/processos, horários, responsáveis).</p>
-
-    <h3>Anotações (exemplo)</h3>
-    <p>“Apresentação do Plano de Trabalho e organização da agenda do dia.”</p>
-
-    <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
-    </div>
-  </template>
-
-  <template id="tpl-4">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Diagnóstico do Acompanhamento Evolutivo</strong></p>
-
-    <h3>Objetivo</h3>
-    <p>Aplicar diagnóstico com usuários de cada área envolvida, coletando dores, gaps e oportunidades.</p>
-
-    <h3>Anotações (exemplo)</h3>
-    <p>“Aplicação do diagnóstico com os usuários de cada área envolvida no processo.”</p>
-
-    <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
-    </div>
-  </template>
-
-  <template id="tpl-5">
-    <p><strong>Onde:</strong> Sankhya Matriz — <em>CS - Acompanhamento Evolutivo (Novo)</em></p>
+    <p><strong>Onde:</strong> Sankhya OM — <em>CS - Acompanhamento Evolutivo (Novo)</em></p>
     <p><strong>Caminho:</strong> Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)</p>
     <p><strong>ID:</strong> <code>br.com.sankhya.analytics2.new.sc.t_4312.5.2265</code></p>
 
     <h3>Objetivo</h3>
     <ol>
-      <li>Consolidar informações do cliente (contrato, NPS, suporte, MRR etc.).</li>
-      <li>Analisar visão de uso (módulos, adquiridas, apps).</li>
-      <li>Validar indicadores/cards (GOL), personalizações e integrações (terceiros).</li>
-      <li>Definir foco do AE (processos sem uso / uso parcial / ondas).</li>
-      <li><strong>Gerar Plano de Ação</strong> (Excel + PDF).</li>
+      <li>Analisar Informações do Cliente + Visão de Uso + Indicadores/Terceiros + Guia do CS.</li>
+      <li>Definir foco/ondas e melhorias.</li>
+      <li><strong>Gerar o Excel</strong> do plano.</li>
+      <li><strong>Enviar o Excel por e-mail ao cliente</strong>.</li>
+      <li><strong>Salvar/gerar o PDF do e-mail</strong> (evidência).</li>
     </ol>
 
-    <h3>Extra obrigatório (ANTES do Passo 6)</h3>
-    <p><strong>Envio do Excel por e-mail</strong> ao cliente → este e-mail vira o <strong>PDF</strong> do registro.</p>
-    <ul>
-      <li>Gerar o <strong>Excel</strong> do plano de ação</li>
-      <li>Enviar para o cliente por e-mail (modelo padrão)</li>
-      <li>Salvar/gerar o <strong>PDF do e-mail</strong></li>
-      <li>No SenseData, anexar: <strong>Excel + PDF (e-mail)</strong></li>
-    </ul>
-
-    <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (para anexar Excel/PDF)</a>
+    <div class="callout">
+      <strong>Saída obrigatória para o próximo passo (SenseData):</strong>
+      <ul>
+        <li>Excel do Plano</li>
+        <li>PDF do e-mail enviado (evidência)</li>
+      </ul>
     </div>
-
-    <div class="modal__hint">Dica operacional: mantenha o padrão de assunto “Sankhya ABC Paulista | Acompanhamento Evolutivo | Cliente”.</div>
   </template>
 
-  <template id="tpl-6">
+  <template id="tpl-4">
     <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Montagem do Plano de Evolução</strong></p>
+    <p><strong>Atividade:</strong> <strong>Diagnóstico e Montagem do Plano de Evolução</strong></p>
 
     <h3>Objetivo</h3>
-    <p>Registrar a montagem do plano e anexar os arquivos gerados (Excel + PDF).</p>
+    <p>Registrar o diagnóstico + a montagem do plano e <strong>anexar os arquivos</strong> gerados no Sankhya OM.</p>
 
-    <h3>Anotações (exemplo)</h3>
-    <p>“Montagem do Plano de Evolução (Em anexo)”</p>
+    <h3>O que anexar (obrigatório)</h3>
+    <ul>
+      <li><strong>Excel</strong> do Plano</li>
+      <li><strong>PDF do e-mail</strong> enviado ao cliente (evidência)</li>
+    </ul>
+
+    <h3>Anotações (modelo recomendado)</h3>
+    <p>
+      “A etapa de Diagnóstico e Montagem do Plano de Ação será realizada no Sankhya OM, por meio da tela
+      CS - Acompanhamento Evolutivo (Novo). Leia atentamente a documentação no Link.”
+    </p>
+
+    <div class="callout">
+      <strong>Documentação (link):</strong><br/>
+      Substituir aqui pelo link oficial do HUB / documentação do AE.
+    </div>
 
     <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
+      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
+        Abrir SenseData (Portfolio)
+      </a>
     </div>
   </template>
 
-  <template id="tpl-7">
+  <template id="tpl-5">
     <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
     <p><strong>Atividade:</strong> <strong>Apresentação do Plano de Evolução</strong></p>
 
     <h3>Objetivo</h3>
-    <p>Apresentar ao cliente as principais melhorias, priorização, atribuição (Sankhya/Cliente) e horas previstas.</p>
+    <p>Apresentar o plano ao cliente, destacando as <strong>principais melhorias</strong>, priorização, responsáveis e horas.</p>
 
     <h3>Anotações (exemplo)</h3>
     <p>“Apresentação do Plano de Evolução. Principais Melhorias.”</p>
 
     <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
-    </div>
-  </template>
-
-  <template id="tpl-8">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Sintonia do Projeto (Plano de Evolução)</strong></p>
-
-    <h3>Objetivo</h3>
-    <p>Alinhar status do plano, próximos passos, dependências e governança do acompanhamento.</p>
-
-    <div class="modal__actions">
-      <a class="btn btn--green" target="_blank" rel="noopener noreferrer"
-         href="https://sankhya.sensedata.io/portfolio">Abrir SenseData (Portfolio)</a>
+      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
+        Abrir SenseData (Portfolio)
+      </a>
     </div>
   </template>
 
@@ -458,12 +387,9 @@
       const nodes = [
         { id:'node-1', title:'Passo 1 — Sankhya (Acompanhamento Visita)', tpl:'tpl-1' },
         { id:'node-2', title:'Passo 2 — SenseData (Agendamento AE)', tpl:'tpl-2' },
-        { id:'node-3', title:'Passo 3 — SenseData (Plano de Trabalho)', tpl:'tpl-3' },
-        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico AE)', tpl:'tpl-4' },
-        { id:'node-5', title:'Passo 5 — Sankhya (AE Novo + Excel/PDF + Email)', tpl:'tpl-5' },
-        { id:'node-6', title:'Passo 6 — SenseData (Montagem Plano de Evolução)', tpl:'tpl-6' },
-        { id:'node-7', title:'Passo 7 — SenseData (Apresentação Plano)', tpl:'tpl-7' },
-        { id:'node-8', title:'Passo 8 — SenseData (Sintonia do Projeto)', tpl:'tpl-8' },
+        { id:'node-3', title:'Passo 3 — Sankhya OM (AE Novo: Excel + Email → PDF)', tpl:'tpl-3' },
+        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico + Montagem: anexos)', tpl:'tpl-4' },
+        { id:'node-5', title:'Passo 5 — SenseData (Apresentação do Plano)', tpl:'tpl-5' },
       ];
 
       let lastTrigger = null;
@@ -473,7 +399,6 @@
         if (!tpl) return;
 
         lastTrigger = triggerEl || null;
-
         modalTitle.textContent = title;
         modalBody.innerHTML = tpl.innerHTML;
 
@@ -515,11 +440,9 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
-      // Fecha modal ao clicar em botões/link (opcional, mantém padrão do Pendências)
       document.addEventListener('click', (e)=>{
         const a = e.target.closest('a.btn');
         if (a && modal.classList.contains('open')) {
-          // deixa abrir nova aba e fecha modal
           setTimeout(closeModal, 50);
         }
       });
