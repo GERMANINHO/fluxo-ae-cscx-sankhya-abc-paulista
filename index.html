@@ -12,10 +12,8 @@
       --bg:#f5f3e7;
       --text:#443c3d;
       --green:#66cc00;
-
       --modal-bg:#ffffff;
       --overlay:rgba(0,0,0,.45);
-
       --btn-bg:#0f172a0f;
       --btn-border:#cbd5e1;
       --btn-hover:#0f172a14;
@@ -31,12 +29,11 @@
 
     .wrapper{ padding:50px 100px; }
 
-    .svg-container{ position:relative; width:100%; padding-bottom:55%; overflow:hidden; background:var(--bg); }
+    .svg-container{ position:relative; width:100%; padding-bottom:55%; overflow:hidden; }
     .svg-content{ position:absolute; inset:0; }
 
-    .node{ cursor:pointer; outline:none; }
+    .node{ cursor:pointer; }
     .node-label{
-      font-family:"Open Sans Condensed",Arial,sans-serif;
       font-weight:900;
       fill:#f5f3e7;
       text-transform:uppercase;
@@ -44,409 +41,106 @@
       font-size:10px;
       pointer-events:none;
     }
-    .node-label.xs{ font-size:8px; letter-spacing:.32px; }
-    .node-label.xxs{ font-size:7px; letter-spacing:.28px; }
-    .node rect.main{ transition: transform .15s ease, filter .25s ease; }
-    .node:hover rect.main, .node:focus rect.main{
-      transform: translateY(-1px);
-      filter: brightness(1.05) saturate(1.02) drop-shadow(0 8px 18px rgba(0,0,0,.18));
-    }
-
-    .node .pulse{
-      fill:var(--pulse-color,#66cc00);
-      fill-opacity:.10;
-      opacity:0;
-      transform-box:fill-box;
-      transform-origin:center;
-      pointer-events:none;
-    }
-    .node:hover .pulse,.node:focus .pulse{
-      animation:pulseAnim 1.1s ease-out infinite;
-      opacity:1;
-    }
-    @keyframes pulseAnim{
-      0%{transform:scale(1);opacity:.55}
-      70%{transform:scale(1.18);opacity:0}
-      100%{transform:scale(1.18);opacity:0}
-    }
+    .node-label.xs{ font-size:8px; }
+    .node-label.xxs{ font-size:7px; }
 
     .edge--dotted{
-      stroke:#333; stroke-width:2; stroke-dasharray:2 1; fill:none; stroke-linecap:round;
+      stroke:#333;
+      stroke-width:2;
+      stroke-dasharray:2 1;
+      fill:none;
+      stroke-linecap:round;
     }
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0;
-      display:none; align-items:center; justify-content:center;
-      background:var(--overlay);
-      z-index:999;
-      padding:18px;
-    }
-    .modal.open{ display:flex; }
-    .modal__panel{
-      background:var(--modal-bg);
-      color:var(--text);
-      width:min(92vw,760px);
-      border-radius:16px;
-      box-shadow:0 10px 40px rgba(0,0,0,.25);
-      padding:20px 20px 16px;
-      border:1px solid #e2e8f0;
-      max-height:86vh;
-      overflow:auto;
-    }
-    .modal__header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom:8px;
-    }
-    .modal__title{
-      margin:0;
-      font-size:20px;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-    }
-    .modal__close{
-      appearance:none;
-      border:0;
-      background:transparent;
-      font-size:20px;
-      line-height:1;
-      padding:6px 10px;
-      border-radius:8px;
-      cursor:pointer;
-      color:var(--btn-text);
-    }
-    .modal__close:hover{ background:#0001; }
-    .modal__body{ padding:8px 2px 0; }
-    .modal__body h3{ margin:12px 0 6px; font-size:16px; }
-    .modal__body ul, .modal__body ol{ margin:8px 0 8px 18px; }
-
-    .modal__actions{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-    .btn{
-      display:inline-block;
-      text-decoration:none;
-      text-align:center;
-      padding:12px 16px;
-      border-radius:12px;
-      border:1px solid var(--btn-border);
-      background:var(--btn-bg);
-      color:var(--btn-text);
-      font-weight:700;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      transition: background .2s, box-shadow .2s, transform .06s;
-    }
-    .btn:hover,.btn:focus{ background:var(--btn-hover); box-shadow:0 0 0 2px #00000010 inset; }
-    .btn:active{ transform:translateY(1px); }
-
-    .callout{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      background:#0f172a0a;
-      border:1px dashed #94a3b8;
-      font-size:14px;
-    }
-
-    code{ background:#00000010; padding:2px 6px; border-radius:8px; }
   </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="svg-container">
-      <svg viewBox="0 0 1000 520" preserveAspectRatio="xMinYMin meet"
-           class="svg-content" role="img" aria-labelledby="title desc"
-           xmlns="http://www.w3.org/2000/svg">
-        <title id="title">Fluxo AE — Acompanhamento Evolutivo</title>
-        <desc id="desc">Fluxo operacional do AE (Sankhya + SenseData) com etapas e pop-ups.</desc>
+<div class="wrapper">
+<div class="svg-container">
+<svg viewBox="0 0 1000 520" class="svg-content" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- INÍCIO -->
-        <g transform="translate(40,60)">
-          <circle fill="#000" cx="55" cy="55" r="48"/>
-          <text x="55" y="55" text-anchor="middle" dominant-baseline="middle"
-                font-family="Open Sans Condensed" font-size="22" fill="#f5f3e7"
-                style="text-transform:uppercase; letter-spacing:1px">Início</text>
-        </g>
+<!-- INÍCIO -->
+<g transform="translate(40,60)">
+  <circle cx="55" cy="55" r="48" fill="#000"/>
+  <text x="55" y="55" fill="#fff" font-size="22"
+        text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
+</g>
 
-        <line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
+<!-- INÍCIO -> PASSO 1 -->
+<line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
 
-        <!-- PASSO 1 -->
-        <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1"
-           transform="translate(210,80)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="200" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="200" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="100" y="28" text-anchor="middle">
-            <tspan x="100" dy="0">Passo 1</tspan>
-            <tspan x="100" dy="18">Sankhya — Acomp. Visita</tspan>
-          </text>
-        </g>
+<!-- PASSO 1 -->
+<g class="node" transform="translate(210,80)">
+  <rect width="200" height="70" rx="8" fill="#66cc00"/>
+  <text class="node-label xs" x="100" y="30" text-anchor="middle">
+    <tspan x="100">PASSO 1</tspan>
+    <tspan x="100" dy="16">SANKHYA — ACOMP. VISITA</tspan>
+  </text>
+</g>
 
-        <line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
+<!-- PASSO 1 -> PASSO 2 -->
+<line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
 
-        <!-- PASSO 2 -->
-        <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2"
-           transform="translate(480,80)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="200" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="200" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="100" y="28" text-anchor="middle">
-            <tspan x="100" dy="0">Passo 2</tspan>
-            <tspan x="100" dy="18">Sense — Agendamento AE</tspan>
-          </text>
-        </g>
+<!-- PASSO 2 -->
+<g class="node" transform="translate(480,80)">
+  <rect width="200" height="70" rx="8" fill="#66cc00"/>
+  <text class="node-label xs" x="100" y="30" text-anchor="middle">
+    <tspan x="100">PASSO 2</tspan>
+    <tspan x="100" dy="16">SENSE — AGENDAMENTO AE</tspan>
+  </text>
+</g>
 
-        <line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
+<!-- PASSO 2 -> PASSO 3 -->
+<line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
 
-        <!-- PASSO 3 -->
-        <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3"
-           transform="translate(750,80)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="220" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="220" height="70" fill="#66cc00"/>
-          <text class="node-label xxs" x="110" y="24" text-anchor="middle">
-            <tspan x="110" dy="0">Passo 3</tspan>
-            <tspan x="110" dy="16">Sankhya OM — AE (Novo)</tspan>
-            <tspan x="110" dy="16">Gerar Excel + Email → PDF</tspan>
-          </text>
-        </g>
+<!-- PASSO 3 -->
+<g class="node" transform="translate(750,80)">
+  <rect width="220" height="70" rx="8" fill="#66cc00"/>
+  <text class="node-label xxs" x="110" y="26" text-anchor="middle">
+    <tspan x="110">PASSO 3</tspan>
+    <tspan x="110" dy="14">SANKHYA OM — AE (NOVO)</tspan>
+    <tspan x="110" dy="14">GERAR EXCEL + EMAIL → PDF</tspan>
+  </text>
+</g>
 
-        <!-- linha descendo -->
-        <line x1="860" y1="150" x2="860" y2="245" class="edge--dotted"/>
-        <line x1="860" y1="245" x2="210" y2="245" class="edge--dotted"/>
+<!-- PASSO 3 -> PASSO 4 (CORRIGIDO) -->
+<line x1="860" y1="150" x2="860" y2="210" class="edge--dotted"/>
+<line x1="860" y1="210" x2="350" y2="210" class="edge--dotted"/>
 
-        <!-- PASSO 4 -->
-        <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4"
-           transform="translate(210,210)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="280" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="280" height="70" fill="#66cc00"/>
-          <text class="node-label xxs" x="140" y="24" text-anchor="middle">
-            <tspan x="140" dy="0">Passo 4</tspan>
-            <tspan x="140" dy="16">Sense — Diagnóstico + Montagem</tspan>
-            <tspan x="140" dy="16">Anexar Excel + PDF do email</tspan>
-          </text>
-        </g>
+<!-- PASSO 4 -->
+<g class="node" transform="translate(210,210)">
+  <rect width="280" height="70" rx="8" fill="#66cc00"/>
+  <text class="node-label xxs" x="140" y="26" text-anchor="middle">
+    <tspan x="140">PASSO 4</tspan>
+    <tspan x="140" dy="14">SENSE — DIAGNÓSTICO + MONTAGEM</tspan>
+    <tspan x="140" dy="14">ANEXAR EXCEL + PDF DO EMAIL</tspan>
+  </text>
+</g>
 
-        <line x1="490" y1="245" x2="560" y2="245" class="edge--dotted"/>
+<!-- PASSO 4 -> PASSO 5 -->
+<line x1="490" y1="245" x2="560" y2="245" class="edge--dotted"/>
 
-        <!-- PASSO 5 -->
-        <g class="node" id="node-5" tabindex="0" role="button" aria-label="Abrir Passo 5"
-           transform="translate(560,210)" style="--pulse-color:#66cc00;">
-          <rect class="pulse" x="0" y="0" rx="10" ry="10" width="260" height="70"/>
-          <rect class="main"  x="0" y="0" rx="8"  ry="8"  width="260" height="70" fill="#66cc00"/>
-          <text class="node-label xs" x="130" y="28" text-anchor="middle">
-            <tspan x="130" dy="0">Passo 5</tspan>
-            <tspan x="130" dy="18">Sense — Apresentação Plano</tspan>
-          </text>
-        </g>
+<!-- PASSO 5 -->
+<g class="node" transform="translate(560,210)">
+  <rect width="260" height="70" rx="8" fill="#66cc00"/>
+  <text class="node-label xs" x="130" y="30" text-anchor="middle">
+    <tspan x="130">PASSO 5</tspan>
+    <tspan x="130" dy="16">SENSE — APRESENTAÇÃO PLANO</tspan>
+  </text>
+</g>
 
-        <!-- FIM -->
-        <line x1="820" y1="245" x2="890" y2="245" class="edge--dotted"/>
-        <g transform="translate(890,190)">
-          <circle fill="#000" cx="55" cy="55" r="48"/>
-          <text x="55" y="55" text-anchor="middle" dominant-baseline="middle"
-                font-family="Open Sans Condensed" font-size="22" fill="#f5f3e7"
-                style="text-transform:uppercase; letter-spacing:1px">Fim</text>
-        </g>
+<!-- PASSO 5 -> FIM (SIMÉTRICO) -->
+<line x1="820" y1="245" x2="890" y2="245" class="edge--dotted"/>
 
-      </svg>
-    </div>
-  </div>
+<!-- FIM -->
+<g transform="translate(890,190)">
+  <circle cx="55" cy="55" r="48" fill="#000"/>
+  <text x="55" y="55" fill="#fff" font-size="22"
+        text-anchor="middle" dominant-baseline="middle">FIM</text>
+</g>
 
-  <!-- Modal -->
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal__panel" role="document">
-      <div class="modal__header">
-        <h2 class="modal__title" id="modal-title">Etapa</h2>
-        <button class="modal__close" type="button" id="modal-close" aria-label="Fechar">✕</button>
-      </div>
-      <div class="modal__body" id="modal-body"></div>
-    </div>
-  </div>
-
-  <!-- Templates -->
-  <template id="tpl-1">
-    <p><strong>Onde:</strong> Sankhya Matriz — <em>CS - Acompanhamento Visita</em></p>
-    <p><strong>Caminho:</strong> Dashboards » Customer Success » CS - Acompanhamento Visita</p>
-    <p><strong>ID:</strong> <code>br.com.sankhya.menu.adicional.nuDsb.1003.1</code></p>
-
-    <h3>Objetivo</h3>
-    <p>Identificar quais empresas estão em atraso de AE e decidir qual cliente será atendido.</p>
-
-    <h3>Checklist</h3>
-    <ul>
-      <li>Filtrar/avaliar clientes “Em Atraso”.</li>
-      <li>Escolher o cliente para o AE atual.</li>
-      <li>Anotar dados relevantes (última visita/AE).</li>
-    </ul>
-  </template>
-
-  <template id="tpl-2">
-    <p><strong>Onde:</strong> SenseData — dentro do cliente escolhido</p>
-
-    <h3>Ação</h3>
-    <ul>
-      <li>Adicionar o <strong>Playbook do AE</strong>.</li>
-      <li>Criar/Preencher a atividade: <strong>Agendamento</strong>.</li>
-    </ul>
-
-    <h3>Padrão de preenchimento</h3>
-    <ul>
-      <li><strong>Tipo de atividade:</strong> Ligação</li>
-      <li><strong>Descrição:</strong> Agendamento</li>
-      <li><strong>Anotações:</strong> Contexto do cliente e objetivo do AE.</li>
-    </ul>
-
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
-    </div>
-  </template>
-
-  <template id="tpl-3">
-    <p><strong>Onde:</strong> Sankhya OM — <em>CS - Acompanhamento Evolutivo (Novo)</em></p>
-    <p><strong>Caminho:</strong> Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)</p>
-    <p><strong>ID:</strong> <code>br.com.sankhya.analytics2.new.sc.t_4312.5.2265</code></p>
-
-    <h3>Objetivo</h3>
-    <ol>
-      <li>Analisar Informações do Cliente + Visão de Uso + Indicadores/Terceiros + Guia do CS.</li>
-      <li>Definir foco/ondas e melhorias.</li>
-      <li><strong>Gerar o Excel</strong> do plano.</li>
-      <li><strong>Enviar o Excel por e-mail ao cliente</strong>.</li>
-      <li><strong>Salvar/gerar o PDF do e-mail</strong> (evidência).</li>
-    </ol>
-
-    <div class="callout">
-      <strong>Saída obrigatória para o próximo passo (SenseData):</strong>
-      <ul>
-        <li>Excel do Plano</li>
-        <li>PDF do e-mail enviado (evidência)</li>
-      </ul>
-    </div>
-  </template>
-
-  <template id="tpl-4">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Diagnóstico e Montagem do Plano de Evolução</strong></p>
-
-    <h3>Objetivo</h3>
-    <p>Registrar o diagnóstico + a montagem do plano e <strong>anexar os arquivos</strong> gerados no Sankhya OM.</p>
-
-    <h3>O que anexar (obrigatório)</h3>
-    <ul>
-      <li><strong>Excel</strong> do Plano</li>
-      <li><strong>PDF do e-mail</strong> enviado ao cliente (evidência)</li>
-    </ul>
-
-    <h3>Anotações (modelo recomendado)</h3>
-    <p>
-      “A etapa de Diagnóstico e Montagem do Plano de Ação será realizada no Sankhya OM, por meio da tela
-      CS - Acompanhamento Evolutivo (Novo). Leia atentamente a documentação no Link.”
-    </p>
-
-    <div class="callout">
-      <strong>Documentação (link):</strong><br/>
-      Substituir aqui pelo link oficial do HUB / documentação do AE.
-    </div>
-
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
-    </div>
-  </template>
-
-  <template id="tpl-5">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Apresentação do Plano de Evolução</strong></p>
-
-    <h3>Objetivo</h3>
-    <p>Apresentar o plano ao cliente, destacando as <strong>principais melhorias</strong>, priorização, responsáveis e horas.</p>
-
-    <h3>Anotações (exemplo)</h3>
-    <p>“Apresentação do Plano de Evolução. Principais Melhorias.”</p>
-
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
-    </div>
-  </template>
-
-  <script>
-    (function(){
-      const modal = document.getElementById('modal');
-      const modalTitle = document.getElementById('modal-title');
-      const modalBody = document.getElementById('modal-body');
-      const btnClose = document.getElementById('modal-close');
-
-      const nodes = [
-        { id:'node-1', title:'Passo 1 — Sankhya (Acompanhamento Visita)', tpl:'tpl-1' },
-        { id:'node-2', title:'Passo 2 — SenseData (Agendamento AE)', tpl:'tpl-2' },
-        { id:'node-3', title:'Passo 3 — Sankhya OM (AE Novo: Excel + Email → PDF)', tpl:'tpl-3' },
-        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico + Montagem: anexos)', tpl:'tpl-4' },
-        { id:'node-5', title:'Passo 5 — SenseData (Apresentação do Plano)', tpl:'tpl-5' },
-      ];
-
-      let lastTrigger = null;
-
-      function openModal(title, templateId, triggerEl){
-        const tpl = document.getElementById(templateId);
-        if (!tpl) return;
-
-        lastTrigger = triggerEl || null;
-        modalTitle.textContent = title;
-        modalBody.innerHTML = tpl.innerHTML;
-
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden','false');
-
-        document.documentElement.style.overflow='hidden';
-        document.body.style.overflow='hidden';
-      }
-
-      function closeModal(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden','true');
-        modalBody.innerHTML = '';
-
-        document.documentElement.style.overflow='';
-        document.body.style.overflow='';
-
-        if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
-      }
-
-      nodes.forEach(n=>{
-        const el = document.getElementById(n.id);
-        if (!el) return;
-
-        el.addEventListener('click', ()=>openModal(n.title, n.tpl, el));
-        el.addEventListener('keydown', (e)=>{
-          if (e.key==='Enter' || e.key===' '){
-            e.preventDefault();
-            openModal(n.title, n.tpl, el);
-          }
-        });
-      });
-
-      btnClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
-
-      document.addEventListener('keydown', (e)=>{
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-      });
-
-      document.addEventListener('click', (e)=>{
-        const a = e.target.closest('a.btn');
-        if (a && modal.classList.contains('open')) {
-          setTimeout(closeModal, 50);
-        }
-      });
-    })();
-  </script>
+</svg>
+</div>
+</div>
 </body>
 </html>
