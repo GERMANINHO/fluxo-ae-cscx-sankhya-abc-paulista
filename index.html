@@ -12,12 +12,6 @@
       --bg:#f5f3e7;
       --text:#443c3d;
       --green:#66cc00;
-      --modal-bg:#ffffff;
-      --overlay:rgba(0,0,0,.45);
-      --btn-bg:#0f172a0f;
-      --btn-border:#cbd5e1;
-      --btn-hover:#0f172a14;
-      --btn-text:#0f172a;
     }
 
     body{
@@ -28,7 +22,6 @@
     }
 
     .wrapper{ padding:50px 100px; }
-
     .svg-container{ position:relative; width:100%; padding-bottom:55%; overflow:hidden; }
     .svg-content{ position:absolute; inset:0; }
 
@@ -59,85 +52,89 @@
 <div class="svg-container">
 <svg viewBox="0 0 1000 520" class="svg-content" xmlns="http://www.w3.org/2000/svg">
 
-<!-- INÍCIO -->
-<g transform="translate(40,60)">
-  <circle cx="55" cy="55" r="48" fill="#000"/>
-  <text x="55" y="55" fill="#fff" font-size="22"
-        text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
-</g>
+  <!-- INÍCIO -->
+  <g transform="translate(40,60)">
+    <circle cx="55" cy="55" r="48" fill="#000"/>
+    <text x="55" y="55" fill="#fff" font-size="22"
+          text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
+  </g>
 
-<!-- INÍCIO -> PASSO 1 -->
-<line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
+  <!-- INÍCIO -> PASSO 1 -->
+  <line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
 
-<!-- PASSO 1 -->
-<g class="node" transform="translate(210,80)">
-  <rect width="200" height="70" rx="8" fill="#66cc00"/>
-  <text class="node-label xs" x="100" y="30" text-anchor="middle">
-    <tspan x="100">PASSO 1</tspan>
-    <tspan x="100" dy="16">SANKHYA — ACOMP. VISITA</tspan>
-  </text>
-</g>
+  <!-- PASSO 1 -->
+  <g class="node" transform="translate(210,80)">
+    <rect width="200" height="70" rx="8" fill="#66cc00"/>
+    <text class="node-label xs" x="100" y="30" text-anchor="middle">
+      <tspan x="100">PASSO 1</tspan>
+      <tspan x="100" dy="16">SANKHYA — ACOMP. VISITA</tspan>
+    </text>
+  </g>
 
-<!-- PASSO 1 -> PASSO 2 -->
-<line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
+  <!-- PASSO 1 -> PASSO 2 -->
+  <line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
 
-<!-- PASSO 2 -->
-<g class="node" transform="translate(480,80)">
-  <rect width="200" height="70" rx="8" fill="#66cc00"/>
-  <text class="node-label xs" x="100" y="30" text-anchor="middle">
-    <tspan x="100">PASSO 2</tspan>
-    <tspan x="100" dy="16">SENSE — AGENDAMENTO AE</tspan>
-  </text>
-</g>
+  <!-- PASSO 2 -->
+  <g class="node" transform="translate(480,80)">
+    <rect width="200" height="70" rx="8" fill="#66cc00"/>
+    <text class="node-label xs" x="100" y="30" text-anchor="middle">
+      <tspan x="100">PASSO 2</tspan>
+      <tspan x="100" dy="16">SENSE — AGENDAMENTO AE</tspan>
+    </text>
+  </g>
 
-<!-- PASSO 2 -> PASSO 3 -->
-<line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
+  <!-- PASSO 2 -> PASSO 3 -->
+  <line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
 
-<!-- PASSO 3 -->
-<g class="node" transform="translate(750,80)">
-  <rect width="220" height="70" rx="8" fill="#66cc00"/>
-  <text class="node-label xxs" x="110" y="26" text-anchor="middle">
-    <tspan x="110">PASSO 3</tspan>
-    <tspan x="110" dy="14">SANKHYA OM — AE (NOVO)</tspan>
-    <tspan x="110" dy="14">GERAR EXCEL + EMAIL → PDF</tspan>
-  </text>
-</g>
+  <!-- PASSO 3 -->
+  <g class="node" transform="translate(750,80)">
+    <rect width="220" height="70" rx="8" fill="#66cc00"/>
+    <text class="node-label xxs" x="110" y="26" text-anchor="middle">
+      <tspan x="110">PASSO 3</tspan>
+      <tspan x="110" dy="14">SANKHYA OM — AE (NOVO)</tspan>
+      <tspan x="110" dy="14">GERAR EXCEL + EMAIL → PDF</tspan>
+    </text>
+  </g>
 
-<!-- PASSO 3 -> PASSO 4 (CORRIGIDO) -->
-<line x1="860" y1="150" x2="860" y2="210" class="edge--dotted"/>
-<line x1="860" y1="210" x2="350" y2="210" class="edge--dotted"/>
+  <!-- ✅ PASSO 3 -> PASSO 4 (CORRETO E LIMPO) -->
+  <!-- Sai do meio inferior do Passo 3 (x=860,y=150) desce até y=290 e vai até o topo do Passo 4 (x=350,y=290) -->
+  <line x1="860" y1="150" x2="860" y2="290" class="edge--dotted"/>
+  <line x1="860" y1="290" x2="350" y2="290" class="edge--dotted"/>
 
-<!-- PASSO 4 -->
-<g class="node" transform="translate(210,210)">
-  <rect width="280" height="70" rx="8" fill="#66cc00"/>
-  <text class="node-label xxs" x="140" y="26" text-anchor="middle">
-    <tspan x="140">PASSO 4</tspan>
-    <tspan x="140" dy="14">SENSE — DIAGNÓSTICO + MONTAGEM</tspan>
-    <tspan x="140" dy="14">ANEXAR EXCEL + PDF DO EMAIL</tspan>
-  </text>
-</g>
+  <!-- PASSO 4 (MOVIDO PARA BAIXO) -->
+  <g class="node" transform="translate(210,290)">
+    <rect width="280" height="70" rx="8" fill="#66cc00"/>
+    <text class="node-label xxs" x="140" y="26" text-anchor="middle">
+      <tspan x="140">PASSO 4</tspan>
+      <tspan x="140" dy="14">SENSE — DIAGNÓSTICO + MONTAGEM</tspan>
+      <tspan x="140" dy="14">ANEXAR EXCEL + PDF DO EMAIL</tspan>
+    </text>
+  </g>
 
-<!-- PASSO 4 -> PASSO 5 -->
-<line x1="490" y1="245" x2="560" y2="245" class="edge--dotted"/>
+  <!-- PASSO 4 -> PASSO 5 (ajustado para nova altura) -->
+  <line x1="490" y1="325" x2="560" y2="325" class="edge--dotted"/>
 
-<!-- PASSO 5 -->
-<g class="node" transform="translate(560,210)">
-  <rect width="260" height="70" rx="8" fill="#66cc00"/>
-  <text class="node-label xs" x="130" y="30" text-anchor="middle">
-    <tspan x="130">PASSO 5</tspan>
-    <tspan x="130" dy="16">SENSE — APRESENTAÇÃO PLANO</tspan>
-  </text>
-</g>
+  <!-- PASSO 5 (MOVIDO PARA BAIXO) -->
+  <g class="node" transform="translate(560,290)">
+    <rect width="260" height="70" rx="8" fill="#66cc00"/>
+    <text class="node-label xs" x="130" y="30" text-anchor="middle">
+      <tspan x="130">PASSO 5</tspan>
+      <tspan x="130" dy="16">SENSE — APRESENTAÇÃO PLANO</tspan>
+    </text>
+  </g>
 
-<!-- PASSO 5 -> FIM (SIMÉTRICO) -->
-<line x1="820" y1="245" x2="890" y2="245" class="edge--dotted"/>
+  <!-- ✅ PASSO 5 -> FIM (SEM ESPAÇO) -->
+  <!-- Passo 5 termina em x=820. O círculo do FIM começa em x=890 e o raio é 48, então a borda esquerda do círculo é 897-48=897? -->
+  <!-- Como o grupo do FIM está em translate(890,270), o centro é x=945 e a borda esquerda é 945-48=897 -->
+  <!-- Então ligamos até x=897 para encostar certinho no círculo -->
+  <line x1="820" y1="325" x2="897" y2="325" class="edge--dotted"/>
 
-<!-- FIM -->
-<g transform="translate(890,190)">
-  <circle cx="55" cy="55" r="48" fill="#000"/>
-  <text x="55" y="55" fill="#fff" font-size="22"
-        text-anchor="middle" dominant-baseline="middle">FIM</text>
-</g>
+  <!-- FIM (MOVIDO PARA BAIXO) -->
+  <g transform="translate(890,270)">
+    <circle cx="55" cy="55" r="48" fill="#000"/>
+    <text x="55" y="55" fill="#fff" font-size="22"
+          text-anchor="middle" dominant-baseline="middle">FIM</text>
+  </g>
 
 </svg>
 </div>
