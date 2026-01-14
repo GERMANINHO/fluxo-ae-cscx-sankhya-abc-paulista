@@ -96,10 +96,11 @@
     </text>
   </g>
 
-  <!-- ✅ PASSO 3 -> PASSO 4 (CORRETO E LIMPO) -->
-  <!-- Sai do meio inferior do Passo 3 (x=860,y=150) desce até y=290 e vai até o topo do Passo 4 (x=350,y=290) -->
-  <line x1="860" y1="150" x2="860" y2="290" class="edge--dotted"/>
-  <line x1="860" y1="290" x2="350" y2="290" class="edge--dotted"/>
+  <!-- ✅ PASSO 3 -> PASSO 4 (CORRIGIDO: ENTRA NO TOPO DO PASSO 4) -->
+  <!-- Desce do fundo do passo 3, corre acima e desce no centro do topo do passo 4 -->
+  <line x1="860" y1="150" x2="860" y2="260" class="edge--dotted"/>
+  <line x1="860" y1="260" x2="350" y2="260" class="edge--dotted"/>
+  <line x1="350" y1="260" x2="350" y2="290" class="edge--dotted"/>
 
   <!-- PASSO 4 (MOVIDO PARA BAIXO) -->
   <g class="node" transform="translate(210,290)">
@@ -124,9 +125,7 @@
   </g>
 
   <!-- ✅ PASSO 5 -> FIM (SEM ESPAÇO) -->
-  <!-- Passo 5 termina em x=820. O círculo do FIM começa em x=890 e o raio é 48, então a borda esquerda do círculo é 897-48=897? -->
-  <!-- Como o grupo do FIM está em translate(890,270), o centro é x=945 e a borda esquerda é 945-48=897 -->
-  <!-- Então ligamos até x=897 para encostar certinho no círculo -->
+  <!-- Encosta na borda esquerda do círculo do FIM -->
   <line x1="820" y1="325" x2="897" y2="325" class="edge--dotted"/>
 
   <!-- FIM (MOVIDO PARA BAIXO) -->
