@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -33,6 +34,7 @@
     .svg-content{ position:absolute; inset:0; }
 
     .node{ cursor:pointer; outline:none; }
+    .node:focus-visible rect{ filter: drop-shadow(0 0 0.5rem rgba(0,0,0,.25)); }
     .node-label{
       font-weight:900;
       fill:#f5f3e7;
@@ -97,6 +99,7 @@
     .modal__body{ padding:8px 2px 0; }
     .modal__body h3{ margin:12px 0 6px; font-size:16px; }
     .modal__body ul, .modal__body ol{ margin:8px 0 8px 18px; }
+    .modal__body p{ margin:8px 0; }
 
     .modal__actions{
       display:grid;
@@ -179,44 +182,45 @@
         <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3"
            transform="translate(750,80)">
           <rect width="220" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="110" y="26" text-anchor="middle">
+          <text class="node-label xxs" x="110" y="22" text-anchor="middle">
             <tspan x="110">PASSO 3</tspan>
             <tspan x="110" dy="14">SANKHYA OM — AE (NOVO)</tspan>
-            <tspan x="110" dy="14">GERAR EXCEL + EMAIL → PDF</tspan>
+            <tspan x="110" dy="14">DIAGNÓSTICO + PLANO DE AÇÃO</tspan>
+            <tspan x="110" dy="14">GERAR CÓD + EXCEL</tspan>
           </text>
         </g>
 
-        <!-- ✅ PASSO 3 -> PASSO 4 (ENTRANDO NO TOPO DO PASSO 4) -->
+        <!-- PASSO 3 -> PASSO 4 -->
         <line x1="860" y1="150" x2="860" y2="260" class="edge--dotted"/>
         <line x1="860" y1="260" x2="350" y2="260" class="edge--dotted"/>
         <line x1="350" y1="260" x2="350" y2="290" class="edge--dotted"/>
 
-        <!-- PASSO 4 (mais para baixo) -->
+        <!-- PASSO 4 -->
         <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4"
            transform="translate(210,290)">
           <rect width="280" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="140" y="26" text-anchor="middle">
+          <text class="node-label xxs" x="140" y="22" text-anchor="middle">
             <tspan x="140">PASSO 4</tspan>
             <tspan x="140" dy="14">SENSE — DIAGNÓSTICO + MONTAGEM</tspan>
-            <tspan x="140" dy="14">ANEXAR EXCEL + PDF DO EMAIL</tspan>
+            <tspan x="140" dy="14">PREENCHER CAMPOS + CONCLUIR</tspan>
           </text>
         </g>
 
         <!-- PASSO 4 -> PASSO 5 -->
         <line x1="490" y1="325" x2="560" y2="325" class="edge--dotted"/>
 
-        <!-- PASSO 5 (mais para baixo) -->
+        <!-- PASSO 5 -->
         <g class="node" id="node-5" tabindex="0" role="button" aria-label="Abrir Passo 5"
            transform="translate(560,290)">
           <rect width="260" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="130" y="26" text-anchor="middle">
+          <text class="node-label xxs" x="130" y="22" text-anchor="middle">
             <tspan x="130">PASSO 5</tspan>
-            <tspan x="130" dy="14">SENSE — APRESENTAÇÃO</tspan>
-            <tspan x="130" dy="14">CÓD. PLANO + CATEGORIA</tspan>
+            <tspan x="130" dy="14">SENSE — APRESENTAÇÃO DO PLANO</tspan>
+            <tspan x="130" dy="14">FORMALIZAR E-MAIL + CÓD PLANO</tspan>
           </text>
         </g>
 
-        <!-- PASSO 5 -> FIM (encostando) -->
+        <!-- PASSO 5 -> FIM -->
         <line x1="820" y1="325" x2="897" y2="325" class="edge--dotted"/>
 
         <!-- FIM -->
@@ -241,46 +245,89 @@
   </div>
 
   <!-- Templates -->
+
+  <!-- PASSO 1 -->
   <template id="tpl-1">
     <p><strong>Onde:</strong> Sankhya Matriz — <em>CS - Acompanhamento Visita</em></p>
     <p><strong>Caminho:</strong> Dashboards » Customer Success » CS - Acompanhamento Visita</p>
     <p><strong>ID:</strong> <code>br.com.sankhya.menu.adicional.nuDsb.1003.1</code></p>
 
     <h3>Objetivo</h3>
-    <p>Identificar clientes sem AE/visita há mais tempo e apoiar a definição do mailing do AE.</p>
+    <p>Selecionar o cliente do AE e definir a estratégia (com GR), antes de abrir o Playbook no SenseData.</p>
 
-    <div class="callout">
-      <strong>Responsável pela estratégia do mailing:</strong> time de base da unidade (Coordenação, CS e GR).
-      <br><br>
-      <strong>Sugestões de priorização:</strong>
-      <ul>
-        <li>Clientes estratégicos (detratores, neutros e promotores)</li>
-        <li>Clientes com <strong>baixo contato</strong> com a unidade</li>
-        <li>Clientes <strong>aptos a responder NPS</strong></li>
-        <li>Clientes sem AE/visita há bastante tempo (usar esta tela para identificar)</li>
-      </ul>
-    </div>
-  </template>
-
-  <template id="tpl-2">
-    <p><strong>Onde:</strong> SenseData — dentro do cliente escolhido</p>
-
-    <h3>Ação</h3>
+    <h3>Como priorizar (regra prática)</h3>
     <ul>
-      <li>Adicionar o <strong>Playbook do AE</strong>.</li>
-      <li>Criar/Preencher a atividade: <strong>Agendamento</strong>.</li>
-      <li><strong>Obrigatório:</strong> preencher o campo <strong>Categoria</strong> com o motivo da escolha do cliente.</li>
+      <li>Status do Dash: <strong>Nunca visitado</strong> → <strong>Em atraso</strong> → <strong>Entre 15 e 0 dias</strong> → <strong>Em dia / nunca visitado</strong>.</li>
+      <li><strong>Clientes críticos</strong> (cancelamento/insatisfação/NPS detrator) podem “furar fila”.</li>
+      <li>Se já iniciou AE em uma conta, <strong>priorize concluir</strong> as etapas (não deixar em aberto).</li>
+      <li>Garanta que a <strong>segmentação</strong> esteja preenchida (ajuda na priorização e discurso).</li>
+      <li>Alinhar com o GR a estratégia (principalmente críticos e maiores oportunidades).</li>
     </ul>
 
     <div class="callout">
-      <strong>Dicas rápidas para a Categoria (exemplos):</strong>
+      <strong>Dica operacional (organização diária):</strong>
+      antes de iniciar um novo AE, verifique contas já em andamento e conclua o quanto antes a sequência das etapas.
+    </div>
+
+    <h3>Saída obrigatória</h3>
+    <ul>
+      <li>Cliente escolhido</li>
+      <li><strong>Motivo da escolha</strong> (isso vira a <strong>Categoria</strong> no Agendamento do SenseData)</li>
+      <li>Decisor/contato para agendamento</li>
+    </ul>
+  </template>
+
+  <!-- PASSO 2 -->
+  <template id="tpl-2">
+    <p><strong>Onde:</strong> SenseData — dentro do cliente escolhido</p>
+
+    <h3>ETAPA 1 — Agendamento (SenseData)</h3>
+    <ol>
+      <li>Clicar em <strong>Adicionar Playbook</strong> → <strong>Acompanhamento Evolutivo</strong>.</li>
+      <li>Abrir a atividade <strong>Agendamento</strong> e preencher os campos.</li>
+    </ol>
+
+    <h3>Campos essenciais (conforme print)</h3>
+    <ul>
+      <li><strong>Contato no cliente</strong></li>
+      <li><strong>Data/Hora início</strong> e <strong>Prev. conclusão</strong></li>
+      <li><strong>Categoria</strong> (motivo da escolha do cliente)</li>
+    </ul>
+
+    <h3>Categorias (exemplos)</h3>
+    <ul>
+      <li>Cliente estratégico para unidade</li>
+      <li>Cliente com baixo contato com a unidade</li>
+      <li>Plano de ação NPS</li>
+      <li>Reversão de insatisfação/cancelamento</li>
+      <li>Oportunidade comercial (GR)</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Boas práticas (metodologia):</strong>
       <ul>
-        <li>Cliente estratégico para unidade</li>
-        <li>Baixo contato com a unidade</li>
-        <li>Apto a responder NPS (detrator / neutro / promotor)</li>
-        <li>Sem AE/visita há muito tempo (validar na tela CS - Acompanhamento Visita)</li>
+        <li><strong>Formalizar o agendamento por e-mail + invite</strong> (principalmente na 1ª aplicação do novo modelo).</li>
+        <li><strong>1ª visita no novo modelo:</strong> ideal ocorrer com a presença do <strong>GR</strong> (abertura + alinhamento com decisores).</li>
       </ul>
     </div>
+
+    <h3>ETAPA 2 — Preparação para a interação (obrigatório após agendar)</h3>
+    <p><strong>Faça antes da visita/interação com o cliente (não iniciar diagnóstico “cego”).</strong></p>
+    <ul>
+      <li>Analisar <strong>CRM</strong>: tempo de casa, mensalidade, segmento, porte, inadimplência, histórico, respostas de pesquisa.</li>
+      <li>Verificar <strong>Contratos</strong>, <strong>Negociações</strong> e contexto comercial (alinhamento com GR).</li>
+      <li>Consultar <strong>OS</strong>: últimas visitas/atendimentos, pendências (Service Desk/Indústria/Serviços).</li>
+      <li>Checar se existe diagnóstico/índice recente (quando aplicável) e anotar “pontos de atenção”.</li>
+      <li><strong>Confirmar reunião</strong> e participantes (priorizar decisores quando for apresentação/fechamentos).</li>
+      <li>Quando houver entrevistas por setor: preparar logística (sala separada, internet, responsáveis por área).</li>
+    </ul>
+
+    <h3>ETAPA 3 — Abertura (Plano de Trabalho) — quando for a 1ª aplicação do novo modelo</h3>
+    <ul>
+      <li>Apresentar objetivo do AE (genuíno, gradativo, adaptado ao cenário do cliente).</li>
+      <li>Explicar “como vamos trabalhar”: diagnóstico → plano → acompanhamento/follow-up.</li>
+      <li>Definir próximos passos e organizar as áreas/setores que serão envolvidos.</li>
+    </ul>
 
     <div class="modal__actions">
       <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
@@ -289,20 +336,37 @@
     </div>
   </template>
 
+  <!-- PASSO 3 -->
   <template id="tpl-3">
     <p><strong>Onde:</strong> Sankhya OM — <em>CS - Acompanhamento Evolutivo (Novo)</em></p>
     <p><strong>Caminho:</strong> Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)</p>
     <p><strong>ID:</strong> <code>br.com.sankhya.analytics2.new.sc.t_4312.5.2265</code></p>
 
-    <h3>Checklist (obrigatório)</h3>
+    <h3>ETAPA 3 — Apresentação do Plano de Trabalho (na interação com o cliente)</h3>
+    <p><strong>Antes de “entrar no diagnóstico”, alinhe expectativas e organize o trabalho.</strong></p>
+    <ul>
+      <li>Se for a 1ª vez no novo modelo: contextualizar AE, propósito, o que será entregue e como será conduzido.</li>
+      <li>Definir áreas, pessoas responsáveis e agenda (diagnóstico / devolutiva / apresentação do plano).</li>
+      <li>Quando necessário: enviar e-mail de organização do diagnóstico para líderes/setores e solicitar sala/internet.</li>
+      <li>Combinado de governança: responsáveis, prazos, e forma de acompanhamento.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Regra de perfil/cenário:</strong> adapte a condução conforme o cliente (foco em melhorias, sustentação, resistente,
+      terceiros, baixo uso com alto poder de investimento). A estratégia define “como” você conduz as entrevistas e a devolutiva.
+    </div>
+
+    <h3>ETAPA 4/5 — Diagnóstico + Montagem do Plano (no OM)</h3>
+    <p><strong>Objetivo:</strong> realizar diagnóstico com base em uso/ecossistema e gerar o <strong>Plano de Ação</strong> (com <strong>Cód.</strong>) + <strong>Excel</strong> quando aplicável.</p>
+
+    <h3>Execução no OM (checklist)</h3>
     <ol>
       <li>Preencher os <strong>Filtros</strong> (incluindo <strong>Mês da Visita</strong>).</li>
-      <li>Analisar: <strong>Informações do Cliente</strong>, <strong>Visão de Uso</strong>, <strong>Indicadores/Terceiros</strong> e <strong>Guia do CS</strong>.</li>
-      <li>Em <strong>Plano de Ação</strong>: clicar em <strong>Gerar Plano de Ação</strong> → selecionar o registro da Guia do CS → <strong>Registrar Plano de Ação</strong>.</li>
-      <li><strong>Anotar o Cód. do Plano de Ação</strong> gerado (você vai preencher manualmente no SenseData no Passo 5).</li>
-      <li><strong>Gerar o Excel</strong> do plano.</li>
-      <li><strong>Enviar o Excel por e-mail ao cliente</strong> e <strong>gerar/salvar o PDF do e-mail</strong> (evidência).</li>
-      <li><strong>Anexar</strong> os materiais de formalização (e-mail/PDF e outros) <strong>na própria tela do AE (Novo)</strong> no OM.</li>
+      <li>Consultar: <strong>Informações do Cliente</strong>, <strong>Visão de Uso</strong>, <strong>Indicadores/Terceiros</strong> e <strong>Guia do CS</strong>.</li>
+      <li>Na guia <strong>Plano de Ação</strong>: <strong>Gerar Plano de ação</strong> → selecionar registro da Guia do CS → <strong>Registrar Plano de Ação</strong>.</li>
+      <li>Abrir o Plano (duplo clique) e detalhar itens (prioridade, responsável, observações e próximos passos).</li>
+      <li><strong>Anotar o CÓD. do Plano de Ação</strong> (será digitado manualmente no SenseData no Passo 5).</li>
+      <li><strong>Gerar/Exportar o Excel</strong> do plano (quando aplicável).</li>
     </ol>
 
     <div class="callout">
@@ -310,38 +374,51 @@
     </div>
 
     <div class="callout">
-      <strong>Saídas para os próximos passos (SenseData):</strong>
-      <ul>
-        <li><strong>Cód. do Plano de Ação</strong> (para preencher manualmente no Passo 5)</li>
-        <li>Excel do Plano</li>
-        <li>PDF do e-mail enviado (evidência)</li>
-      </ul>
+      <strong>Regra Maha (se usar em paralelo):</strong> use com bom senso (completo x parcial x “norte”).
+      Evite perguntas avançadas quando o básico não está sendo feito; foco é gerar plano estruturado (não “apagar incêndio”).
+    </div>
+
+    <h3>Saídas obrigatórias</h3>
+    <ul>
+      <li><strong>CÓD. do Plano de Ação</strong></li>
+      <li>Itens priorizados + próximos passos</li>
+      <li><strong>Excel do Plano</strong> (quando aplicável)</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Anexos (governança):</strong> os anexos oficiais do AE (Excel, PDF do e-mail e materiais) ficam na própria tela
+      <strong>CS - Acompanhamento Evolutivo (Novo)</strong> no <strong>Sankhya OM</strong>.
     </div>
   </template>
 
+  <!-- PASSO 4 -->
   <template id="tpl-4">
     <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
     <p><strong>Atividade:</strong> <strong>Diagnóstico e Montagem do Plano de Evolução</strong></p>
 
-    <div class="callout">
-      <strong>Antes de concluir esta etapa:</strong> execute o <strong>Passo 3 (Sankhya OM — AE Novo)</strong> e depois volte ao SenseData para preencher os campos do diagnóstico.
-    </div>
+    <h3>Regra do processo</h3>
+    <p>
+      <strong>Antes de concluir esta etapa no SenseData</strong>, execute o <strong>Passo 3</strong> no <strong>Sankhya OM</strong> (diagnóstico + plano de ação + geração do código).
+      Depois volte ao SenseData para registrar e concluir esta etapa.
+    </p>
 
-    <h3>Anexos (governança local — recomendado)</h3>
+    <h3>O que preencher (conforme print)</h3>
     <ul>
-      <li><strong>Excel</strong> do Plano</li>
-      <li><strong>PDF do e-mail</strong> enviado ao cliente (evidência)</li>
+      <li><strong>Contato no cliente</strong></li>
+      <li><strong>Data/Hora</strong> e <strong>Prev. conclusão</strong></li>
+      <li><strong>Responsável</strong></li>
+      <li><strong>Anotações</strong> (resumo do diagnóstico + o que foi priorizado + próximos passos)</li>
     </ul>
 
     <div class="callout">
-      <strong>Observação:</strong> a formalização (e-mail e outros materiais) também deve ficar anexada na tela
-      <strong>CS - Acompanhamento Evolutivo (Novo)</strong> no <strong>Sankhya OM</strong>.
+      <strong>Anexos (obrigatórios):</strong> Excel do Plano + PDF do e-mail (e demais evidências) devem ser anexados no
+      <strong>OM</strong> (tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>). O SenseData é controle/etapas do playbook.
     </div>
 
-    <h3>Anotações (modelo recomendado)</h3>
+    <h3>Modelo rápido de anotação (copiar/colar)</h3>
     <p>
-      “A etapa de Diagnóstico e Montagem do Plano de Ação será realizada no Sankhya OM, por meio da tela
-      CS - Acompanhamento Evolutivo (Novo). Leia atentamente a documentação no Link.”
+      “Diagnóstico realizado no OM (CS - AE Novo). Itens priorizados: (1) … (2) … (3) ….
+      Próximos passos: apresentação do plano em DD/MM, participantes: …, responsável no cliente: …”
     </p>
 
     <div class="modal__actions">
@@ -351,22 +428,46 @@
     </div>
   </template>
 
+  <!-- PASSO 5 -->
   <template id="tpl-5">
     <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
     <p><strong>Atividade:</strong> <strong>Apresentação do Plano de Evolução</strong></p>
 
-    <h3>Checklist (para “contar AE”)</h3>
+    <h3>ETAPA 6 — Apresentação do Plano (na interação com o cliente)</h3>
     <ul>
-      <li>Apresentar o plano ao cliente (principais melhorias, priorização, responsáveis e horas).</li>
-      <li>Formalizar por e-mail (quando aplicável) e anexar evidências no <strong>Sankhya OM</strong> (AE Novo).</li>
-      <li><strong>Obrigatório no SenseData:</strong> preencher <strong>Cód. Plano de ação</strong> (manual) e garantir que a <strong>Categoria</strong> esteja preenchida.</li>
-      <li><strong>Prazo:</strong> concluir esta etapa até o <strong>último dia do mês corrente</strong>.</li>
+      <li>Garantir presença de <strong>decisores</strong> (principalmente quando houver priorização, compromissos e prazos).</li>
+      <li>Apresentar o plano (prioridades, responsáveis, próximos passos e acompanhamento).</li>
+      <li><strong>Definir o responsável interno no cliente</strong> (“dono do plano”) e forma de contato.</li>
+      <li>Agendar <strong>follow-up</strong> já na reunião, conforme segmentação e urgência dos itens.</li>
+    </ul>
+
+    <h3>Formalização (obrigatória)</h3>
+    <ul>
+      <li><strong>Formalizar por e-mail</strong>: agradecimento + resumo do que foi acordado + anexos relevantes (quando aplicável).</li>
+      <li><strong>Anexar no OM</strong> (CS - AE Novo): Excel do Plano + PDF do e-mail + materiais extras (apresentações, evidências, etc.).</li>
+    </ul>
+
+    <h3>Campos essenciais no SenseData (conforme print)</h3>
+    <ul>
+      <li><strong>Categoria</strong></li>
+      <li><strong>Responsável</strong></li>
+      <li><strong>Cód. do Plano de Ação</strong> (manual)</li>
+      <li><strong>Anotações</strong> (resumo do que foi acordado + responsável interno + data do próximo follow-up)</li>
     </ul>
 
     <div class="callout">
-      <strong>Regra de validação:</strong> o AE só é considerado realizado após a <strong>conclusão desta etapa</strong> no SenseData,
-      com <strong>Cód. do Plano de Ação</strong> + <strong>Categoria</strong> preenchidos.
+      <strong>REGRA DE CONTABILIZAÇÃO NO MÊS:</strong><br/>
+      Só é considerado AE no mês se esta etapa for <strong>concluída no SenseData</strong>
+      com <strong>Categoria + Cód. do Plano de Ação</strong> até o <strong>último dia do mês corrente</strong>.
     </div>
+
+    <h3>ETAPA 7 — Follow-up (rotina obrigatória pós-AE)</h3>
+    <ul>
+      <li>Executar follow-up conforme segmentação (e criticidade), monitorando andamento das ações.</li>
+      <li>Verificar evolução do uso (Visão de Uso) e aderência aos processos priorizados.</li>
+      <li>Manter o GR alinhado (oportunidades, gargalos SD/Serviços, riscos e plano de reversão quando aplicável).</li>
+      <li>Levar novidades da solução quando fizer sentido para o plano (sem “forçar” o cliente fora do momento dele).</li>
+    </ul>
 
     <div class="modal__actions">
       <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
@@ -383,11 +484,11 @@
       const btnClose = document.getElementById('modal-close');
 
       const nodes = [
-        { id:'node-1', title:'Passo 1 — Sankhya (Acompanhamento Visita)', tpl:'tpl-1' },
-        { id:'node-2', title:'Passo 2 — SenseData (Agendamento AE + Categoria)', tpl:'tpl-2' },
-        { id:'node-3', title:'Passo 3 — Sankhya OM (AE Novo: Excel + Email → PDF)', tpl:'tpl-3' },
-        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico + Montagem: anexos)', tpl:'tpl-4' },
-        { id:'node-5', title:'Passo 5 — SenseData (Apresentação: Cód. Plano + Categoria)', tpl:'tpl-5' },
+        { id:'node-1', title:'Passo 1 — Sankhya (CS - Acompanhamento Visita)', tpl:'tpl-1' },
+        { id:'node-2', title:'Passo 2 — SenseData (Agendamento AE + Categoria) + Etapa 2/3', tpl:'tpl-2' },
+        { id:'node-3', title:'Passo 3 — Sankhya OM (AE Novo: Diagnóstico + Plano de Ação) + Etapa 3/4/5', tpl:'tpl-3' },
+        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico + Montagem: preencher e concluir)', tpl:'tpl-4' },
+        { id:'node-5', title:'Passo 5 — SenseData (Apresentação + Formalização + Follow-up)', tpl:'tpl-5' },
       ];
 
       let lastTrigger = null;
@@ -448,3 +549,4 @@
   </script>
 </body>
 </html>
+```
