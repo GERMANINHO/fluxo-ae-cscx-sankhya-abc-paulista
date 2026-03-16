@@ -10,84 +10,301 @@
   <style>
     :root{
       --bg:#f5f3e7;
+      --panel:#fffdf5;
       --text:#443c3d;
-
+      --muted:#6b6264;
+      --accent:#66cc00;
+      --accent-dark:#4a9c00;
+      --ink:#0f172a;
+      --line:#cfd8c6;
       --modal-bg:#ffffff;
       --overlay:rgba(0,0,0,.45);
-
       --btn-bg:#0f172a0f;
       --btn-border:#cbd5e1;
       --btn-hover:#0f172a14;
       --btn-text:#0f172a;
+      --shadow:0 14px 34px rgba(15, 23, 42, .10);
     }
+
+    *{ box-sizing:border-box; }
 
     body{
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family:"Open Sans Condensed",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family:"Open Sans Condensed",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
 
-    .wrapper{ padding:50px 100px; }
-    .svg-container{ position:relative; width:100%; padding-bottom:55%; overflow:hidden; background:var(--bg); }
-    .svg-content{ position:absolute; inset:0; }
+    .wrapper{
+      max-width:1400px;
+      margin:0 auto;
+      padding:40px 56px 60px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);
+      gap:20px;
+      align-items:stretch;
+      margin-bottom:22px;
+    }
+
+    .hero__main,
+    .hero__side,
+    .quick-card{
+      background:var(--panel);
+      border:1px solid rgba(102, 204, 0, .18);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero__main{
+      padding:24px 28px;
+    }
+
+    .hero__eyebrow{
+      margin:0 0 10px;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .hero__title{
+      margin:0;
+      font-size:42px;
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .hero__lead{
+      margin:14px 0 18px;
+      font-size:22px;
+      line-height:1.2;
+      color:var(--muted);
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eef7e2;
+      color:#2d4d09;
+      border:1px solid rgba(102, 204, 0, .25);
+      font-size:15px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .hero__side{
+      padding:18px;
+      display:grid;
+      gap:14px;
+    }
+
+    .side-box{
+      background:#fff;
+      border:1px solid #eef2e4;
+      border-radius:18px;
+      padding:16px 18px;
+    }
+
+    .side-box h2{
+      margin:0 0 8px;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .side-box p{
+      margin:0;
+      font-size:17px;
+      line-height:1.2;
+      color:var(--muted);
+    }
+
+    .quick-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:16px;
+      margin-bottom:24px;
+    }
+
+    .quick-card{
+      padding:18px 20px;
+    }
+
+    .quick-card h3{
+      margin:0 0 10px;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .quick-card p,
+    .quick-card li{
+      font-size:17px;
+      line-height:1.2;
+      color:var(--muted);
+    }
+
+    .quick-card ul{
+      margin:8px 0 0 18px;
+      padding:0;
+    }
+
+    .svg-shell{
+      background:var(--panel);
+      border:1px solid rgba(102, 204, 0, .18);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    .svg-header{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:6px 8px 14px;
+    }
+
+    .svg-header h2{
+      margin:0;
+      font-size:24px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .svg-header p{
+      margin:4px 0 0;
+      font-size:18px;
+      color:var(--muted);
+    }
+
+    .svg-container{
+      position:relative;
+      width:100%;
+      padding-bottom:52%;
+      overflow:hidden;
+      background:linear-gradient(180deg, #fcfbf4 0%, #f5f3e7 100%);
+      border-radius:18px;
+      border:1px solid #ebe8d9;
+    }
+
+    .svg-content{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
 
     .node{ cursor:pointer; outline:none; }
-    .node:focus-visible rect{ filter: drop-shadow(0 0 0.5rem rgba(0,0,0,.25)); }
+    .node rect{
+      transition:transform .15s ease, filter .15s ease, opacity .15s ease;
+      transform-origin:center;
+    }
+    .node:hover rect,
+    .node:focus-visible rect{
+      filter:drop-shadow(0 8px 16px rgba(0,0,0,.16));
+      transform:translateY(-2px);
+    }
+
     .node-label{
       font-weight:900;
       fill:#f5f3e7;
       text-transform:uppercase;
-      letter-spacing:.45px;
-      font-size:10px;
+      letter-spacing:.4px;
+      font-size:11px;
       pointer-events:none;
     }
+    .node-label.sm{ font-size:9px; }
     .node-label.xs{ font-size:8px; }
-    .node-label.xxs{ font-size:7px; }
 
     .edge--dotted{
       stroke:#333;
-      stroke-width:2;
-      stroke-dasharray:2 1;
+      stroke-width:2.2;
+      stroke-dasharray:3 3;
       fill:none;
       stroke-linecap:round;
     }
 
+    .flow-note{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .callout-static{
+      padding:14px 16px;
+      border-radius:16px;
+      background:#0f172a0a;
+      border:1px dashed #94a3b8;
+      font-size:17px;
+      line-height:1.2;
+    }
+
+    .callout-static strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
     /* Modal */
     .modal{
-      position:fixed; inset:0;
-      display:none; align-items:center; justify-content:center;
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
       background:var(--overlay);
       z-index:999;
       padding:18px;
     }
+
     .modal.open{ display:flex; }
+
     .modal__panel{
       background:var(--modal-bg);
       color:var(--text);
-      width:min(92vw,760px);
-      border-radius:16px;
+      width:min(94vw, 900px);
+      border-radius:18px;
       box-shadow:0 10px 40px rgba(0,0,0,.25);
       padding:20px 20px 16px;
       border:1px solid #e2e8f0;
-      max-height:86vh;
+      max-height:88vh;
       overflow:auto;
     }
+
     .modal__header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
       margin-bottom:8px;
     }
+
     .modal__title{
       margin:0;
-      font-size:20px;
+      font-size:24px;
       text-transform:uppercase;
-      letter-spacing:.5px;
+      letter-spacing:.04em;
     }
+
     .modal__close{
       appearance:none;
       border:0;
       background:transparent;
-      font-size:20px;
+      font-size:24px;
       line-height:1;
       padding:6px 10px;
       border-radius:8px;
@@ -95,141 +312,276 @@
       color:var(--btn-text);
     }
     .modal__close:hover{ background:#0001; }
-    .modal__body{ padding:8px 2px 0; }
-    .modal__body h3{ margin:12px 0 6px; font-size:16px; }
-    .modal__body ul, .modal__body ol{ margin:8px 0 8px 18px; }
+
+    .modal__body{
+      padding:8px 2px 0;
+      font-size:18px;
+      line-height:1.25;
+    }
+
+    .modal__body h3{
+      margin:16px 0 8px;
+      font-size:20px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+
+    .modal__body h4{
+      margin:12px 0 6px;
+      font-size:18px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      color:var(--accent-dark);
+    }
+
+    .modal__body ul,
+    .modal__body ol{
+      margin:8px 0 10px 22px;
+      padding:0;
+    }
+
+    .modal__body li{
+      margin:4px 0;
+    }
+
     .modal__body p{ margin:8px 0; }
 
-    .modal__actions{
+    .modal__grid{
       display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
       margin-top:12px;
     }
-    .btn{
-      display:inline-block;
-      text-decoration:none;
-      text-align:center;
-      padding:12px 16px;
-      border-radius:12px;
-      border:1px solid var(--btn-border);
-      background:var(--btn-bg);
-      color:var(--btn-text);
-      font-weight:700;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      transition: background .2s, box-shadow .2s, transform .06s;
+
+    .info-box{
+      border:1px solid #e5ebd7;
+      background:#fbfff5;
+      border-radius:16px;
+      padding:14px 16px;
     }
-    .btn:hover,.btn:focus{ background:var(--btn-hover); box-shadow:0 0 0 2px #00000010 inset; }
-    .btn:active{ transform:translateY(1px); }
+
+    .info-box h4{
+      margin-top:0;
+    }
 
     .callout{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
       background:#0f172a0a;
       border:1px dashed #94a3b8;
-      font-size:14px;
+      font-size:17px;
     }
 
-    code{ background:#00000010; padding:2px 6px; border-radius:8px; }
+    .tag-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:10px 0 4px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      background:#eef7e2;
+      color:#33580a;
+      border:1px solid rgba(102, 204, 0, .25);
+    }
+
+    .muted{ color:var(--muted); }
+    code{
+      background:#00000010;
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    @media (max-width: 1100px){
+      .wrapper{ padding:28px 20px 40px; }
+      .hero,
+      .quick-grid,
+      .flow-note,
+      .modal__grid{
+        grid-template-columns:1fr;
+      }
+      .svg-container{ padding-bottom:72%; }
+    }
+
+    @media (max-width: 780px){
+      .hero__title{ font-size:30px; }
+      .hero__lead{ font-size:19px; }
+      .svg-header h2{ font-size:20px; }
+      .svg-header p,
+      .quick-card p,
+      .quick-card li,
+      .callout-static,
+      .modal__body{ font-size:16px; }
+      .svg-container{ padding-bottom:95%; }
+    }
   </style>
 </head>
 
 <body>
   <div class="wrapper">
-    <div class="svg-container">
-      <svg viewBox="0 0 1000 520" class="svg-content" xmlns="http://www.w3.org/2000/svg">
+    <section class="hero">
+      <div class="hero__main">
+        <p class="hero__eyebrow">Fluxograma operacional atualizado</p>
+        <h1 class="hero__title">Acompanhamento Evolutivo — CS/CX</h1>
+        <p class="hero__lead">
+          Passo a passo prático do AE para explicar <strong>o que deve ser feito</strong>, <strong>como deve ser feito</strong>
+          e <strong>onde deve ser feito</strong>, com base no processo novo.
+        </p>
+        <div class="chips">
+          <span class="chip">Advocacy</span>
+          <span class="chip">Growth</span>
+          <span class="chip">Enterprise</span>
+          <span class="chip">Premium</span>
+        </div>
+      </div>
 
-        <!-- INÍCIO -->
-        <g transform="translate(40,60)">
-          <circle cx="55" cy="55" r="48" fill="#000"/>
-          <text x="55" y="55" fill="#fff" font-size="22"
-                text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
-        </g>
+      <div class="hero__side">
+        <div class="side-box">
+          <h2>Leitura do fluxo</h2>
+          <p>Clique em cada etapa do diagrama para abrir o detalhamento operacional.</p>
+        </div>
+        <div class="side-box">
+          <h2>Base do processo</h2>
+          <p>Playbooks oficiais de AE atualizados em 24/02/2026.</p>
+        </div>
+        <div class="side-box">
+          <h2>Registro oficial</h2>
+          <p>O fechamento do AE acontece na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong> e o monitoramento segue em <strong>Gestão a Vista</strong>.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- INÍCIO -> PASSO 1 -->
-        <line x1="143" y1="115" x2="210" y2="115" class="edge--dotted"/>
+    <section class="quick-grid">
+      <article class="quick-card">
+        <h3>Estrutura comum</h3>
+        <ul>
+          <li>1. Estudo e priorização da carteira</li>
+          <li>2. Preparação da visita</li>
+          <li>3. Visita de AE</li>
+          <li>4. Registro e acompanhamento</li>
+        </ul>
+      </article>
 
-        <!-- PASSO 1 -->
-        <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1"
-           transform="translate(210,80)">
-          <rect width="200" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xs" x="100" y="30" text-anchor="middle">
-            <tspan x="100">PASSO 1</tspan>
-            <tspan x="100" dy="16">SANKHYA — ACOMP. VISITA</tspan>
-          </text>
-        </g>
+      <article class="quick-card">
+        <h3>Diferença principal</h3>
+        <p><strong>Advocacy/Growth</strong> reforça entrega de valor contextualizada, uso, oportunidades, MAHAGestão e Clube de Gestão.</p>
+        <p><strong>Enterprise/Premium</strong> amplia análise estratégica com MRR, churn, mapa de contato, mapa de poder e indicadores estratégicos do negócio.</p>
+      </article>
 
-        <!-- PASSO 1 -> PASSO 2 -->
-        <line x1="410" y1="115" x2="480" y2="115" class="edge--dotted"/>
+      <article class="quick-card">
+        <h3>Ponto crítico</h3>
+        <p>Para considerar o AE realizado, o plano deve ser registrado como <strong>Acompanhamento Evolutivo</strong>, com <strong>apresentação</strong>, <strong>e-mail</strong> anexados e opção <strong>concluído</strong> marcada.</p>
+      </article>
+    </section>
 
-        <!-- PASSO 2 -->
-        <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2"
-           transform="translate(480,80)">
-          <rect width="200" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xs" x="100" y="30" text-anchor="middle">
-            <tspan x="100">PASSO 2</tspan>
-            <tspan x="100" dy="16">SENSE — AGENDAMENTO + CATEGORIA</tspan>
-          </text>
-        </g>
+    <section class="svg-shell">
+      <div class="svg-header">
+        <div>
+          <h2>Fluxo do Acompanhamento Evolutivo</h2>
+          <p>Modelo consolidado para AE de clientes Advocacy, Growth, Enterprise e Premium.</p>
+        </div>
+      </div>
 
-        <!-- PASSO 2 -> PASSO 3 -->
-        <line x1="680" y1="115" x2="750" y2="115" class="edge--dotted"/>
+      <div class="svg-container">
+        <svg viewBox="0 0 1000 520" class="svg-content" xmlns="http://www.w3.org/2000/svg" aria-label="Fluxograma do Acompanhamento Evolutivo">
+          <!-- Início -->
+          <g transform="translate(38,58)">
+            <circle cx="55" cy="55" r="48" fill="#000"/>
+            <text x="55" y="55" fill="#fff" font-size="22" text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
+          </g>
 
-        <!-- PASSO 3 -->
-        <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3"
-           transform="translate(750,80)">
-          <rect width="220" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="110" y="22" text-anchor="middle">
-            <tspan x="110">PASSO 3</tspan>
-            <tspan x="110" dy="14">SANKHYA OM — AE (NOVO)</tspan>
-            <tspan x="110" dy="14">DIAGNÓSTICO + PLANO DE AÇÃO</tspan>
-            <tspan x="110" dy="14">GERAR CÓD + EXCEL</tspan>
-          </text>
-        </g>
+          <!-- INÍCIO -> PASSO 1 -->
+          <line x1="142" y1="113" x2="210" y2="113" class="edge--dotted"/>
 
-        <!-- PASSO 3 -> PASSO 4 -->
-        <line x1="860" y1="150" x2="860" y2="260" class="edge--dotted"/>
-        <line x1="860" y1="260" x2="350" y2="260" class="edge--dotted"/>
-        <line x1="350" y1="260" x2="350" y2="290" class="edge--dotted"/>
+          <!-- Passo 1 -->
+          <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1" transform="translate(210,72)">
+            <rect width="230" height="84" rx="10" fill="#66cc00"/>
+            <text class="node-label sm" x="115" y="24" text-anchor="middle">
+              <tspan x="115">PASSO 1</tspan>
+              <tspan x="115" dy="14">ESTUDO DA CARTEIRA</tspan>
+              <tspan x="115" dy="14">PRIORIZAÇÃO</tspan>
+              <tspan x="115" dy="14">+ ESTRATÉGIA</tspan>
+            </text>
+          </g>
 
-        <!-- PASSO 4 -->
-        <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4"
-           transform="translate(210,290)">
-          <rect width="280" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="140" y="22" text-anchor="middle">
-            <tspan x="140">PASSO 4</tspan>
-            <tspan x="140" dy="14">SENSE — DIAGNÓSTICO + MONTAGEM</tspan>
-            <tspan x="140" dy="14">PREENCHER CAMPOS + CONCLUIR</tspan>
-          </text>
-        </g>
+          <!-- Passo 1 -> Passo 2 -->
+          <line x1="440" y1="114" x2="510" y2="114" class="edge--dotted"/>
 
-        <!-- PASSO 4 -> PASSO 5 -->
-        <line x1="490" y1="325" x2="560" y2="325" class="edge--dotted"/>
+          <!-- Passo 2 -->
+          <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2" transform="translate(510,72)">
+            <rect width="250" height="84" rx="10" fill="#66cc00"/>
+            <text class="node-label sm" x="125" y="24" text-anchor="middle">
+              <tspan x="125">PASSO 2</tspan>
+              <tspan x="125" dy="14">PREPARAÇÃO DA VISITA</tspan>
+              <tspan x="125" dy="14">ANÁLISE DO CLIENTE</tspan>
+              <tspan x="125" dy="14">+ FOCO DA AGENDA</tspan>
+            </text>
+          </g>
 
-        <!-- PASSO 5 -->
-        <g class="node" id="node-5" tabindex="0" role="button" aria-label="Abrir Passo 5"
-           transform="translate(560,290)">
-          <rect width="260" height="70" rx="8" fill="#66cc00"/>
-          <text class="node-label xxs" x="130" y="22" text-anchor="middle">
-            <tspan x="130">PASSO 5</tspan>
-            <tspan x="130" dy="14">SENSE — APRESENTAÇÃO DO PLANO</tspan>
-            <tspan x="130" dy="14">FORMALIZAR E-MAIL + CÓD PLANO</tspan>
-          </text>
-        </g>
+          <!-- Passo 2 -> Passo 3 -->
+          <line x1="635" y1="156" x2="635" y2="248" class="edge--dotted"/>
+          <line x1="635" y1="248" x2="360" y2="248" class="edge--dotted"/>
+          <line x1="360" y1="248" x2="360" y2="280" class="edge--dotted"/>
 
-        <!-- PASSO 5 -> FIM -->
-        <line x1="820" y1="325" x2="897" y2="325" class="edge--dotted"/>
+          <!-- Passo 3 -->
+          <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3" transform="translate(220,280)">
+            <rect width="280" height="88" rx="10" fill="#66cc00"/>
+            <text class="node-label xs" x="140" y="22" text-anchor="middle">
+              <tspan x="140">PASSO 3</tspan>
+              <tspan x="140" dy="13">VISITA DE AE</tspan>
+              <tspan x="140" dy="13">ABERTURA + ENTENDIMENTO</tspan>
+              <tspan x="140" dy="13">EVOLUÇÃO + PLANO DE AÇÃO</tspan>
+              <tspan x="140" dy="13">+ PRÓXIMOS PASSOS</tspan>
+            </text>
+          </g>
 
-        <!-- FIM -->
-        <g transform="translate(890,270)">
-          <circle cx="55" cy="55" r="48" fill="#000"/>
-          <text x="55" y="55" fill="#fff" font-size="22"
-                text-anchor="middle" dominant-baseline="middle">FIM</text>
-        </g>
-      </svg>
-    </div>
+          <!-- Passo 3 -> Passo 4 -->
+          <line x1="500" y1="324" x2="575" y2="324" class="edge--dotted"/>
+
+          <!-- Passo 4 -->
+          <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4" transform="translate(575,280)">
+            <rect width="260" height="88" rx="10" fill="#66cc00"/>
+            <text class="node-label xs" x="130" y="22" text-anchor="middle">
+              <tspan x="130">PASSO 4</tspan>
+              <tspan x="130" dy="13">REGISTRO DO AE</tspan>
+              <tspan x="130" dy="13">ANEXOS + CONCLUSÃO</tspan>
+              <tspan x="130" dy="13">ACOMPANHAMENTO</tspan>
+              <tspan x="130" dy="13">EM GESTÃO À VISTA</tspan>
+            </text>
+          </g>
+
+          <!-- Passo 4 -> Fim -->
+          <line x1="835" y1="324" x2="900" y2="324" class="edge--dotted"/>
+
+          <!-- Fim -->
+          <g transform="translate(895,268)">
+            <circle cx="55" cy="55" r="48" fill="#000"/>
+            <text x="55" y="55" fill="#fff" font-size="22" text-anchor="middle" dominant-baseline="middle">FIM</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="flow-note">
+        <div class="callout-static">
+          <strong>Observação importante</strong>
+          O novo AE não depende mais de um desenho centrado em etapas de SenseData dentro do fluxo principal. O registro oficial do processo está concentrado na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>.
+        </div>
+        <div class="callout-static">
+          <strong>Foco do CS</strong>
+          O foco principal de AE está em <strong>Enterprise, Premium, Advocacy e Growth</strong>. Cliente Digital pode receber AE, mas isso não deve ser o foco principal da rotina do CS.
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- Modal -->
@@ -247,231 +599,201 @@
 
   <!-- PASSO 1 -->
   <template id="tpl-1">
-    <p><strong>Onde:</strong> Sankhya Matriz — <em>CS - Acompanhamento Visita</em></p>
-    <p><strong>Caminho:</strong> Dashboards » Customer Success » CS - Acompanhamento Visita</p>
-    <p><strong>ID:</strong> <code>br.com.sankhya.menu.adicional.nuDsb.1003.1</code></p>
-
-    <h3>Objetivo</h3>
-    <p>Selecionar o cliente do AE e definir a estratégia (com GR), antes de abrir o Playbook no SenseData.</p>
-
-    <h3>Como priorizar (regra prática)</h3>
-    <ul>
-      <li>Status do Dash: <strong>Nunca visitado</strong> → <strong>Em atraso</strong> → <strong>Entre 15 e 0 dias</strong> → <strong>Em dia / nunca visitado</strong>.</li>
-      <li><strong>Clientes críticos</strong> (cancelamento/insatisfação/NPS detrator) podem “furar fila”.</li>
-      <li>Se já iniciou AE em uma conta, <strong>priorize concluir</strong> as etapas (não deixar em aberto).</li>
-      <li>Garanta que a <strong>segmentação</strong> esteja preenchida (ajuda na priorização e discurso).</li>
-      <li>Alinhar com o GR a estratégia (principalmente críticos e maiores oportunidades).</li>
-    </ul>
-
-    <div class="callout">
-      <strong>Dica operacional (organização diária):</strong>
-      antes de iniciar um novo AE, verifique contas já em andamento e conclua o quanto antes a sequência das etapas.
+    <div class="tag-line">
+      <span class="tag">Coordenação</span>
+      <span class="tag">CS</span>
+      <span class="tag">GR</span>
+      <span class="tag">Planejamento da carteira</span>
     </div>
 
-    <h3>Saída obrigatória</h3>
-    <ul>
-      <li>Cliente escolhido</li>
-      <li><strong>Motivo da escolha</strong> (isso vira a <strong>Categoria</strong> no Agendamento do SenseData)</li>
-      <li>Decisor/contato para agendamento</li>
-    </ul>
+    <p><strong>Onde:</strong> rotina de base da unidade, com alinhamento entre <strong>Coordenação</strong>, <strong>CS</strong> e <strong>GR</strong>.</p>
+
+    <h3>Objetivo da etapa</h3>
+    <p>Definir <strong>quais clientes receberão AE</strong>, qual a <strong>estratégia da visita</strong> e qual cenário deve ser tratado primeiro em cada conta.</p>
+
+    <h3>O que deve ser feito</h3>
+    <ol>
+      <li>Analisar a carteira e selecionar os clientes que receberão o Acompanhamento Evolutivo.</li>
+      <li>Alinhar a estratégia com a liderança da base e com o GR.</li>
+      <li>Definir qual será o objetivo principal da visita: tratar uma dor, atacar baixo uso, abrir oportunidade, fortalecer relacionamento ou evoluir indicadores.</li>
+      <li>Evitar abrir AE sem perspectiva clara de continuidade e fechamento do plano.</li>
+    </ol>
+
+    <div class="modal__grid">
+      <div class="info-box">
+        <h4>Advocacy e Growth</h4>
+        <p>O playbook reforça que a elaboração da estratégia e a definição do mailing do AE são responsabilidade do time de base da unidade.</p>
+        <ul>
+          <li>Priorize clientes com necessidade de evolução contextualizada.</li>
+          <li>Considere histórico, uso e ecossistema do cliente.</li>
+          <li>Defina desde já a linha da visita: dor atual ou evolução orientada por oportunidade.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>Enterprise e Premium</h4>
+        <p>O playbook traz critérios explícitos para a priorização.</p>
+        <ul>
+          <li>Maior potencial e MRR.</li>
+          <li>Relacionamento distante com a unidade.</li>
+          <li>NPS detrator e neutro.</li>
+          <li>Risco de churn.</li>
+          <li>Forecast de AE.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Saída esperada:</strong> cliente priorizado, objetivo da visita definido, estratégia combinada internamente e clareza sobre qual tema ou dor será levado para a preparação.
+    </div>
   </template>
 
   <!-- PASSO 2 -->
   <template id="tpl-2">
-    <p><strong>Onde:</strong> SenseData — dentro do cliente escolhido</p>
-
-    <h3>ETAPA 1 — Agendamento (SenseData)</h3>
-    <ol>
-      <li>Clicar em <strong>Adicionar Playbook</strong> → <strong>Acompanhamento Evolutivo</strong>.</li>
-      <li>Abrir a atividade <strong>Agendamento</strong> e preencher os campos.</li>
-    </ol>
-
-    <h3>Campos essenciais (conforme print)</h3>
-    <ul>
-      <li><strong>Contato no cliente</strong></li>
-      <li><strong>Data/Hora início</strong> e <strong>Prev. conclusão</strong></li>
-      <li><strong>Categoria</strong> (motivo da escolha do cliente)</li>
-    </ul>
-
-    <h3>Categorias (exemplos)</h3>
-    <ul>
-      <li>Cliente estratégico para unidade</li>
-      <li>Cliente com baixo contato com a unidade</li>
-      <li>Plano de ação NPS</li>
-      <li>Reversão de insatisfação/cancelamento</li>
-      <li>Oportunidade comercial (GR)</li>
-    </ul>
-
-    <div class="callout">
-      <strong>Boas práticas (metodologia):</strong>
-      <ul>
-        <li><strong>Formalizar o agendamento por e-mail + invite</strong> (principalmente na 1ª aplicação do novo modelo).</li>
-        <li><strong>1ª visita no novo modelo:</strong> ideal ocorrer com a presença do <strong>GR</strong> (abertura + alinhamento com decisores).</li>
-      </ul>
+    <div class="tag-line">
+      <span class="tag">CS - Acompanhamento Evolutivo (Novo)</span>
+      <span class="tag">Informações do cliente</span>
+      <span class="tag">Visão de Uso</span>
+      <span class="tag">Indicadores/Terceiros</span>
     </div>
 
-    <h3>ETAPA 2 — Preparação para a interação (obrigatório após agendar)</h3>
-    <p><strong>Faça antes da visita/interação com o cliente (não iniciar diagnóstico “cego”).</strong></p>
-    <ul>
-      <li>Analisar <strong>CRM</strong>: tempo de casa, mensalidade, segmento, porte, inadimplência, histórico, respostas de pesquisa.</li>
-      <li>Verificar <strong>Contratos</strong>, <strong>Negociações</strong> e contexto comercial (alinhamento com GR).</li>
-      <li>Consultar <strong>OS</strong>: últimas visitas/atendimentos, pendências (Service Desk/Indústria/Serviços).</li>
-      <li>Checar se existe diagnóstico/índice recente (quando aplicável) e anotar “pontos de atenção”.</li>
-      <li><strong>Confirmar reunião</strong> e participantes (priorizar decisores quando for apresentação/fechamentos).</li>
-      <li>Quando houver entrevistas por setor: preparar logística (sala separada, internet, responsáveis por área).</li>
-    </ul>
+    <p><strong>Onde:</strong> principalmente na tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>. Para clientes Enterprise e Premium, também pode haver ação na tela <strong>Segmentação de Parceiros &gt; Contatos</strong>.</p>
 
-    <h3>ETAPA 3 — Abertura (Plano de Trabalho) — quando for a 1ª aplicação do novo modelo</h3>
-    <ul>
-      <li>Apresentar objetivo do AE (genuíno, gradativo, adaptado ao cenário do cliente).</li>
-      <li>Explicar “como vamos trabalhar”: diagnóstico → plano → acompanhamento/follow-up.</li>
-      <li>Definir próximos passos e organizar as áreas/setores que serão envolvidos.</li>
-    </ul>
+    <h3>Como preparar a visita</h3>
+    <ol>
+      <li>Acessar a aba <strong>Informações do cliente</strong>.</li>
+      <li>Analisar <strong>Satisfação</strong>: último NPS, resposta do cliente, reclamações abertas ou históricas e seus motivos.</li>
+      <li>Analisar <strong>Suporte</strong>: quantidade de chamados, indicadores do Zendesk e OS abertas na unidade ou na indústria.</li>
+      <li>Identificar possíveis <strong>calores</strong> ou dores pontuais antes da agenda.</li>
+      <li>Acessar a aba <strong>Visão de Uso</strong> e identificar processos com baixo uso ou não utilizados.</li>
+      <li>Revisar a guia <strong>Indicadores/Terceiros</strong> para entender indicadores do Gerente Online, indicadores personalizados e integrações.</li>
+      <li>Transformar essa leitura em uma hipótese clara para a reunião: dor a tratar, processo foco ou oportunidade de evolução.</li>
+    </ol>
 
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
+    <div class="modal__grid">
+      <div class="info-box">
+        <h4>Pontos específicos — Advocacy e Growth</h4>
+        <ul>
+          <li>Revisar o histórico do último AE na <strong>Guia do CS</strong>, olhando principalmente processos ainda não priorizados.</li>
+          <li>Definir o processo foco da visita quando o cliente não trouxer uma dor inicial.</li>
+          <li>Estudar melhores práticas, novidades e argumentos para agregar valor.</li>
+          <li>Se fizer sentido, aplicar o <strong>MAHAGestão</strong> para comparação com clientes do mesmo segmento.</li>
+          <li>Validar elegibilidade para o <strong>Clube de Gestão</strong> e preencher o pré-cadastro, se aplicável.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>Pontos específicos — Enterprise e Premium</h4>
+        <ul>
+          <li>Garantir cadastro e atualização das pessoas-chave: CEO, CFO, diretores, gerentes, decisores e usuários-chave.</li>
+          <li>Registrar ou revisar esses contatos em <strong>Segmentação de Parceiros &gt; Contatos</strong>.</li>
+          <li>Ampliar o <strong>Mapa de Poder</strong>, identificando influenciadores e decisores.</li>
+          <li>Estudar o mercado do cliente, produtos Sankhya que agregam valor e possíveis benchmarks.</li>
+          <li>Preparar a pauta conectando o ecossistema Sankhya ao indicador estratégico do negócio.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Saída esperada:</strong> contexto do cliente dominado, dor ou foco da visita definido, contatos-chave mapeados e linha de condução preparada para gerar um Plano de Ação relevante.
     </div>
   </template>
 
   <!-- PASSO 3 -->
   <template id="tpl-3">
-    <p><strong>Onde:</strong> Sankhya OM — <em>CS - Acompanhamento Evolutivo (Novo)</em></p>
-    <p><strong>Caminho:</strong> Analytics AI » SankhyaMitraBI 04-04-2024 » CX » CS - Acompanhamento Evolutivo (Novo)</p>
-    <p><strong>ID:</strong> <code>br.com.sankhya.analytics2.new.sc.t_4312.5.2265</code></p>
-
-    <h3>ETAPA 3 — Apresentação do Plano de Trabalho (na interação com o cliente)</h3>
-    <p><strong>Antes de “entrar no diagnóstico”, alinhe expectativas e organize o trabalho.</strong></p>
-    <ul>
-      <li>Se for a 1ª vez no novo modelo: contextualizar AE, propósito, o que será entregue e como será conduzido.</li>
-      <li>Definir áreas, pessoas responsáveis e agenda (diagnóstico / devolutiva / apresentação do plano).</li>
-      <li>Quando necessário: enviar e-mail de organização do diagnóstico para líderes/setores e solicitar sala/internet.</li>
-      <li>Combinado de governança: responsáveis, prazos, e forma de acompanhamento.</li>
-    </ul>
-
-    <div class="callout">
-      <strong>Regra de perfil/cenário:</strong> adapte a condução conforme o cliente (foco em melhorias, sustentação, resistente,
-      terceiros, baixo uso com alto poder de investimento). A estratégia define “como” você conduz as entrevistas e a devolutiva.
+    <div class="tag-line">
+      <span class="tag">Visita ao cliente</span>
+      <span class="tag">Entendimento do momento</span>
+      <span class="tag">Plano de Ação</span>
+      <span class="tag">Próximos passos</span>
     </div>
 
-    <h3>ETAPA 4/5 — Diagnóstico + Montagem do Plano (no OM)</h3>
-    <p><strong>Objetivo:</strong> realizar diagnóstico com base em uso/ecossistema e gerar o <strong>Plano de Ação</strong> (com <strong>Cód.</strong>) + <strong>Excel</strong> quando aplicável.</p>
+    <p><strong>Onde:</strong> na reunião, visita ou interação formal do AE com o cliente.</p>
 
-    <h3>Execução no OM (checklist)</h3>
+    <h3>Como conduzir a visita</h3>
     <ol>
-      <li>Preencher os <strong>Filtros</strong> (incluindo <strong>Mês da Visita</strong>).</li>
-      <li>Consultar: <strong>Informações do Cliente</strong>, <strong>Visão de Uso</strong>, <strong>Indicadores/Terceiros</strong> e <strong>Guia do CS</strong>.</li>
-      <li>Na guia <strong>Plano de Ação</strong>: <strong>Gerar Plano de ação</strong> → selecionar registro da Guia do CS → <strong>Registrar Plano de Ação</strong>.</li>
-      <li>Abrir o Plano (duplo clique) e detalhar itens (prioridade, responsável, observações e próximos passos).</li>
-      <li><strong>Anotar o CÓD. do Plano de Ação</strong> (será digitado manualmente no SenseData no Passo 5).</li>
-      <li><strong>Gerar/Exportar o Excel</strong> do plano (quando aplicável).</li>
+      <li>Iniciar a conversa apresentando o objetivo do <strong>Acompanhamento Evolutivo</strong>.</li>
+      <li>Entender o momento atual do cliente e validar se existe alguma <strong>dor pontual</strong>.</li>
+      <li>Se existir dor pontual, priorizar essa dor e construir um <strong>Plano de Ação</strong> antes de entrar na pauta de evolução.</li>
+      <li>Se não existir dor pontual, seguir com a estratégia preparada anteriormente.</li>
+      <li>Construir o Plano de Ação em conjunto com o cliente, garantindo aderência ao negócio e ao momento atual.</li>
+      <li>Fechar a reunião com responsáveis, próximos passos e cronograma claro.</li>
     </ol>
 
-    <div class="callout">
-      <strong>Ponto de atenção:</strong> a <strong>Visão de Uso</strong> considera os <strong>3 meses anteriores</strong> ao <strong>Mês da Visita</strong> selecionado.
+    <div class="modal__grid">
+      <div class="info-box">
+        <h4>Foco da conversa — Advocacy e Growth</h4>
+        <ul>
+          <li>Discutir como o ecossistema Sankhya pode ajudar o cliente a alcançar resultados de forma mais otimizada.</li>
+          <li>Apresentar valor contextualizado conforme uso e cenário atual.</li>
+          <li>Levar a conversa para evolução contínua quando não houver dor emergencial.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>Foco da conversa — Enterprise e Premium</h4>
+        <ul>
+          <li>Entender o <strong>indicador estratégico</strong> da área do cliente.</li>
+          <li>Conectar o ecossistema Sankhya a esses indicadores e objetivos do negócio.</li>
+          <li>Apresentar oportunidades de expansão alinhadas à estratégia do cliente.</li>
+          <li>Reforçar o posicionamento da Sankhya como parceira de crescimento.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="callout">
-      <strong>Regra Maha (se usar em paralelo):</strong> use com bom senso (completo x parcial x “norte”).
-      Evite perguntas avançadas quando o básico não está sendo feito; foco é gerar plano estruturado (não “apagar incêndio”).
-    </div>
-
-    <h3>Saídas obrigatórias</h3>
-    <ul>
-      <li><strong>CÓD. do Plano de Ação</strong></li>
-      <li>Itens priorizados + próximos passos</li>
-      <li><strong>Excel do Plano</strong> (quando aplicável)</li>
-    </ul>
-
-    <div class="callout">
-      <strong>Anexos (governança):</strong> os anexos oficiais do AE (Excel, PDF do e-mail e materiais) ficam na própria tela
-      <strong>CS - Acompanhamento Evolutivo (Novo)</strong> no <strong>Sankhya OM</strong>.
+      <strong>Regra prática da visita:</strong> se houver dor pontual, trate a dor primeiro. A evolução vem depois. O Plano de Ação precisa ser construído com relevância real para o negócio do cliente, não apenas como registro formal.
     </div>
   </template>
 
   <!-- PASSO 4 -->
   <template id="tpl-4">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Diagnóstico e Montagem do Plano de Evolução</strong></p>
+    <div class="tag-line">
+      <span class="tag">CS Acompanhamento Evolutivo (Novo)</span>
+      <span class="tag">Plano de Ação</span>
+      <span class="tag">Concluído</span>
+      <span class="tag">Gestão à Vista</span>
+    </div>
 
-    <h3>Regra do processo</h3>
-    <p>
-      <strong>Antes de concluir esta etapa no SenseData</strong>, execute o <strong>Passo 3</strong> no <strong>Sankhya OM</strong> (diagnóstico + plano de ação + geração do código).
-      Depois volte ao SenseData para registrar e concluir esta etapa.
-    </p>
+    <p><strong>Onde:</strong> na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong> para o registro oficial, e na tela <strong>Gestão a Vista</strong> para acompanhamento e gerenciamento.</p>
 
-    <h3>O que preencher (conforme print)</h3>
+    <h3>Como registrar corretamente o AE</h3>
+    <ol>
+      <li>Acessar a guia <strong>Plano de Ação</strong>.</li>
+      <li>Ao registrar o plano, selecionar a opção <strong>Acompanhamento Evolutivo</strong>.</li>
+      <li>Anexar a <strong>apresentação com o Plano de Ação</strong>.</li>
+      <li>Anexar o <strong>e-mail enviado ao cliente</strong>, formalizando a devolutiva do AE.</li>
+      <li>Marcar a opção de <strong>concluído</strong>.</li>
+    </ol>
+
+    <h3>Como acompanhar depois</h3>
     <ul>
-      <li><strong>Contato no cliente</strong></li>
-      <li><strong>Data/Hora</strong> e <strong>Prev. conclusão</strong></li>
-      <li><strong>Responsável</strong></li>
-      <li><strong>Anotações</strong> (resumo do diagnóstico + o que foi priorizado + próximos passos)</li>
+      <li>Monitorar a execução do Plano de Ação.</li>
+      <li>Alinhar com o cliente ajustes de estratégia e repriorizações, quando necessário.</li>
+      <li>Acompanhar o andamento do processo em <strong>Gestão a Vista</strong>.</li>
     </ul>
+
+    <div class="modal__grid">
+      <div class="info-box">
+        <h4>Pós-visita comum</h4>
+        <ul>
+          <li>Garantir que o registro esteja completo no mesmo fluxo do AE.</li>
+          <li>Não deixar o plano sem anexo, sem formalização ou sem conclusão.</li>
+          <li>Usar Gestão a Vista para dar governança ao que foi combinado com o cliente.</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>Ponto adicional — Enterprise e Premium</h4>
+        <ul>
+          <li>Antes de agendar um novo AE, planejar uma <strong>apresentação de fechamento</strong> do plano executado.</li>
+          <li>Essa devolutiva reforça a percepção de valor e evita abrir novo ciclo sem fechamento do anterior.</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="callout">
-      <strong>Anexos (obrigatórios):</strong> Excel do Plano + PDF do e-mail (e demais evidências) devem ser anexados no
-      <strong>OM</strong> (tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>). O SenseData é controle/etapas do playbook.
-    </div>
-
-    <h3>Modelo rápido de anotação (copiar/colar)</h3>
-    <p>
-      “Diagnóstico realizado no OM (CS - AE Novo). Itens priorizados: (1) … (2) … (3) ….
-      Próximos passos: apresentação do plano em DD/MM, participantes: …, responsável no cliente: …”
-    </p>
-
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
-    </div>
-  </template>
-
-  <!-- PASSO 5 -->
-  <template id="tpl-5">
-    <p><strong>Onde:</strong> SenseData — atividade do Playbook AE</p>
-    <p><strong>Atividade:</strong> <strong>Apresentação do Plano de Evolução</strong></p>
-
-    <h3>ETAPA 6 — Apresentação do Plano (na interação com o cliente)</h3>
-    <ul>
-      <li>Garantir presença de <strong>decisores</strong> (principalmente quando houver priorização, compromissos e prazos).</li>
-      <li>Apresentar o plano (prioridades, responsáveis, próximos passos e acompanhamento).</li>
-      <li><strong>Definir o responsável interno no cliente</strong> (“dono do plano”) e forma de contato.</li>
-      <li>Agendar <strong>follow-up</strong> já na reunião, conforme segmentação e urgência dos itens.</li>
-    </ul>
-
-    <h3>Formalização (obrigatória)</h3>
-    <ul>
-      <li><strong>Formalizar por e-mail</strong>: agradecimento + resumo do que foi acordado + anexos relevantes (quando aplicável).</li>
-      <li><strong>Anexar no OM</strong> (CS - AE Novo): Excel do Plano + PDF do e-mail + materiais extras (apresentações, evidências, etc.).</li>
-    </ul>
-
-    <h3>Campos essenciais no SenseData (conforme print)</h3>
-    <ul>
-      <li><strong>Categoria</strong></li>
-      <li><strong>Responsável</strong></li>
-      <li><strong>Cód. do Plano de Ação</strong> (manual)</li>
-      <li><strong>Anotações</strong> (resumo do que foi acordado + responsável interno + data do próximo follow-up)</li>
-    </ul>
-
-    <div class="callout">
-      <strong>REGRA DE CONTABILIZAÇÃO NO MÊS:</strong><br/>
-      Só é considerado AE no mês se esta etapa for <strong>concluída no SenseData</strong>
-      com <strong>Categoria + Cód. do Plano de Ação</strong> até o <strong>último dia do mês corrente</strong>.
-    </div>
-
-    <h3>ETAPA 7 — Follow-up (rotina obrigatória pós-AE)</h3>
-    <ul>
-      <li>Executar follow-up conforme segmentação (e criticidade), monitorando andamento das ações.</li>
-      <li>Verificar evolução do uso (Visão de Uso) e aderência aos processos priorizados.</li>
-      <li>Manter o GR alinhado (oportunidades, gargalos SD/Serviços, riscos e plano de reversão quando aplicável).</li>
-      <li>Levar novidades da solução quando fizer sentido para o plano (sem “forçar” o cliente fora do momento dele).</li>
-    </ul>
-
-    <div class="modal__actions">
-      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://sankhya.sensedata.io/portfolio">
-        Abrir SenseData (Portfolio)
-      </a>
+      <strong>AE considerado realizado:</strong> somente quando o plano estiver registrado como <strong>Acompanhamento Evolutivo</strong>, com <strong>apresentação</strong> anexada, <strong>e-mail</strong> anexado e <strong>conclusão</strong> marcada. O gerenciamento contínuo fica em <strong>Gestão a Vista</strong>.
     </div>
   </template>
 
@@ -483,11 +805,10 @@
       const btnClose = document.getElementById('modal-close');
 
       const nodes = [
-        { id:'node-1', title:'Passo 1 — Sankhya (CS - Acompanhamento Visita)', tpl:'tpl-1' },
-        { id:'node-2', title:'Passo 2 — SenseData (Agendamento AE + Categoria) + Etapa 2/3', tpl:'tpl-2' },
-        { id:'node-3', title:'Passo 3 — Sankhya OM (AE Novo: Diagnóstico + Plano de Ação) + Etapa 3/4/5', tpl:'tpl-3' },
-        { id:'node-4', title:'Passo 4 — SenseData (Diagnóstico + Montagem: preencher e concluir)', tpl:'tpl-4' },
-        { id:'node-5', title:'Passo 5 — SenseData (Apresentação + Formalização + Follow-up)', tpl:'tpl-5' },
+        { id:'node-1', title:'Passo 1 — Estudo da Carteira e Priorização', tpl:'tpl-1' },
+        { id:'node-2', title:'Passo 2 — Preparação da Visita', tpl:'tpl-2' },
+        { id:'node-3', title:'Passo 3 — Visita de Acompanhamento Evolutivo', tpl:'tpl-3' },
+        { id:'node-4', title:'Passo 4 — Registro e Acompanhamento', tpl:'tpl-4' }
       ];
 
       let lastTrigger = null;
@@ -502,29 +823,29 @@
 
         modal.classList.add('open');
         modal.setAttribute('aria-hidden','false');
-
-        document.documentElement.style.overflow='hidden';
-        document.body.style.overflow='hidden';
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
       }
 
       function closeModal(){
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden','true');
         modalBody.innerHTML = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
 
-        document.documentElement.style.overflow='';
-        document.body.style.overflow='';
-
-        if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+        if (lastTrigger && typeof lastTrigger.focus === 'function') {
+          lastTrigger.focus();
+        }
       }
 
-      nodes.forEach(n=>{
+      nodes.forEach((n) => {
         const el = document.getElementById(n.id);
         if (!el) return;
 
-        el.addEventListener('click', ()=>openModal(n.title, n.tpl, el));
-        el.addEventListener('keydown', (e)=>{
-          if (e.key==='Enter' || e.key===' '){
+        el.addEventListener('click', () => openModal(n.title, n.tpl, el));
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             openModal(n.title, n.tpl, el);
           }
@@ -532,16 +853,13 @@
       });
 
       btnClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
-
-      document.addEventListener('keydown', (e)=>{
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
       });
 
-      document.addEventListener('click', (e)=>{
-        const a = e.target.closest('a.btn');
-        if (a && modal.classList.contains('open')) {
-          setTimeout(closeModal, 50);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+          closeModal();
         }
       });
     })();
