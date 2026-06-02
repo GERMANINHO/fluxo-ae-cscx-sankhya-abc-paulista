@@ -173,7 +173,7 @@
 
     .nav-cards{
       display:grid;
-      grid-template-columns:repeat(6, minmax(0,1fr));
+      grid-template-columns:repeat(4, minmax(0,1fr));
       gap:10px;
       margin-bottom:24px;
     }
@@ -757,8 +757,10 @@
       <a href="#dicionario-colunas"><strong>Colunas</strong><span>Dicionário prático de cada campo da planilha.</span></a>
       <a href="#campanhas"><strong>Campanhas</strong><span>Exemplos de objetivos e motivos corretos.</span></a>
       <a href="#segmentacao"><strong>Segmentação</strong><span>Como interpretar Enterprise, Premium, Advocacy, Growth e Digital.</span></a>
+      <a href="#sankhya-processo"><strong>Sankhya</strong><span>Como consultar dados e preparar o AE no sistema.</span></a>
+      <a href="#registro-ae"><strong>Plano de Ação</strong><span>Como gerar, anexar evidências e concluir o AE.</span></a>
       <a href="#fluxograma"><strong>Fluxograma</strong><span>Etapas clicáveis do processo completo.</span></a>
-      <a href="#registro-ae"><strong>Registro</strong><span>Como finalizar corretamente no AE Novo.</span></a>
+      <a href="#erros-comuns"><strong>Erros comuns</strong><span>Checklist do que não pode passar batido.</span></a>
     </nav>
 
     <section class="section" id="excel-cronograma">
@@ -1064,6 +1066,137 @@
       </div>
     </section>
 
+    <section class="section" id="sankhya-processo">
+      <p class="section__eyebrow">Etapa Sankhya</p>
+      <h2>Processo no Sankhya — Consulta, diagnóstico e preparação do AE</h2>
+      <p class="lead">
+        Depois que o cliente foi planejado no <strong>Excel / Cronograma Rony</strong>, o CS usa a tela
+        <strong>CS - Acompanhamento Evolutivo (Novo)</strong> para consultar o cenário do cliente,
+        entender uso, indicadores, processos, histórico e preparar o registro oficial do AE.
+      </p>
+
+      <div class="callout callout--green">
+        <strong>Objetivo desta etapa:</strong>
+        sair da percepção e trabalhar com dados do sistema. O CS deve chegar na reunião sabendo
+        qual dor, risco, oportunidade ou hipótese de evolução será validada com o cliente.
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-informacoes-cliente.png" alt="Tela Informações do Cliente no CS Acompanhamento Evolutivo Novo." />
+        <figcaption>
+          Aba <strong>Informações do Cliente</strong>: raio-x inicial para entender relacionamento, satisfação, suporte, contrato e financeiro.
+        </figcaption>
+      </figure>
+
+      <h3>1. Aba Informações do Cliente</h3>
+      <p>
+        Esta aba deve ser a primeira leitura do CS dentro do Sankhya. Ela funciona como um resumo geral do cliente
+        antes da reunião de AE.
+      </p>
+      <div class="grid-3">
+        <div class="mini-card"><h4>Geral</h4><p>Validar parceiro, classificação, etapa da jornada, unidade, segmento e versão.</p></div>
+        <div class="mini-card"><h4>Relacionamento</h4><p>Validar CS, GR, última visita, patrocinador, contato AE e responsável de relacionamento.</p></div>
+        <div class="mini-card"><h4>Suporte</h4><p>Ver chamados abertos, chamados acima do SLA, quantidade dos últimos 6 meses e OS vinculada.</p></div>
+        <div class="mini-card"><h4>Satisfação</h4><p>Observar NPS, data do último NPS, reclamações abertas e histórico de reclamações.</p></div>
+        <div class="mini-card"><h4>Contrato</h4><p>Validar contrato, status, data do contrato e modelo contratado pelo cliente.</p></div>
+        <div class="mini-card"><h4>Financeiro</h4><p>Ver MRR, última compra e títulos em atraso antes de avançar para a abordagem.</p></div>
+      </div>
+      <div class="callout">
+        <strong>Saída esperada:</strong> identificar se existe risco, pendência, oportunidade ou ponto sensível que precisa ser considerado na conversa.
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-visao-uso.png" alt="Tela Visão de Uso no CS Acompanhamento Evolutivo Novo." />
+        <figcaption>
+          Aba <strong>Visão de Uso</strong>: leitura visual dos processos e soluções que o cliente usa, usa parcialmente ou não utiliza.
+        </figcaption>
+      </figure>
+
+      <h3>2. Aba Visão de Uso</h3>
+      <p>
+        A Visão de Uso ajuda o CS a entender o que o cliente usa bem, o que usa parcialmente, o que não usa
+        e o que pode virar oportunidade de evolução.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Legenda / Situação</th><th>Como interpretar no AE</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Uso total</strong></td><td>Processo aderente e usado pelo cliente. Pode ser reforçado como valor entregue.</td></tr>
+            <tr><td><strong>Uso parcial</strong></td><td>Existe uso, mas há espaço para evolução, treinamento, ajuste de processo ou plano de ação.</td></tr>
+            <tr><td><strong>Não utilizado, mas relevante</strong></td><td>Oportunidade clara para o AE. Deve ser avaliado como possível pauta da visita.</td></tr>
+            <tr><td><strong>Não utilizado e não relevante</strong></td><td>Não precisa ser priorizado no momento, salvo mudança de contexto do cliente.</td></tr>
+            <tr><td><strong>Uso não avaliado</strong></td><td>Ponto que ainda precisa ser validado com o cliente ou revisado pelo CS.</td></tr>
+            <tr><td><strong>Adquirida integrada / não integrada</strong></td><td>Indica relação com soluções adquiridas e possível impacto na operação do cliente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Pergunta-chave:</strong> o cliente está usando bem aquilo que tem disponível? Existe algum processo importante que pode ser melhor aproveitado?
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-indicadores-terceiros.png" alt="Tela Indicadores e Terceiros no CS Acompanhamento Evolutivo Novo." />
+        <figcaption>
+          Aba <strong>Indicadores/Terceiros</strong>: valida indicadores gerenciais, indicadores personalizados e integrações com terceiros.
+        </figcaption>
+      </figure>
+
+      <h3>3. Aba Indicadores/Terceiros</h3>
+      <p>
+        Esta aba mostra se o cliente usa indicadores, cards gerenciais e integrações. Ela ajuda a entender se o cliente está usando
+        informação gerencial para apoiar a operação e a tomada de decisão.
+      </p>
+      <div class="grid-3">
+        <div class="mini-card"><h4>Cards e Indicadores Gerenciais</h4><p>Verificar se o cliente usa indicadores do Gerente Online e se eles fazem sentido para a gestão.</p></div>
+        <div class="mini-card"><h4>Indicadores Personalizados</h4><p>Observar indicadores, telas ou visões personalizadas que precisam ser consideradas na conversa.</p></div>
+        <div class="mini-card"><h4>Terceiros Integrados</h4><p>Validar integrações, parceiros conectados e possíveis impactos em processos do AE.</p></div>
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-guia-cs.png" alt="Tela Guia do CS com processos sem uso e uso parcial." />
+        <figcaption>
+          Aba <strong>Guia do CS</strong>: transforma a leitura da Visão de Uso em diagnóstico, priorização e base para o Plano de Ação.
+        </figcaption>
+      </figure>
+
+      <h3>4. Aba Guia do CS</h3>
+      <p>
+        A Guia do CS é uma das etapas mais importantes do processo. É nela que o CS decide o que será priorizado,
+        o que não será priorizado e quais pontos devem alimentar o Plano de Ação.
+      </p>
+      <ol>
+        <li>Revisar os <strong>processos sem uso e aderentes</strong>.</li>
+        <li>Revisar os <strong>processos com uso parcial</strong>.</li>
+        <li>Definir a <strong>priorização</strong> de acordo com o momento do cliente.</li>
+        <li>Preencher o <strong>motivo da não priorização</strong> quando o item não entrar no plano.</li>
+        <li>Informar <strong>terceiro integrado</strong>, quando aplicável.</li>
+        <li>Preencher justificativa quando a opção escolhida exigir explicação adicional.</li>
+        <li>Clicar em <strong>Registrar Histórico do AE</strong> para gravar o diagnóstico.</li>
+      </ol>
+      <div class="callout callout--orange">
+        <strong>Regra prática:</strong> nem tudo que aparece como oportunidade precisa virar plano imediatamente.
+        O CS deve priorizar o que faz sentido para o momento do cliente e registrar o motivo do que não foi priorizado.
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-historico-ae.png" alt="Tela Histórico AE com detalhe dos itens registrados." />
+        <figcaption>
+          Após registrar o histórico, a tela apresenta o resumo do AE e o detalhamento dos processos avaliados.
+        </figcaption>
+      </figure>
+
+      <h3>5. Histórico AE</h3>
+      <p>
+        O histórico registra o diagnóstico feito na Guia do CS. Ele mostra os processos avaliados,
+        a priorização, os motivos, anexos, justificativas, terceiros integrados e se o item foi registrado no Plano de Ação.
+      </p>
+      <div class="callout">
+        <strong>Saída esperada:</strong> ao final da etapa Sankhya de diagnóstico, o CS deve ter histórico registrado e clareza sobre o que será levado para o Plano de Ação.
+      </div>
+    </section>
+
     <section class="svg-shell" id="fluxograma">
       <div class="svg-header">
         <div>
@@ -1187,49 +1320,112 @@
 
     <section class="section" id="registro-ae">
       <p class="section__eyebrow">Sankhya</p>
-      <h2>Registro oficial no CS Acompanhamento Evolutivo (Novo)</h2>
+      <h2>Plano de Ação — gerar, revisar, anexar evidências e concluir</h2>
       <p class="lead">
-        Após planejar no Excel e realizar o AE, o CS precisa registrar o levantamento no Sankhya.
-        Essa é a etapa que transforma a visita em histórico oficial e governança.
+        Depois de preencher a <strong>Guia do CS</strong> e registrar o histórico, o CS deve ir para a aba
+        <strong>Plano de Ação</strong>. Esta etapa transforma a visita em registro oficial, com ações,
+        evidências e conclusão do AE.
       </p>
 
       <figure class="guide-figure">
-        <img src="ae-guia-visual-ae-novo.png" alt="Guia visual da tela CS Acompanhamento Evolutivo Novo com abas Informações do Cliente, Visão de Uso, Indicadores, Guia do CS e Plano de Ação." />
-        <figcaption>Tela CS Acompanhamento Evolutivo (Novo): consultar dados, validar uso, registrar guia do CS, preencher Plano de Ação, anexar evidências e concluir.</figcaption>
+        <img src="ae-sankhya-plano-acao-lista.png" alt="Aba Plano de Ação com botão Gerar Plano de Ação e lista de planos." />
+        <figcaption>
+          Aba <strong>Plano de Ação</strong>: sempre clicar em <strong>Gerar Plano de Ação</strong>. O plano não deve ser considerado pronto antes disso.
+        </figcaption>
       </figure>
 
-      <h3>Abas principais</h3>
-      <div class="grid-3">
-        <div class="mini-card">
-          <h4>Informações do Cliente</h4>
-          <p>Resumo geral do parceiro, relacionamento, suporte, satisfação, contrato e financeiro.</p>
-        </div>
-        <div class="mini-card">
-          <h4>Visão de Uso</h4>
-          <p>Comparar o que o cliente tem contratado, o que usa, o que não usa e onde há oportunidade.</p>
-        </div>
-        <div class="mini-card">
-          <h4>Indicadores/Terceiros</h4>
-          <p>Validar cards, indicadores gerenciais, indicadores personalizados e integrações com terceiros.</p>
-        </div>
-        <div class="mini-card">
-          <h4>Guia do CS</h4>
-          <p>Registrar pontos usados, não usados e ações definidas para evolução.</p>
-        </div>
-        <div class="mini-card">
-          <h4>Plano de Ação</h4>
-          <p>Registrar levantamento, anexar arquivos, anexar PDF do e-mail e concluir o plano.</p>
-        </div>
-        <div class="mini-card">
-          <h4>Gestão à Vista</h4>
-          <p>Acompanhar o que foi combinado e garantir continuidade após a visita.</p>
-        </div>
+      <h3>1. Gerar Plano de Ação</h3>
+      <ol>
+        <li>Acessar a aba <strong>Plano de Ação</strong>.</li>
+        <li>Clicar em <strong>Gerar Plano de Ação</strong>.</li>
+        <li>Aguardar a criação do registro do plano.</li>
+        <li>Clicar no plano criado para abrir o detalhe.</li>
+      </ol>
+      <div class="callout callout--green">
+        <strong>Regra confirmada:</strong> sempre clicar em <strong>Gerar Plano de Ação</strong>.
+        O plano é gerado a partir do trabalho feito na <strong>Guia do CS</strong>.
       </div>
 
+      <figure class="guide-figure">
+        <img src="ae-sankhya-plano-acao-detalhe.png" alt="Detalhe do Plano de Ação com ações registradas." />
+        <figcaption>
+          Detalhe do Plano de Ação: validar tipo de visita, histórico, observação e ações criadas para acompanhamento.
+        </figcaption>
+      </figure>
+
+      <h3>2. Revisar o detalhe do Plano de Ação</h3>
+      <p>Ao abrir o plano gerado, o CS deve validar as informações principais do registro.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Campo / Área</th><th>Como tratar no fluxo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Código do Plano de Ação</strong></td><td>Usar como referência do registro criado no Sankhya.</td></tr>
+            <tr><td><strong>Tipo Visita Realizada</strong></td><td>Usar <strong>Presencial</strong> como padrão operacional documentado para este fluxo.</td></tr>
+            <tr><td><strong>Histórico AE</strong></td><td>Deve estar ligado ao diagnóstico registrado na Guia do CS.</td></tr>
+            <tr><td><strong>Tipo de Plano de Ação</strong></td><td>É gerado com base no preenchimento da <strong>Guia do CS</strong>.</td></tr>
+            <tr><td><strong>Observação da visita</strong></td><td>Descrever de forma objetiva o contexto da visita e o que foi levantado.</td></tr>
+            <tr><td><strong>Ações</strong></td><td>Revisar processo, tela, tipo de ação, melhoria, ação proposta, responsável e prazo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. Validar ou incluir ações</h3>
+      <p>
+        As ações devem transformar o que foi conversado no AE em tarefas claras e acompanháveis.
+        Uma boa ação precisa deixar claro <strong>o que será feito</strong>, <strong>por quem</strong>,
+        <strong>por que será feito</strong> e <strong>até quando</strong>.
+      </p>
+      <div class="grid-2">
+        <div class="mini-card"><h4>Campos que merecem atenção</h4><p>Processo, tela, tipo de ação, atribuição da ação, situação, melhoria, ação, como realizar e data limite.</p></div>
+        <div class="mini-card"><h4>Objetivo</h4><p>Garantir que o Plano de Ação não seja só um registro, mas sim um roteiro executável de evolução para o cliente.</p></div>
+      </div>
+
+      <figure class="guide-figure">
+        <img src="ae-sankhya-plano-acao-anexos.png" alt="Aba Anexos do Plano de Ação com botão Incluir Anexo." />
+        <figcaption>
+          Aba <strong>Anexos</strong>: incluir as evidências obrigatórias antes de concluir o Plano de Ação.
+        </figcaption>
+      </figure>
+
+      <h3>4. Incluir anexos obrigatórios</h3>
+      <p>No padrão operacional da ABC, os anexos obrigatórios são:</p>
+      <ol>
+        <li><strong>Excel do levantamento</strong>.</li>
+        <li><strong>PDF do e-mail enviado ao cliente</strong>.</li>
+      </ol>
       <div class="callout callout--danger">
-        <strong>AE considerado realizado:</strong>
-        somente quando o Plano de Ação estiver registrado, com evidências anexadas
-        (Excel, PDF do e-mail e materiais), e o registro estiver concluído.
+        <strong>Regra prática:</strong> sem Excel do levantamento e PDF do e-mail, o AE não deve ser considerado concluído.
+        Os anexos são a evidência de que o AE foi realizado, formalizado e comunicado ao cliente.
+      </div>
+
+      <h3>5. Concluir o Plano de Ação</h3>
+      <p>
+        A conclusão é feita pelo botão <strong>Concluir</strong> na lista do Plano de Ação.
+        Antes de concluir, revise o checklist abaixo.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Checklist antes de concluir</th><th>Conferência</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plano gerado</td><td>O botão <strong>Gerar Plano de Ação</strong> foi usado e o registro foi criado.</td></tr>
+            <tr><td>Guia do CS preenchida</td><td>Os processos foram avaliados e priorizados antes da geração do plano.</td></tr>
+            <tr><td>Histórico AE registrado</td><td>O diagnóstico está gravado no histórico.</td></tr>
+            <tr><td>Ações revisadas</td><td>As ações possuem clareza sobre processo, melhoria, ação e prazo.</td></tr>
+            <tr><td>Excel anexado</td><td>O levantamento usado no AE foi incluído como evidência.</td></tr>
+            <tr><td>PDF do e-mail anexado</td><td>A formalização enviada ao cliente foi anexada.</td></tr>
+            <tr><td>Cliente formalizado</td><td>O cliente recebeu o e-mail com resumo, combinados e próximos passos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--green">
+        <strong>AE considerado realizado:</strong> cliente planejado no Excel, diagnóstico feito no Sankhya,
+        Guia do CS preenchida, Histórico AE registrado, Plano de Ação gerado, ações revisadas,
+        Excel anexado, PDF do e-mail anexado, Plano de Ação concluído e Cronograma Rony atualizado.
       </div>
     </section>
 
@@ -1371,29 +1567,26 @@
     <div class="tag-line">
       <span class="tag">Sankhya</span>
       <span class="tag">AE Novo</span>
-      <span class="tag">Visão de Uso</span>
+      <span class="tag">Diagnóstico</span>
       <span class="tag">Guia do CS</span>
     </div>
 
     <p><strong>Onde:</strong> tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>.</p>
 
     <h3>Objetivo da etapa</h3>
-    <p>Preparar a reunião com dados reais do cliente: relacionamento, suporte, satisfação, financeiro, contrato, uso, indicadores e oportunidades.</p>
+    <p>Preparar o AE com dados reais do cliente, validando relacionamento, satisfação, suporte, contrato, financeiro, uso, indicadores, terceiros e processos aderentes.</p>
 
-    <h3>Como preparar</h3>
+    <h3>Ordem recomendada</h3>
     <ol>
-      <li>Acessar a aba <strong>Informações do Cliente</strong> para ler o resumo geral.</li>
-      <li>Validar relacionamento: CS, GR, patrocinador, contato AE e datas.</li>
-      <li>Validar suporte: chamados abertos, chamados nos últimos 6 meses e chamados acima de SLA.</li>
-      <li>Validar satisfação: NPS, data do último NPS, reclamações e cliente case.</li>
-      <li>Validar contrato e financeiro: contrato, status, data, MRR, última compra e títulos em atraso.</li>
-      <li>Acessar <strong>Visão de Uso</strong> para comparar contrato x uso x oportunidades.</li>
-      <li>Acessar <strong>Indicadores/Terceiros</strong> para verificar cards, indicadores e integrações.</li>
-      <li>Acessar <strong>Guia do CS</strong> para definir pontos usados, não usados e ações.</li>
+      <li>Acessar <strong>Informações do Cliente</strong> para entender o raio-x inicial.</li>
+      <li>Acessar <strong>Visão de Uso</strong> para identificar uso total, parcial, não utilizado e oportunidades.</li>
+      <li>Acessar <strong>Indicadores/Terceiros</strong> para validar Gerente Online, indicadores personalizados e integrações.</li>
+      <li>Acessar <strong>Guia do CS</strong> para priorizar processos e justificar o que não será priorizado.</li>
+      <li>Clicar em <strong>Registrar Histórico do AE</strong> para gravar o diagnóstico.</li>
     </ol>
 
     <div class="callout">
-      <strong>Saída esperada:</strong> o CS chega na reunião sabendo qual dor, oportunidade ou hipótese de evolução será validada com o cliente.
+      <strong>Saída esperada:</strong> o CS chega na reunião sabendo qual dor, oportunidade ou hipótese de evolução será validada com o cliente, e deixa o diagnóstico registrado para gerar o Plano de Ação.
     </div>
   </template>
 
@@ -1428,28 +1621,30 @@
   <template id="tpl-5">
     <div class="tag-line">
       <span class="tag">Plano de Ação</span>
-      <span class="tag">Anexos</span>
-      <span class="tag">PDF do e-mail</span>
+      <span class="tag">Gerar plano</span>
+      <span class="tag">Anexos obrigatórios</span>
       <span class="tag">Concluir</span>
     </div>
 
     <p><strong>Onde:</strong> aba <strong>Plano de Ação</strong> da tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>.</p>
 
     <h3>Objetivo da etapa</h3>
-    <p>Transformar a visita em registro oficial, com histórico, evidência e governança.</p>
+    <p>Transformar o diagnóstico e a visita em registro oficial, com ações, evidências e conclusão do AE.</p>
 
     <h3>Como registrar</h3>
     <ol>
-      <li>Preencher o plano conforme levantamento feito no cliente.</li>
-      <li>Marcar o plano como <strong>Acompanhamento Evolutivo</strong>, quando existir essa opção.</li>
-      <li>Anexar o Excel do levantamento, quando utilizado.</li>
-      <li>Anexar o PDF do e-mail enviado ao cliente.</li>
-      <li>Anexar materiais complementares, se houver.</li>
-      <li>Clicar em <strong>concluir plano de ação</strong>.</li>
+      <li>Após preencher a <strong>Guia do CS</strong>, acessar a aba <strong>Plano de Ação</strong>.</li>
+      <li>Clicar sempre em <strong>Gerar Plano de Ação</strong>.</li>
+      <li>Abrir o plano criado e revisar o detalhe.</li>
+      <li>Usar <strong>Presencial</strong> como padrão no campo Tipo Visita Realizada.</li>
+      <li>Validar as ações geradas ou incluir ações complementares.</li>
+      <li>Anexar obrigatoriamente o <strong>Excel do levantamento</strong>.</li>
+      <li>Anexar obrigatoriamente o <strong>PDF do e-mail enviado ao cliente</strong>.</li>
+      <li>Voltar para a lista do Plano de Ação e clicar em <strong>Concluir</strong>.</li>
     </ol>
 
     <div class="callout">
-      <strong>AE considerado realizado:</strong> apenas quando o plano está registrado, com anexos e conclusão marcada.
+      <strong>AE considerado realizado:</strong> apenas quando o plano foi gerado, revisado, possui ações, contém Excel + PDF do e-mail anexados e está concluído.
     </div>
   </template>
 
