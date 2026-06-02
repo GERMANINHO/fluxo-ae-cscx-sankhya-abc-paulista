@@ -11,22 +11,32 @@
     :root{
       --bg:#f5f3e7;
       --panel:#fffdf5;
+      --panel-2:#ffffff;
       --text:#443c3d;
       --muted:#6b6264;
       --accent:#66cc00;
       --accent-dark:#4a9c00;
+      --accent-soft:#eef7e2;
       --ink:#0f172a;
-      --line:#cfd8c6;
+      --line:#d7dfcc;
+      --line-2:#e9eddc;
       --modal-bg:#ffffff;
-      --overlay:rgba(0,0,0,.45);
+      --overlay:rgba(0,0,0,.48);
       --btn-bg:#0f172a0f;
       --btn-border:#cbd5e1;
       --btn-hover:#0f172a14;
       --btn-text:#0f172a;
       --shadow:0 14px 34px rgba(15, 23, 42, .10);
+      --shadow-soft:0 10px 22px rgba(15, 23, 42, .08);
+      --blue:#0f4c81;
+      --purple:#72508d;
+      --orange:#d97706;
+      --danger:#b91c1c;
     }
 
     *{ box-sizing:border-box; }
+
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
@@ -35,15 +45,17 @@
       font-family:"Open Sans Condensed",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
 
+    a{ color:#215f00; }
+
     .wrapper{
-      max-width:1400px;
+      max-width:1420px;
       margin:0 auto;
       padding:40px 56px 60px;
     }
 
     .hero{
       display:grid;
-      grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);
+      grid-template-columns:minmax(0,1.55fr) minmax(310px,.82fr);
       gap:20px;
       align-items:stretch;
       margin-bottom:22px;
@@ -51,16 +63,16 @@
 
     .hero__main,
     .hero__side,
-    .quick-card{
+    .quick-card,
+    .section,
+    .svg-shell{
       background:var(--panel);
       border:1px solid rgba(102, 204, 0, .18);
       border-radius:22px;
       box-shadow:var(--shadow);
     }
 
-    .hero__main{
-      padding:24px 28px;
-    }
+    .hero__main{ padding:26px 30px; }
 
     .hero__eyebrow{
       margin:0 0 10px;
@@ -73,7 +85,7 @@
 
     .hero__title{
       margin:0;
-      font-size:42px;
+      font-size:44px;
       line-height:1;
       text-transform:uppercase;
       letter-spacing:.02em;
@@ -82,7 +94,7 @@
     .hero__lead{
       margin:14px 0 18px;
       font-size:22px;
-      line-height:1.2;
+      line-height:1.22;
       color:var(--muted);
     }
 
@@ -95,7 +107,7 @@
     .chip{
       padding:8px 12px;
       border-radius:999px;
-      background:#eef7e2;
+      background:var(--accent-soft);
       color:#2d4d09;
       border:1px solid rgba(102, 204, 0, .25);
       font-size:15px;
@@ -110,24 +122,27 @@
       gap:14px;
     }
 
-    .side-box{
+    .side-box,
+    .mini-card{
       background:#fff;
       border:1px solid #eef2e4;
       border-radius:18px;
       padding:16px 18px;
     }
 
-    .side-box h2{
+    .side-box h2,
+    .mini-card h4{
       margin:0 0 8px;
       font-size:18px;
       text-transform:uppercase;
       letter-spacing:.04em;
     }
 
-    .side-box p{
+    .side-box p,
+    .mini-card p{
       margin:0;
       font-size:17px;
-      line-height:1.2;
+      line-height:1.23;
       color:var(--muted);
     }
 
@@ -138,9 +153,7 @@
       margin-bottom:24px;
     }
 
-    .quick-card{
-      padding:18px 20px;
-    }
+    .quick-card{ padding:18px 20px; }
 
     .quick-card h3{
       margin:0 0 10px;
@@ -156,17 +169,285 @@
       color:var(--muted);
     }
 
-    .quick-card ul{
-      margin:8px 0 0 18px;
-      padding:0;
+    .quick-card ul{ margin:8px 0 0 18px; padding:0; }
+
+    .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(6, minmax(0,1fr));
+      gap:10px;
+      margin-bottom:24px;
+    }
+
+    .nav-cards a{
+      display:block;
+      text-decoration:none;
+      color:var(--text);
+      background:#fffdf5;
+      border:1px solid rgba(102,204,0,.22);
+      border-radius:16px;
+      padding:13px 14px;
+      box-shadow:var(--shadow-soft);
+      min-height:86px;
+    }
+
+    .nav-cards strong{
+      display:block;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .nav-cards span{
+      display:block;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.15;
+    }
+
+    .section{
+      padding:24px 26px;
+      margin-bottom:24px;
+    }
+
+    .section__head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .section__eyebrow{
+      margin:0 0 6px;
+      color:var(--accent-dark);
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    h2{
+      margin:0;
+      font-size:30px;
+      line-height:1.05;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+
+    h3{
+      margin:20px 0 10px;
+      font-size:22px;
+      text-transform:uppercase;
+      letter-spacing:.035em;
+    }
+
+    h4{
+      margin:14px 0 8px;
+      font-size:19px;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      color:var(--accent-dark);
+    }
+
+    p{
+      font-size:19px;
+      line-height:1.28;
+      margin:8px 0 12px;
+    }
+
+    li{
+      font-size:18px;
+      line-height:1.28;
+      margin:5px 0;
+    }
+
+    .lead{
+      color:var(--muted);
+      max-width:980px;
+      font-size:21px;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      text-align:center;
+      padding:11px 15px;
+      border-radius:12px;
+      border:1px solid var(--btn-border);
+      background:var(--btn-bg);
+      color:var(--btn-text);
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      transition: background .2s, box-shadow .2s, transform .06s;
+      font-size:15px;
+    }
+
+    .btn:hover,.btn:focus{
+      background:var(--btn-hover);
+      box-shadow:0 0 0 2px #00000010 inset;
+    }
+
+    .btn--green{
+      border-color:#86efac;
+      background:#ecfdf5;
+      color:#14532d;
+    }
+
+    .btn--dark{
+      border-color:#334155;
+      background:#0f172a;
+      color:#fff;
+    }
+
+    .figure-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .guide-figure{
+      margin:16px 0 0;
+      background:#fff;
+      border:1px solid var(--line-2);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .guide-figure img{
+      display:block;
+      width:100%;
+      height:auto;
+      background:#fff;
+    }
+
+    .guide-figure figcaption{
+      border-top:1px solid var(--line-2);
+      padding:10px 14px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.25;
+      background:#fffdf8;
+    }
+
+    .table-wrap{
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:16px;
+      margin:12px 0 18px;
+      background:#fff;
+    }
+
+    table{
+      border-collapse:collapse;
+      width:100%;
+      min-width:760px;
+      font-size:17px;
+    }
+
+    th, td{
+      border-bottom:1px solid var(--line-2);
+      border-right:1px solid var(--line-2);
+      padding:11px 12px;
+      vertical-align:top;
+      text-align:left;
+    }
+
+    th{
+      background:#eef7e2;
+      color:#2d4d09;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size:15px;
+    }
+
+    tr:last-child td{ border-bottom:0; }
+    td:last-child, th:last-child{ border-right:0; }
+
+    .callout{
+      margin:14px 0;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#0f172a0a;
+      border:1px dashed #94a3b8;
+      font-size:18px;
+      line-height:1.25;
+    }
+
+    .callout strong{
+      color:var(--ink);
+    }
+
+    .callout--green{
+      background:#ecfdf5;
+      border-color:#86efac;
+    }
+
+    .callout--orange{
+      background:#fff7ed;
+      border-color:#fdba74;
+    }
+
+    .callout--danger{
+      background:#fef2f2;
+      border-color:#fca5a5;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+
+    .mini-card{
+      box-shadow:none;
+      border-color:var(--line-2);
+      background:#fff;
+    }
+
+    .code-block,
+    code{
+      background:#00000010;
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    .code-block{
+      display:block;
+      white-space:pre-wrap;
+      padding:12px 14px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:14px;
+      line-height:1.35;
+      color:#111827;
+      margin:10px 0;
+      border:1px solid #e2e8f0;
+      background:#f8fafc;
     }
 
     .svg-shell{
-      background:var(--panel);
-      border:1px solid rgba(102, 204, 0, .18);
-      border-radius:24px;
-      box-shadow:var(--shadow);
       padding:18px;
+      margin-bottom:24px;
     }
 
     .svg-header{
@@ -180,7 +461,7 @@
 
     .svg-header h2{
       margin:0;
-      font-size:24px;
+      font-size:26px;
       text-transform:uppercase;
       letter-spacing:.04em;
     }
@@ -194,7 +475,7 @@
     .svg-container{
       position:relative;
       width:100%;
-      padding-bottom:52%;
+      padding-bottom:54%;
       overflow:hidden;
       background:linear-gradient(180deg, #fcfbf4 0%, #f5f3e7 100%);
       border-radius:18px;
@@ -223,8 +504,8 @@
       font-weight:900;
       fill:#f5f3e7;
       text-transform:uppercase;
-      letter-spacing:.4px;
-      font-size:11px;
+      letter-spacing:.35px;
+      font-size:10px;
       pointer-events:none;
     }
     .node-label.sm{ font-size:9px; }
@@ -276,7 +557,7 @@
     .modal__panel{
       background:var(--modal-bg);
       color:var(--text);
-      width:min(94vw, 900px);
+      width:min(94vw, 980px);
       border-radius:18px;
       box-shadow:0 10px 40px rgba(0,0,0,.25);
       padding:20px 20px 16px;
@@ -340,10 +621,7 @@
       padding:0;
     }
 
-    .modal__body li{
-      margin:4px 0;
-    }
-
+    .modal__body li{ margin:4px 0; }
     .modal__body p{ margin:8px 0; }
 
     .modal__grid{
@@ -360,18 +638,7 @@
       padding:14px 16px;
     }
 
-    .info-box h4{
-      margin-top:0;
-    }
-
-    .callout{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:14px;
-      background:#0f172a0a;
-      border:1px dashed #94a3b8;
-      font-size:17px;
-    }
+    .info-box h4{ margin-top:0; }
 
     .tag-line{
       display:flex;
@@ -390,16 +657,16 @@
       font-weight:700;
       text-transform:uppercase;
       letter-spacing:.04em;
-      background:#eef7e2;
+      background:var(--accent-soft);
       color:#33580a;
       border:1px solid rgba(102, 204, 0, .25);
     }
 
     .muted{ color:var(--muted); }
-    code{
-      background:#00000010;
-      padding:2px 6px;
-      border-radius:8px;
+    .text-danger{ color:var(--danger); font-weight:700; }
+
+    @media (max-width: 1180px){
+      .nav-cards{ grid-template-columns:repeat(3, minmax(0,1fr)); }
     }
 
     @media (max-width: 1100px){
@@ -407,164 +674,499 @@
       .hero,
       .quick-grid,
       .flow-note,
-      .modal__grid{
+      .modal__grid,
+      .figure-grid,
+      .grid-2,
+      .grid-3{
         grid-template-columns:1fr;
       }
-      .svg-container{ padding-bottom:72%; }
+      .svg-container{ padding-bottom:78%; }
     }
 
     @media (max-width: 780px){
-      .hero__title{ font-size:30px; }
+      .hero__title{ font-size:31px; }
       .hero__lead{ font-size:19px; }
+      h2{ font-size:25px; }
+      p, li{ font-size:17px; }
       .svg-header h2{ font-size:20px; }
       .svg-header p,
       .quick-card p,
       .quick-card li,
       .callout-static,
       .modal__body{ font-size:16px; }
-      .svg-container{ padding-bottom:95%; }
+      .nav-cards{ grid-template-columns:1fr; }
+      .svg-container{ padding-bottom:105%; }
     }
   </style>
 </head>
 
 <body>
   <div class="wrapper">
-    <section class="hero">
+    <section class="hero" id="topo">
       <div class="hero__main">
         <p class="hero__eyebrow">Fluxograma operacional atualizado</p>
         <h1 class="hero__title">Acompanhamento Evolutivo — CS/CX</h1>
         <p class="hero__lead">
-          Passo a passo prático do AE para explicar <strong>o que deve ser feito</strong>, <strong>como deve ser feito</strong>
-          e <strong>onde deve ser feito</strong>, com base no processo novo.
+          Guia completo para executar o AE começando pelo <strong>Excel / Cronograma Rony</strong>,
+          passando pela priorização, agendamento, preparação, visita, registro no Sankhya e acompanhamento.
+          A leitura foi escrita para uma pessoa que nunca fez o processo conseguir entender o que fazer.
         </p>
         <div class="chips">
-          <span class="chip">Advocacy</span>
-          <span class="chip">Growth</span>
-          <span class="chip">Enterprise</span>
-          <span class="chip">Premium</span>
+          <span class="chip">Excel primeiro</span>
+          <span class="chip">Campanha com início e fim</span>
+          <span class="chip">Motivo conectado ao objetivo</span>
+          <span class="chip">Registro oficial no AE Novo</span>
         </div>
       </div>
 
       <div class="hero__side">
         <div class="side-box">
-          <h2>Leitura do fluxo</h2>
-          <p>Clique em cada etapa do diagrama para abrir o detalhamento operacional.</p>
-        </div>
-        <div class="side-box">
-          <h2>Base do processo</h2>
-          <p>Playbooks oficiais de AE atualizados em 24/02/2026.</p>
+          <h2>Regra principal</h2>
+          <p>Todo cliente no cronograma precisa ter objetivo/campanha, início, fim, status, motivo e classificação.</p>
         </div>
         <div class="side-box">
           <h2>Registro oficial</h2>
-          <p>O fechamento do AE acontece na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong> e o monitoramento segue em <strong>Gestão a Vista</strong>.</p>
+          <p>O fechamento do AE acontece na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>, com Plano de Ação, anexos e conclusão.</p>
+        </div>
+        <div class="side-box">
+          <h2>Como usar</h2>
+          <p>Leia as seções visuais e clique nos blocos do fluxograma para abrir o passo a passo de cada etapa.</p>
         </div>
       </div>
     </section>
 
     <section class="quick-grid">
       <article class="quick-card">
-        <h3>Estrutura comum</h3>
-        <ul>
-          <li>1. Estudo e priorização da carteira</li>
-          <li>2. Preparação da visita</li>
-          <li>3. Visita de AE</li>
-          <li>4. Registro e acompanhamento</li>
-        </ul>
+        <h3>1. Primeiro: Excel</h3>
+        <p>O Cronograma Rony é o quadro de planejamento. Nele o CS define quem será trabalhado, por qual motivo e em qual período.</p>
       </article>
 
       <article class="quick-card">
-        <h3>Diferença principal</h3>
-        <p><strong>Advocacy/Growth</strong> reforça entrega de valor contextualizada, uso, oportunidades, MAHAGestão e Clube de Gestão.</p>
-        <p><strong>Enterprise/Premium</strong> amplia análise estratégica com MRR, churn, mapa de contato, mapa de poder e indicadores estratégicos do negócio.</p>
+        <h3>2. Depois: execução</h3>
+        <p>Com cliente priorizado, o CS agenda, prepara o contexto no Sankhya e conduz o AE com foco em dor, evolução e plano de ação.</p>
       </article>
 
       <article class="quick-card">
-        <h3>Ponto crítico</h3>
-        <p>Para considerar o AE realizado, o plano deve ser registrado como <strong>Acompanhamento Evolutivo</strong>, com <strong>apresentação</strong>, <strong>e-mail</strong> anexados e opção <strong>concluído</strong> marcada.</p>
+        <h3>3. Fechamento</h3>
+        <p>AE só deve ser considerado realizado quando houver registro, anexos, e-mail formalizado e conclusão marcada.</p>
       </article>
     </section>
 
-    <section class="svg-shell">
+    <nav class="nav-cards" aria-label="Atalhos do guia AE">
+      <a href="#excel-cronograma"><strong>Excel</strong><span>Como ler e preencher o Cronograma Rony.</span></a>
+      <a href="#dicionario-colunas"><strong>Colunas</strong><span>Dicionário prático de cada campo da planilha.</span></a>
+      <a href="#campanhas"><strong>Campanhas</strong><span>Exemplos de objetivos e motivos corretos.</span></a>
+      <a href="#segmentacao"><strong>Segmentação</strong><span>Como interpretar Enterprise, Premium, Advocacy, Growth e Digital.</span></a>
+      <a href="#fluxograma"><strong>Fluxograma</strong><span>Etapas clicáveis do processo completo.</span></a>
+      <a href="#registro-ae"><strong>Registro</strong><span>Como finalizar corretamente no AE Novo.</span></a>
+    </nav>
+
+    <section class="section" id="excel-cronograma">
+      <div class="section__head">
+        <div>
+          <p class="section__eyebrow">Etapa 1</p>
+          <h2>Planejamento do AE no Excel — Cronograma Rony</h2>
+          <p class="lead">
+            Antes de abrir qualquer tela do Sankhya, o CS deve consultar a planilha
+            <strong>AE ABC Paulista</strong>, aba <strong>Cronograma Rony</strong>.
+            Essa aba funciona como o quadro de planejamento do AE.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--green" href="https://docs.google.com/spreadsheets/d/1iet4QlnjAJpPUBYi3jb_RQrmM0ceo3ey/edit?gid=253746021#gid=253746021" target="_blank" rel="noopener noreferrer">
+            Abrir Cronograma Rony
+          </a>
+        </div>
+      </div>
+
+      <div class="callout callout--green">
+        <strong>O que esta etapa responde:</strong>
+        quais clientes podem receber AE, por qual objetivo/campanha, em qual período,
+        com qual motivo, qual classificação e qual próximo passo após o contato.
+      </div>
+
+      <figure class="guide-figure">
+        <img src="assets/img/ae-guia-visual-cronograma-rony.png" alt="Guia visual da planilha AE ABC Paulista na aba Cronograma Rony com destaque para objetivo, cliente, início e fim da campanha." />
+        <figcaption>Guia visual da aba Cronograma Rony: o usuário começa lendo objetivo/campanha, cliente, início, fim e informações complementares.</figcaption>
+      </figure>
+
+      <figure class="guide-figure">
+        <img src="assets/img/ae-excel-cronograma-rony-visao-geral.png" alt="Visão geral real da planilha AE ABC Paulista na aba Cronograma Rony." />
+        <figcaption>Visão real da planilha. Cada linha representa um cliente que pode ser trabalhado dentro de uma campanha de AE, relacionamento, reversão, case ou passagem de bastão.</figcaption>
+      </figure>
+
+      <h3>Como executar esta etapa</h3>
+      <ol>
+        <li>Abra a planilha <strong>AE ABC Paulista</strong>.</li>
+        <li>Entre na aba <strong>Cronograma Rony</strong>.</li>
+        <li>Localize ou inclua o cliente que pode ser trabalhado no mês.</li>
+        <li>Preencha o <strong>Objetivo/Campanha</strong>.</li>
+        <li>Defina <strong>Início da Campanha</strong> e <strong>Fim da Campanha</strong>.</li>
+        <li>Valide se houve <strong>Passagem de Bastão</strong>, se aplicável.</li>
+        <li>Defina o <strong>Status</strong> da campanha.</li>
+        <li>Preencha o <strong>Motivo</strong> da visita, sempre conectado ao objetivo.</li>
+        <li>Confirme a <strong>Classificação</strong> do cliente.</li>
+        <li>Após a visita, preencha <strong>Ação / Próximos Passos</strong>.</li>
+      </ol>
+    </section>
+
+    <section class="section" id="dicionario-colunas">
+      <p class="section__eyebrow">Excel</p>
+      <h2>Dicionário das colunas do Cronograma Rony</h2>
+      <p class="lead">
+        Use este dicionário para entender o que cada coluna significa e como ela deve ser preenchida.
+        O objetivo é evitar interpretações diferentes entre pessoas do time.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Coluna</th>
+              <th>Campo</th>
+              <th>Obrigatório?</th>
+              <th>Como explicar para alguém novo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td><strong>Objetivo/CAMPANHA?</strong></td>
+              <td>Sim</td>
+              <td>Motivo macro pelo qual o cliente entrou no cronograma. Ex.: Reversão, Cliente NPS Promotor, Case, Passagem de Bastão, AE.</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td><strong>Clientes</strong></td>
+              <td>Sim</td>
+              <td>Nome do cliente/parceiro que será avaliado, acionado ou visitado.</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td><strong>INICIO CAMPANHA</strong></td>
+              <td>Sim</td>
+              <td>Mês em que o cliente começa a ser trabalhado naquela campanha.</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td><strong>FIM CAMPANHA</strong></td>
+              <td>Sim</td>
+              <td>Mês limite para finalizar, visitar, reavaliar ou concluir a campanha.</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td><strong>ESTÁ NO RADAR DA PESQUISA NPS?</strong></td>
+              <td>Informativa</td>
+              <td>Coluna de apoio. Indica se o cliente está no radar de NPS no mês. Não trava a execução do AE.</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td><strong>PASSAGEM DE BASTÃO</strong></td>
+              <td>Quando aplicável</td>
+              <td>Indica se houve o rito de passagem da implantação para a base. Não é a mesma coisa que a campanha "Passagem de Bastão".</td>
+            </tr>
+            <tr>
+              <td>G</td>
+              <td><strong>Status</strong></td>
+              <td>Sim</td>
+              <td>Status da campanha/ação: normalmente <strong>EM ANDAMENTO</strong> ou <strong>CONCLUÍDO</strong>.</td>
+            </tr>
+            <tr>
+              <td>H</td>
+              <td><strong>Endereço</strong></td>
+              <td>Quando houver visita presencial</td>
+              <td>Endereço do cliente para planejamento logístico da visita.</td>
+            </tr>
+            <tr>
+              <td>I</td>
+              <td><strong>Motivo</strong></td>
+              <td>Sim</td>
+              <td>Explicação prática do porquê o cliente será visitado. Deve estar ligado ao objetivo/campanha.</td>
+            </tr>
+            <tr>
+              <td>J</td>
+              <td><strong>Classificação</strong></td>
+              <td>Sim</td>
+              <td>Segmentação do cliente: Enterprise, Premium, Advocacy, Growth ou Digital. Ajuda a definir a abordagem.</td>
+            </tr>
+            <tr>
+              <td>K</td>
+              <td><strong>AÇÃO / PRÓXIMOS PASSOS</strong></td>
+              <td>Após visita/contato</td>
+              <td>Registro do que ficou combinado depois do AE, com ação, responsável e prazo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-grid">
+        <figure class="guide-figure">
+          <img src="assets/img/ae-excel-passagem-status-endereco.png" alt="Planilha com colunas Passagem de Bastão, Status e Endereço." />
+          <figcaption>Colunas de controle: Passagem de Bastão, Status da campanha e Endereço para visita.</figcaption>
+        </figure>
+
+        <figure class="guide-figure">
+          <img src="assets/img/ae-excel-motivo.png" alt="Planilha com a coluna Motivo da visita." />
+          <figcaption>A coluna Motivo explica por que o cliente será visitado. Ela precisa conversar com o objetivo/campanha.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="guide-figure">
+        <img src="assets/img/ae-excel-classificacao-proximos-passos.png" alt="Planilha com as colunas Classificação e Ação Próximos Passos." />
+        <figcaption>Classificação define a abordagem. Ação / Próximos Passos registra o combinado após a visita ou contato.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="campanhas">
+      <p class="section__eyebrow">Objetivo e motivo</p>
+      <h2>Campanhas, motivos e próximos passos</h2>
+      <p class="lead">
+        O <strong>Objetivo/Campanha</strong> é o motivo macro. O <strong>Motivo</strong> é a explicação prática.
+        Um cliente pode ter mais de uma campanha, mas o texto precisa ficar claro para qualquer pessoa entender.
+      </p>
+
+      <div class="callout callout--orange">
+        <strong>Regra de ouro:</strong> se alguém novo ler a linha da planilha, essa pessoa precisa entender
+        por que o cliente foi escolhido e qual resultado o CS espera alcançar.
+      </div>
+
+      <h3>Exemplos de campanhas</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Campanha</th>
+              <th>Quando usar</th>
+              <th>Exemplo de motivo bem escrito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cliente NPS Promotor</strong></td>
+              <td>Cliente demonstrou satisfação e pode ser aproximado para relacionamento, case ou indicação.</td>
+              <td>Cliente com NPS positivo. Vamos aproximar o relacionamento, entender percepção de valor e avaliar possibilidade de case ou Clube de Gestão.</td>
+            </tr>
+            <tr>
+              <td><strong>Reversão</strong></td>
+              <td>Cliente apresenta risco, ruído, baixa satisfação, baixa adoção ou necessidade de recuperação.</td>
+              <td>Cliente precisa de aproximação para entender dores, organizar prioridades e criar plano de ação para recuperação da relação.</td>
+            </tr>
+            <tr>
+              <td><strong>Aproximação</strong></td>
+              <td>Cliente está distante, sem contato recente ou com necessidade de relacionamento.</td>
+              <td>Cliente sem visita recente. A ação busca retomar relacionamento, entender momento atual e mapear oportunidades de evolução.</td>
+            </tr>
+            <tr>
+              <td><strong>Case - Clube de Gestão</strong></td>
+              <td>Cliente tem bom cenário para prova social, evolução de gestão ou participação em iniciativa de valor.</td>
+              <td>Cliente possui contexto favorável para apresentar Clube de Gestão e validar aderência para construção de case.</td>
+            </tr>
+            <tr>
+              <td><strong>Fazer Novos Negócios</strong></td>
+              <td>Existe oportunidade percebida para expansão, cross-sell, upsell ou venda de solução complementar.</td>
+              <td>Cliente possui oportunidade de evolução no uso e possível aderência a novas soluções. A visita busca validar necessidade e próximos passos.</td>
+            </tr>
+            <tr>
+              <td><strong>Passagem de Bastão</strong></td>
+              <td>Cliente saiu da implantação e precisa ser recebido pela base com rito de transição.</td>
+              <td>Cliente em transição da implantação para a base. O AE busca entender pendências, alinhar responsáveis e consolidar próximos passos.</td>
+            </tr>
+            <tr>
+              <td><strong>AE</strong></td>
+              <td>Cliente entrou no ciclo formal de Acompanhamento Evolutivo.</td>
+              <td>Cliente selecionado para AE com foco em entender uso, dores, oportunidades e montar plano de ação.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Modelo simples para preencher o motivo</h3>
+      <span class="code-block">Cliente selecionado para [OBJETIVO/CAMPANHA] porque [CONTEXTO]. O AE busca [RESULTADO ESPERADO].</span>
+
+      <h3>Modelo para próximos passos</h3>
+      <span class="code-block">[Data] — [Ação combinada] — [Responsável] — [Prazo ou próxima validação].</span>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>Exemplo de motivo</h4>
+          <p>Cliente selecionado para Reversão porque teve baixa proximidade nos últimos meses e existem dúvidas sobre o uso do sistema. O AE busca entender as dores, levantar melhorias e construir um plano de ação.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Exemplo de próximo passo</h4>
+          <p>20/05/2026 — Realizar AE com o cliente e validar pontos de melhoria levantados — Gustavo — Retornar com plano de ação até 27/05.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="segmentacao">
+      <p class="section__eyebrow">Classificação do cliente</p>
+      <h2>Segmentação e foco estratégico</h2>
+      <p class="lead">
+        A classificação não é apenas cadastro. Ela direciona o nível de profundidade da conversa,
+        a cadência de acompanhamento e o tipo de oportunidade que o CS deve buscar.
+      </p>
+
+      <div class="figure-grid">
+        <figure class="guide-figure">
+          <img src="assets/img/ae-segmentacao-definicao.png" alt="Imagem com definição da segmentação Enterprise, Premium, Advocacy, Growth e Digital." />
+          <figcaption>Definição da segmentação: leitura resumida do perfil de clientes por porte, MRR, quantidade de soluções e faixa de faturamento.</figcaption>
+        </figure>
+
+        <figure class="guide-figure">
+          <img src="assets/img/ae-segmentacao-foco-estrategico.png" alt="Imagem com foco estratégico por segmentação Enterprise, Premium, Advocacy, Growth e Digital." />
+          <figcaption>Foco estratégico por segmentação: cada tipo de cliente pede uma abordagem diferente no AE.</figcaption>
+        </figure>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Classificação</th>
+              <th>Como interpretar no AE</th>
+              <th>Abordagem recomendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Enterprise</strong></td>
+              <td>Cliente estratégico, com maior porte e maior relevância de carteira.</td>
+              <td>Conversa consultiva, executiva e personalizada. Foco em indicador estratégico, mapa de poder, risco e expansão.</td>
+            </tr>
+            <tr>
+              <td><strong>Premium</strong></td>
+              <td>Cliente de maior valor, com necessidade de blindagem e proximidade.</td>
+              <td>Foco em adoção, relacionamento, ampliação de uso, novas soluções e retenção.</td>
+            </tr>
+            <tr>
+              <td><strong>Advocacy</strong></td>
+              <td>Cliente com boa aderência e potencial de recomendação ou prova social.</td>
+              <td>Foco em fidelização, case, Clube de Gestão, recomendação e percepção de valor.</td>
+            </tr>
+            <tr>
+              <td><strong>Growth</strong></td>
+              <td>Cliente com potencial de crescimento e aumento de uso.</td>
+              <td>Foco em crescimento, cross-sell, upsell, adoção de soluções e evolução da jornada.</td>
+            </tr>
+            <tr>
+              <td><strong>Digital</strong></td>
+              <td>Cliente menor ou com modelo de atendimento mais escalável.</td>
+              <td>Pode receber AE, mas não deve ser o foco principal da rotina presencial. A abordagem tende a ser mais objetiva.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Prática recomendada:</strong> ao preencher a classificação, pense na forma de atendimento.
+        Um AE com Enterprise/Premium deve ser mais estratégico; com Growth/Advocacy deve buscar crescimento, fidelização e valor;
+        com Digital deve ser mais objetivo e escalável.
+      </div>
+    </section>
+
+    <section class="svg-shell" id="fluxograma">
       <div class="svg-header">
         <div>
-          <h2>Fluxo do Acompanhamento Evolutivo</h2>
-          <p>Modelo consolidado para AE de clientes Advocacy, Growth, Enterprise e Premium.</p>
+          <h2>Fluxograma completo do Acompanhamento Evolutivo</h2>
+          <p>Clique em cada etapa para abrir o passo a passo. O fluxo começa no Excel e termina no registro oficial do AE.</p>
         </div>
       </div>
 
       <div class="svg-container">
-        <svg viewBox="0 0 1000 520" class="svg-content" xmlns="http://www.w3.org/2000/svg" aria-label="Fluxograma do Acompanhamento Evolutivo">
+        <svg viewBox="0 0 1100 590" class="svg-content" xmlns="http://www.w3.org/2000/svg" aria-label="Fluxograma do Acompanhamento Evolutivo">
           <!-- Início -->
-          <g transform="translate(38,58)">
+          <g transform="translate(35,70)">
             <circle cx="55" cy="55" r="48" fill="#000"/>
             <text x="55" y="55" fill="#fff" font-size="22" text-anchor="middle" dominant-baseline="middle">INÍCIO</text>
           </g>
 
-          <!-- INÍCIO -> PASSO 1 -->
-          <line x1="142" y1="113" x2="210" y2="113" class="edge--dotted"/>
+          <line x1="138" y1="125" x2="195" y2="125" class="edge--dotted"/>
 
           <!-- Passo 1 -->
-          <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1" transform="translate(210,72)">
-            <rect width="230" height="84" rx="10" fill="#66cc00"/>
-            <text class="node-label sm" x="115" y="24" text-anchor="middle">
-              <tspan x="115">PASSO 1</tspan>
-              <tspan x="115" dy="14">ESTUDO DA CARTEIRA</tspan>
-              <tspan x="115" dy="14">PRIORIZAÇÃO</tspan>
-              <tspan x="115" dy="14">+ ESTRATÉGIA</tspan>
+          <g class="node" id="node-1" tabindex="0" role="button" aria-label="Abrir Passo 1" transform="translate(195,82)">
+            <rect width="210" height="86" rx="10" fill="#66cc00"/>
+            <text class="node-label sm" x="105" y="24" text-anchor="middle">
+              <tspan x="105">PASSO 1</tspan>
+              <tspan x="105" dy="14">EXCEL</tspan>
+              <tspan x="105" dy="14">CRONOGRAMA RONY</tspan>
+              <tspan x="105" dy="14">PLANEJAR AE</tspan>
             </text>
           </g>
 
-          <!-- Passo 1 -> Passo 2 -->
-          <line x1="440" y1="114" x2="510" y2="114" class="edge--dotted"/>
+          <line x1="405" y1="125" x2="470" y2="125" class="edge--dotted"/>
 
           <!-- Passo 2 -->
-          <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2" transform="translate(510,72)">
-            <rect width="250" height="84" rx="10" fill="#66cc00"/>
-            <text class="node-label sm" x="125" y="24" text-anchor="middle">
-              <tspan x="125">PASSO 2</tspan>
-              <tspan x="125" dy="14">PREPARAÇÃO DA VISITA</tspan>
-              <tspan x="125" dy="14">ANÁLISE DO CLIENTE</tspan>
-              <tspan x="125" dy="14">+ FOCO DA AGENDA</tspan>
+          <g class="node" id="node-2" tabindex="0" role="button" aria-label="Abrir Passo 2" transform="translate(470,82)">
+            <rect width="220" height="86" rx="10" fill="#66cc00"/>
+            <text class="node-label sm" x="110" y="24" text-anchor="middle">
+              <tspan x="110">PASSO 2</tspan>
+              <tspan x="110" dy="14">PRIORIZAR</tspan>
+              <tspan x="110" dy="14">VALIDAR CONTEXTO</tspan>
+              <tspan x="110" dy="14">E AGENDAR</tspan>
             </text>
           </g>
 
-          <!-- Passo 2 -> Passo 3 -->
-          <line x1="635" y1="156" x2="635" y2="248" class="edge--dotted"/>
-          <line x1="635" y1="248" x2="360" y2="248" class="edge--dotted"/>
-          <line x1="360" y1="248" x2="360" y2="280" class="edge--dotted"/>
+          <line x1="690" y1="125" x2="755" y2="125" class="edge--dotted"/>
 
           <!-- Passo 3 -->
-          <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3" transform="translate(220,280)">
-            <rect width="280" height="88" rx="10" fill="#66cc00"/>
-            <text class="node-label xs" x="140" y="22" text-anchor="middle">
-              <tspan x="140">PASSO 3</tspan>
-              <tspan x="140" dy="13">VISITA DE AE</tspan>
-              <tspan x="140" dy="13">ABERTURA + ENTENDIMENTO</tspan>
-              <tspan x="140" dy="13">EVOLUÇÃO + PLANO DE AÇÃO</tspan>
-              <tspan x="140" dy="13">+ PRÓXIMOS PASSOS</tspan>
+          <g class="node" id="node-3" tabindex="0" role="button" aria-label="Abrir Passo 3" transform="translate(755,82)">
+            <rect width="250" height="86" rx="10" fill="#66cc00"/>
+            <text class="node-label sm" x="125" y="24" text-anchor="middle">
+              <tspan x="125">PASSO 3</tspan>
+              <tspan x="125" dy="14">PREPARAR NO</tspan>
+              <tspan x="125" dy="14">CS ACOMPANHAMENTO</tspan>
+              <tspan x="125" dy="14">EVOLUTIVO (NOVO)</tspan>
             </text>
           </g>
 
-          <!-- Passo 3 -> Passo 4 -->
-          <line x1="500" y1="324" x2="575" y2="324" class="edge--dotted"/>
+          <!-- Desce -->
+          <line x1="880" y1="168" x2="880" y2="275" class="edge--dotted"/>
+          <line x1="880" y1="275" x2="330" y2="275" class="edge--dotted"/>
+          <line x1="330" y1="275" x2="330" y2="320" class="edge--dotted"/>
 
           <!-- Passo 4 -->
-          <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4" transform="translate(575,280)">
-            <rect width="260" height="88" rx="10" fill="#66cc00"/>
-            <text class="node-label xs" x="130" y="22" text-anchor="middle">
+          <g class="node" id="node-4" tabindex="0" role="button" aria-label="Abrir Passo 4" transform="translate(200,320)">
+            <rect width="260" height="90" rx="10" fill="#66cc00"/>
+            <text class="node-label xs" x="130" y="23" text-anchor="middle">
               <tspan x="130">PASSO 4</tspan>
-              <tspan x="130" dy="13">REGISTRO DO AE</tspan>
-              <tspan x="130" dy="13">ANEXOS + CONCLUSÃO</tspan>
-              <tspan x="130" dy="13">ACOMPANHAMENTO</tspan>
-              <tspan x="130" dy="13">EM GESTÃO À VISTA</tspan>
+              <tspan x="130" dy="13">REALIZAR AE</tspan>
+              <tspan x="130" dy="13">ENTENDER DOR</tspan>
+              <tspan x="130" dy="13">EVOLUÇÃO + PLANO</tspan>
+              <tspan x="130" dy="13">DE AÇÃO</tspan>
             </text>
           </g>
 
-          <!-- Passo 4 -> Fim -->
-          <line x1="835" y1="324" x2="900" y2="324" class="edge--dotted"/>
+          <line x1="460" y1="365" x2="530" y2="365" class="edge--dotted"/>
+
+          <!-- Passo 5 -->
+          <g class="node" id="node-5" tabindex="0" role="button" aria-label="Abrir Passo 5" transform="translate(530,320)">
+            <rect width="250" height="90" rx="10" fill="#66cc00"/>
+            <text class="node-label xs" x="125" y="23" text-anchor="middle">
+              <tspan x="125">PASSO 5</tspan>
+              <tspan x="125" dy="13">REGISTRAR PLANO</tspan>
+              <tspan x="125" dy="13">ANEXAR EXCEL</tspan>
+              <tspan x="125" dy="13">PDF DO E-MAIL</tspan>
+              <tspan x="125" dy="13">E CONCLUIR</tspan>
+            </text>
+          </g>
+
+          <line x1="780" y1="365" x2="845" y2="365" class="edge--dotted"/>
+
+          <!-- Passo 6 -->
+          <g class="node" id="node-6" tabindex="0" role="button" aria-label="Abrir Passo 6" transform="translate(845,320)">
+            <rect width="210" height="90" rx="10" fill="#66cc00"/>
+            <text class="node-label xs" x="105" y="23" text-anchor="middle">
+              <tspan x="105">PASSO 6</tspan>
+              <tspan x="105" dy="13">ATUALIZAR EXCEL</tspan>
+              <tspan x="105" dy="13">STATUS E</tspan>
+              <tspan x="105" dy="13">PRÓXIMOS PASSOS</tspan>
+            </text>
+          </g>
+
+          <line x1="950" y1="410" x2="950" y2="475" class="edge--dotted"/>
 
           <!-- Fim -->
-          <g transform="translate(895,268)">
+          <g transform="translate(895,470)">
             <circle cx="55" cy="55" r="48" fill="#000"/>
             <text x="55" y="55" fill="#fff" font-size="22" text-anchor="middle" dominant-baseline="middle">FIM</text>
           </g>
@@ -574,12 +1176,114 @@
       <div class="flow-note">
         <div class="callout-static">
           <strong>Observação importante</strong>
-          O novo AE não depende mais de um desenho centrado em etapas de SenseData dentro do fluxo principal. O registro oficial do processo está concentrado na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>.
+          O Excel organiza a priorização e mantém histórico operacional. O registro oficial do AE fica na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>.
         </div>
         <div class="callout-static">
           <strong>Foco do CS</strong>
-          O foco principal de AE está em <strong>Enterprise, Premium, Advocacy e Growth</strong>. Cliente Digital pode receber AE, mas isso não deve ser o foco principal da rotina do CS.
+          Priorize clientes em que exista contexto, necessidade, oportunidade ou risco. O AE não deve ser apenas uma visita sem objetivo claro.
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="registro-ae">
+      <p class="section__eyebrow">Sankhya</p>
+      <h2>Registro oficial no CS Acompanhamento Evolutivo (Novo)</h2>
+      <p class="lead">
+        Após planejar no Excel e realizar o AE, o CS precisa registrar o levantamento no Sankhya.
+        Essa é a etapa que transforma a visita em histórico oficial e governança.
+      </p>
+
+      <figure class="guide-figure">
+        <img src="assets/img/ae-guia-visual-ae-novo.png" alt="Guia visual da tela CS Acompanhamento Evolutivo Novo com abas Informações do Cliente, Visão de Uso, Indicadores, Guia do CS e Plano de Ação." />
+        <figcaption>Tela CS Acompanhamento Evolutivo (Novo): consultar dados, validar uso, registrar guia do CS, preencher Plano de Ação, anexar evidências e concluir.</figcaption>
+      </figure>
+
+      <h3>Abas principais</h3>
+      <div class="grid-3">
+        <div class="mini-card">
+          <h4>Informações do Cliente</h4>
+          <p>Resumo geral do parceiro, relacionamento, suporte, satisfação, contrato e financeiro.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Visão de Uso</h4>
+          <p>Comparar o que o cliente tem contratado, o que usa, o que não usa e onde há oportunidade.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Indicadores/Terceiros</h4>
+          <p>Validar cards, indicadores gerenciais, indicadores personalizados e integrações com terceiros.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Guia do CS</h4>
+          <p>Registrar pontos usados, não usados e ações definidas para evolução.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Plano de Ação</h4>
+          <p>Registrar levantamento, anexar arquivos, anexar PDF do e-mail e concluir o plano.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Gestão à Vista</h4>
+          <p>Acompanhar o que foi combinado e garantir continuidade após a visita.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--danger">
+        <strong>AE considerado realizado:</strong>
+        somente quando o Plano de Ação estiver registrado, com evidências anexadas
+        (Excel, PDF do e-mail e materiais), e o registro estiver concluído.
+      </div>
+    </section>
+
+    <section class="section" id="erros-comuns">
+      <p class="section__eyebrow">Boas práticas</p>
+      <h2>Erros comuns que o fluxo deve evitar</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Erro</th>
+              <th>Por que atrapalha</th>
+              <th>Como corrigir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cliente sem objetivo/campanha</td>
+              <td>Ninguém entende por que ele foi selecionado.</td>
+              <td>Preencher a campanha antes de avançar para agenda.</td>
+            </tr>
+            <tr>
+              <td>Campanha sem início e fim</td>
+              <td>A ação fica sem prazo e pode se perder.</td>
+              <td>Definir mês de início e mês limite de conclusão.</td>
+            </tr>
+            <tr>
+              <td>Motivo genérico demais</td>
+              <td>Não ajuda o CS a conduzir a conversa.</td>
+              <td>Explicar o contexto e o resultado esperado.</td>
+            </tr>
+            <tr>
+              <td>Motivo sem relação com objetivo</td>
+              <td>Gera confusão na priorização.</td>
+              <td>Revisar se o motivo conversa com a campanha selecionada.</td>
+            </tr>
+            <tr>
+              <td>Status concluído sem próximos passos</td>
+              <td>Parece que a ação terminou, mas não existe histórico.</td>
+              <td>Registrar o combinado pós-visita antes de concluir.</td>
+            </tr>
+            <tr>
+              <td>Confundir Passagem de Bastão como coluna e como campanha</td>
+              <td>Uma coisa é o motivo da campanha; outra é se o rito ocorreu.</td>
+              <td>Usar campanha para intenção e coluna para indicar se o rito aconteceu.</td>
+            </tr>
+            <tr>
+              <td>Registrar AE sem anexos</td>
+              <td>Perde rastreabilidade e evidência.</td>
+              <td>Anexar Excel, PDF do e-mail e materiais usados com o cliente.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </div>
@@ -597,203 +1301,183 @@
 
   <!-- Templates -->
 
-  <!-- PASSO 1 -->
   <template id="tpl-1">
     <div class="tag-line">
-      <span class="tag">Coordenação</span>
-      <span class="tag">CS</span>
-      <span class="tag">GR</span>
-      <span class="tag">Planejamento da carteira</span>
+      <span class="tag">Excel</span>
+      <span class="tag">Cronograma Rony</span>
+      <span class="tag">Campanha</span>
+      <span class="tag">Planejamento</span>
     </div>
 
-    <p><strong>Onde:</strong> rotina de base da unidade, com alinhamento entre <strong>Coordenação</strong>, <strong>CS</strong> e <strong>GR</strong>.</p>
+    <p><strong>Onde:</strong> planilha <strong>AE ABC Paulista</strong>, aba <strong>Cronograma Rony</strong>.</p>
 
     <h3>Objetivo da etapa</h3>
-    <p>Definir <strong>quais clientes receberão AE</strong>, qual a <strong>estratégia da visita</strong> e qual cenário deve ser tratado primeiro em cada conta.</p>
+    <p>Organizar quais clientes podem receber AE, por qual motivo e em qual período. Essa etapa evita que o AE seja feito de forma aleatória.</p>
 
-    <h3>O que deve ser feito</h3>
+    <h3>O que preencher</h3>
     <ol>
-      <li>Analisar a carteira e selecionar os clientes que receberão o Acompanhamento Evolutivo.</li>
-      <li>Alinhar a estratégia com a liderança da base e com o GR.</li>
-      <li>Definir qual será o objetivo principal da visita: tratar uma dor, atacar baixo uso, abrir oportunidade, fortalecer relacionamento ou evoluir indicadores.</li>
-      <li>Evitar abrir AE sem perspectiva clara de continuidade e fechamento do plano.</li>
+      <li><strong>Objetivo/Campanha:</strong> motivo macro da ação.</li>
+      <li><strong>Cliente:</strong> parceiro que será avaliado ou visitado.</li>
+      <li><strong>Início e fim da campanha:</strong> período planejado para trabalhar o cliente.</li>
+      <li><strong>Passagem de Bastão:</strong> indicar se houve o rito da implantação para a base.</li>
+      <li><strong>Status:</strong> EM ANDAMENTO ou CONCLUÍDO.</li>
+      <li><strong>Motivo:</strong> explicação prática do porquê visitar.</li>
+      <li><strong>Classificação:</strong> Enterprise, Premium, Advocacy, Growth ou Digital.</li>
     </ol>
 
-    <div class="modal__grid">
-      <div class="info-box">
-        <h4>Advocacy e Growth</h4>
-        <p>O playbook reforça que a elaboração da estratégia e a definição do mailing do AE são responsabilidade do time de base da unidade.</p>
-        <ul>
-          <li>Priorize clientes com necessidade de evolução contextualizada.</li>
-          <li>Considere histórico, uso e ecossistema do cliente.</li>
-          <li>Defina desde já a linha da visita: dor atual ou evolução orientada por oportunidade.</li>
-        </ul>
-      </div>
-
-      <div class="info-box">
-        <h4>Enterprise e Premium</h4>
-        <p>O playbook traz critérios explícitos para a priorização.</p>
-        <ul>
-          <li>Maior potencial e MRR.</li>
-          <li>Relacionamento distante com a unidade.</li>
-          <li>NPS detrator e neutro.</li>
-          <li>Risco de churn.</li>
-          <li>Forecast de AE.</li>
-        </ul>
-      </div>
-    </div>
-
     <div class="callout">
-      <strong>Saída esperada:</strong> cliente priorizado, objetivo da visita definido, estratégia combinada internamente e clareza sobre qual tema ou dor será levado para a preparação.
+      <strong>Saída esperada:</strong> cliente candidato ao AE com objetivo claro, período definido, motivo coerente e classificação preenchida.
     </div>
   </template>
 
-  <!-- PASSO 2 -->
   <template id="tpl-2">
     <div class="tag-line">
-      <span class="tag">CS - Acompanhamento Evolutivo (Novo)</span>
-      <span class="tag">Informações do cliente</span>
-      <span class="tag">Visão de Uso</span>
-      <span class="tag">Indicadores/Terceiros</span>
+      <span class="tag">Priorização</span>
+      <span class="tag">WhatsApp</span>
+      <span class="tag">Agenda</span>
+      <span class="tag">Contexto</span>
     </div>
 
-    <p><strong>Onde:</strong> principalmente na tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>. Para clientes Enterprise e Premium, também pode haver ação na tela <strong>Segmentação de Parceiros &gt; Contatos</strong>.</p>
+    <p><strong>Onde:</strong> planilha, histórico do cliente, dashboard CS - Acompanhamento Visita e contato com o cliente.</p>
 
-    <h3>Como preparar a visita</h3>
-    <ol>
-      <li>Acessar a aba <strong>Informações do cliente</strong>.</li>
-      <li>Analisar <strong>Satisfação</strong>: último NPS, resposta do cliente, reclamações abertas ou históricas e seus motivos.</li>
-      <li>Analisar <strong>Suporte</strong>: quantidade de chamados, indicadores do Zendesk e OS abertas na unidade ou na indústria.</li>
-      <li>Identificar possíveis <strong>calores</strong> ou dores pontuais antes da agenda.</li>
-      <li>Acessar a aba <strong>Visão de Uso</strong> e identificar processos com baixo uso ou não utilizados.</li>
-      <li>Revisar a guia <strong>Indicadores/Terceiros</strong> para entender indicadores do Gerente Online, indicadores personalizados e integrações.</li>
-      <li>Transformar essa leitura em uma hipótese clara para a reunião: dor a tratar, processo foco ou oportunidade de evolução.</li>
-    </ol>
+    <h3>Objetivo da etapa</h3>
+    <p>Decidir quais clientes realmente serão acionados no mês e tentar agenda de AE com base no objetivo da campanha.</p>
 
-    <div class="modal__grid">
-      <div class="info-box">
-        <h4>Pontos específicos — Advocacy e Growth</h4>
-        <ul>
-          <li>Revisar o histórico do último AE na <strong>Guia do CS</strong>, olhando principalmente processos ainda não priorizados.</li>
-          <li>Definir o processo foco da visita quando o cliente não trouxer uma dor inicial.</li>
-          <li>Estudar melhores práticas, novidades e argumentos para agregar valor.</li>
-          <li>Se fizer sentido, aplicar o <strong>MAHAGestão</strong> para comparação com clientes do mesmo segmento.</li>
-          <li>Validar elegibilidade para o <strong>Clube de Gestão</strong> e preencher o pré-cadastro, se aplicável.</li>
-        </ul>
-      </div>
-
-      <div class="info-box">
-        <h4>Pontos específicos — Enterprise e Premium</h4>
-        <ul>
-          <li>Garantir cadastro e atualização das pessoas-chave: CEO, CFO, diretores, gerentes, decisores e usuários-chave.</li>
-          <li>Registrar ou revisar esses contatos em <strong>Segmentação de Parceiros &gt; Contatos</strong>.</li>
-          <li>Ampliar o <strong>Mapa de Poder</strong>, identificando influenciadores e decisores.</li>
-          <li>Estudar o mercado do cliente, produtos Sankhya que agregam valor e possíveis benchmarks.</li>
-          <li>Preparar a pauta conectando o ecossistema Sankhya ao indicador estratégico do negócio.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="callout">
-      <strong>Saída esperada:</strong> contexto do cliente dominado, dor ou foco da visita definido, contatos-chave mapeados e linha de condução preparada para gerar um Plano de Ação relevante.
-    </div>
-  </template>
-
-  <!-- PASSO 3 -->
-  <template id="tpl-3">
-    <div class="tag-line">
-      <span class="tag">Visita ao cliente</span>
-      <span class="tag">Entendimento do momento</span>
-      <span class="tag">Plano de Ação</span>
-      <span class="tag">Próximos passos</span>
-    </div>
-
-    <p><strong>Onde:</strong> na reunião, visita ou interação formal do AE com o cliente.</p>
-
-    <h3>Como conduzir a visita</h3>
-    <ol>
-      <li>Iniciar a conversa apresentando o objetivo do <strong>Acompanhamento Evolutivo</strong>.</li>
-      <li>Entender o momento atual do cliente e validar se existe alguma <strong>dor pontual</strong>.</li>
-      <li>Se existir dor pontual, priorizar essa dor e construir um <strong>Plano de Ação</strong> antes de entrar na pauta de evolução.</li>
-      <li>Se não existir dor pontual, seguir com a estratégia preparada anteriormente.</li>
-      <li>Construir o Plano de Ação em conjunto com o cliente, garantindo aderência ao negócio e ao momento atual.</li>
-      <li>Fechar a reunião com responsáveis, próximos passos e cronograma claro.</li>
-    </ol>
-
-    <div class="modal__grid">
-      <div class="info-box">
-        <h4>Foco da conversa — Advocacy e Growth</h4>
-        <ul>
-          <li>Discutir como o ecossistema Sankhya pode ajudar o cliente a alcançar resultados de forma mais otimizada.</li>
-          <li>Apresentar valor contextualizado conforme uso e cenário atual.</li>
-          <li>Levar a conversa para evolução contínua quando não houver dor emergencial.</li>
-        </ul>
-      </div>
-
-      <div class="info-box">
-        <h4>Foco da conversa — Enterprise e Premium</h4>
-        <ul>
-          <li>Entender o <strong>indicador estratégico</strong> da área do cliente.</li>
-          <li>Conectar o ecossistema Sankhya a esses indicadores e objetivos do negócio.</li>
-          <li>Apresentar oportunidades de expansão alinhadas à estratégia do cliente.</li>
-          <li>Reforçar o posicionamento da Sankhya como parceira de crescimento.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="callout">
-      <strong>Regra prática da visita:</strong> se houver dor pontual, trate a dor primeiro. A evolução vem depois. O Plano de Ação precisa ser construído com relevância real para o negócio do cliente, não apenas como registro formal.
-    </div>
-  </template>
-
-  <!-- PASSO 4 -->
-  <template id="tpl-4">
-    <div class="tag-line">
-      <span class="tag">CS Acompanhamento Evolutivo (Novo)</span>
-      <span class="tag">Plano de Ação</span>
-      <span class="tag">Concluído</span>
-      <span class="tag">Gestão à Vista</span>
-    </div>
-
-    <p><strong>Onde:</strong> na tela <strong>CS Acompanhamento Evolutivo (Novo)</strong> para o registro oficial, e na tela <strong>Gestão a Vista</strong> para acompanhamento e gerenciamento.</p>
-
-    <h3>Como registrar corretamente o AE</h3>
-    <ol>
-      <li>Acessar a guia <strong>Plano de Ação</strong>.</li>
-      <li>Ao registrar o plano, selecionar a opção <strong>Acompanhamento Evolutivo</strong>.</li>
-      <li>Anexar a <strong>apresentação com o Plano de Ação</strong>.</li>
-      <li>Anexar o <strong>e-mail enviado ao cliente</strong>, formalizando a devolutiva do AE.</li>
-      <li>Marcar a opção de <strong>concluído</strong>.</li>
-    </ol>
-
-    <h3>Como acompanhar depois</h3>
+    <h3>Critérios de priorização</h3>
     <ul>
-      <li>Monitorar a execução do Plano de Ação.</li>
-      <li>Alinhar com o cliente ajustes de estratégia e repriorizações, quando necessário.</li>
-      <li>Acompanhar o andamento do processo em <strong>Gestão a Vista</strong>.</li>
+      <li><strong>Calor da carteira:</strong> cliente com maior chance de engajamento ou evolução.</li>
+      <li><strong>Pendências:</strong> cliente com assuntos em aberto ou promessas pendentes.</li>
+      <li><strong>Tempo sem AE:</strong> cliente há muito tempo sem conversa estruturada.</li>
+      <li><strong>NPS:</strong> promotor pode virar case; neutro/detrator pode precisar de aproximação.</li>
+      <li><strong>Oportunidade:</strong> módulos contratados e pouco usados, ou chance de expansão.</li>
+      <li><strong>Passagem de Bastão:</strong> cliente recém-saído da implantação ou em transição para base.</li>
     </ul>
 
-    <div class="modal__grid">
-      <div class="info-box">
-        <h4>Pós-visita comum</h4>
-        <ul>
-          <li>Garantir que o registro esteja completo no mesmo fluxo do AE.</li>
-          <li>Não deixar o plano sem anexo, sem formalização ou sem conclusão.</li>
-          <li>Usar Gestão a Vista para dar governança ao que foi combinado com o cliente.</li>
-        </ul>
-      </div>
-
-      <div class="info-box">
-        <h4>Ponto adicional — Enterprise e Premium</h4>
-        <ul>
-          <li>Antes de agendar um novo AE, planejar uma <strong>apresentação de fechamento</strong> do plano executado.</li>
-          <li>Essa devolutiva reforça a percepção de valor e evita abrir novo ciclo sem fechamento do anterior.</li>
-        </ul>
-      </div>
-    </div>
+    <h3>Como executar</h3>
+    <ol>
+      <li>Filtrar ou revisar os clientes do mês.</li>
+      <li>Validar se o motivo da visita está claro.</li>
+      <li>Separar os clientes mais importantes para contato.</li>
+      <li>Entrar em contato por WhatsApp ou canal combinado.</li>
+      <li>Buscar agenda dentro do mês ou registrar por que não foi possível.</li>
+    </ol>
 
     <div class="callout">
-      <strong>AE considerado realizado:</strong> somente quando o plano estiver registrado como <strong>Acompanhamento Evolutivo</strong>, com <strong>apresentação</strong> anexada, <strong>e-mail</strong> anexado e <strong>conclusão</strong> marcada. O gerenciamento contínuo fica em <strong>Gestão a Vista</strong>.
+      <strong>Saída esperada:</strong> agenda tentada ou marcada, com clareza sobre o objetivo que será tratado no AE.
+    </div>
+  </template>
+
+  <template id="tpl-3">
+    <div class="tag-line">
+      <span class="tag">Sankhya</span>
+      <span class="tag">AE Novo</span>
+      <span class="tag">Visão de Uso</span>
+      <span class="tag">Guia do CS</span>
+    </div>
+
+    <p><strong>Onde:</strong> tela <strong>CS - Acompanhamento Evolutivo (Novo)</strong>.</p>
+
+    <h3>Objetivo da etapa</h3>
+    <p>Preparar a reunião com dados reais do cliente: relacionamento, suporte, satisfação, financeiro, contrato, uso, indicadores e oportunidades.</p>
+
+    <h3>Como preparar</h3>
+    <ol>
+      <li>Acessar a aba <strong>Informações do Cliente</strong> para ler o resumo geral.</li>
+      <li>Validar relacionamento: CS, GR, patrocinador, contato AE e datas.</li>
+      <li>Validar suporte: chamados abertos, chamados nos últimos 6 meses e chamados acima de SLA.</li>
+      <li>Validar satisfação: NPS, data do último NPS, reclamações e cliente case.</li>
+      <li>Validar contrato e financeiro: contrato, status, data, MRR, última compra e títulos em atraso.</li>
+      <li>Acessar <strong>Visão de Uso</strong> para comparar contrato x uso x oportunidades.</li>
+      <li>Acessar <strong>Indicadores/Terceiros</strong> para verificar cards, indicadores e integrações.</li>
+      <li>Acessar <strong>Guia do CS</strong> para definir pontos usados, não usados e ações.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>Saída esperada:</strong> o CS chega na reunião sabendo qual dor, oportunidade ou hipótese de evolução será validada com o cliente.
+    </div>
+  </template>
+
+  <template id="tpl-4">
+    <div class="tag-line">
+      <span class="tag">Visita</span>
+      <span class="tag">Dor</span>
+      <span class="tag">Evolução</span>
+      <span class="tag">Plano de Ação</span>
+    </div>
+
+    <p><strong>Onde:</strong> na reunião presencial ou remota com o cliente.</p>
+
+    <h3>Objetivo da etapa</h3>
+    <p>Realizar a conversa de AE, entender o momento atual do cliente, validar dores e construir um plano de ação útil.</p>
+
+    <h3>Como conduzir</h3>
+    <ol>
+      <li>Abrir a conversa explicando o objetivo do AE.</li>
+      <li>Validar com o cliente se existe alguma dor urgente.</li>
+      <li>Se houver dor, tratar essa dor primeiro.</li>
+      <li>Se não houver dor, seguir com a estratégia preparada.</li>
+      <li>Discutir oportunidades de uso, processo, gestão, indicadores ou expansão.</li>
+      <li>Definir responsáveis, ações e próximos passos.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>Regra prática:</strong> AE não é só apresentação. É uma conversa estruturada para gerar plano de ação e evolução real.
+    </div>
+  </template>
+
+  <template id="tpl-5">
+    <div class="tag-line">
+      <span class="tag">Plano de Ação</span>
+      <span class="tag">Anexos</span>
+      <span class="tag">PDF do e-mail</span>
+      <span class="tag">Concluir</span>
+    </div>
+
+    <p><strong>Onde:</strong> aba <strong>Plano de Ação</strong> da tela <strong>CS Acompanhamento Evolutivo (Novo)</strong>.</p>
+
+    <h3>Objetivo da etapa</h3>
+    <p>Transformar a visita em registro oficial, com histórico, evidência e governança.</p>
+
+    <h3>Como registrar</h3>
+    <ol>
+      <li>Preencher o plano conforme levantamento feito no cliente.</li>
+      <li>Marcar o plano como <strong>Acompanhamento Evolutivo</strong>, quando existir essa opção.</li>
+      <li>Anexar o Excel do levantamento, quando utilizado.</li>
+      <li>Anexar o PDF do e-mail enviado ao cliente.</li>
+      <li>Anexar materiais complementares, se houver.</li>
+      <li>Clicar em <strong>concluir plano de ação</strong>.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>AE considerado realizado:</strong> apenas quando o plano está registrado, com anexos e conclusão marcada.
+    </div>
+  </template>
+
+  <template id="tpl-6">
+    <div class="tag-line">
+      <span class="tag">Excel</span>
+      <span class="tag">Status</span>
+      <span class="tag">Próximos passos</span>
+      <span class="tag">Follow-up</span>
+    </div>
+
+    <p><strong>Onde:</strong> planilha <strong>AE ABC Paulista</strong>, aba <strong>Cronograma Rony</strong>, e rotina de acompanhamento do CS.</p>
+
+    <h3>Objetivo da etapa</h3>
+    <p>Atualizar a linha do cliente com o resultado da visita e manter histórico do que ficou combinado.</p>
+
+    <h3>Como atualizar</h3>
+    <ol>
+      <li>Alterar o <strong>Status</strong> para CONCLUÍDO quando a campanha tiver sido finalizada.</li>
+      <li>Registrar em <strong>AÇÃO / PRÓXIMOS PASSOS</strong> o que ficou combinado.</li>
+      <li>Incluir responsável e prazo sempre que possível.</li>
+      <li>Manter acompanhamento em Gestão à Vista ou rotina interna de follow-up.</li>
+    </ol>
+
+    <span class="code-block">[Data] — [Ação combinada] — [Responsável] — [Prazo]</span>
+
+    <div class="callout">
+      <strong>Saída esperada:</strong> qualquer pessoa do time consegue abrir a planilha e entender o que aconteceu com aquele cliente e qual é o próximo passo.
     </div>
   </template>
 
@@ -805,10 +1489,12 @@
       const btnClose = document.getElementById('modal-close');
 
       const nodes = [
-        { id:'node-1', title:'Passo 1 — Estudo da Carteira e Priorização', tpl:'tpl-1' },
-        { id:'node-2', title:'Passo 2 — Preparação da Visita', tpl:'tpl-2' },
-        { id:'node-3', title:'Passo 3 — Visita de Acompanhamento Evolutivo', tpl:'tpl-3' },
-        { id:'node-4', title:'Passo 4 — Registro e Acompanhamento', tpl:'tpl-4' }
+        { id:'node-1', title:'Passo 1 — Excel / Cronograma Rony', tpl:'tpl-1' },
+        { id:'node-2', title:'Passo 2 — Priorização, contexto e agenda', tpl:'tpl-2' },
+        { id:'node-3', title:'Passo 3 — Preparação no CS Acompanhamento Evolutivo (Novo)', tpl:'tpl-3' },
+        { id:'node-4', title:'Passo 4 — Realização do AE com o cliente', tpl:'tpl-4' },
+        { id:'node-5', title:'Passo 5 — Registro do Plano de Ação e anexos', tpl:'tpl-5' },
+        { id:'node-6', title:'Passo 6 — Atualização do Excel e próximos passos', tpl:'tpl-6' }
       ];
 
       let lastTrigger = null;
@@ -825,6 +1511,9 @@
         modal.setAttribute('aria-hidden','false');
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
+
+        const closeButton = document.getElementById('modal-close');
+        if (closeButton) closeButton.focus({ preventScroll:true });
       }
 
       function closeModal(){
